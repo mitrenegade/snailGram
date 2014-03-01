@@ -41,6 +41,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)didClickFlip:(id)sender {
+    [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+}
+
+#pragma mark Segues
+
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     textView.text = message;

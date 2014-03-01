@@ -23,6 +23,7 @@
 		9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515CC18C2772E00F542F5 /* ShellViewController.m */; };
 		9E2515D218C2780F00F542F5 /* DSC_0377.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515D118C2780F00F542F5 /* DSC_0377.jpg */; };
 		9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */; };
+		9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515D818C2888100F542F5 /* BackEditorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		9E2515D118C2780F00F542F5 /* DSC_0377.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DSC_0377.jpg; sourceTree = "<group>"; };
 		9E2515D418C2793C00F542F5 /* FrontEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontEditorViewController.h; sourceTree = "<group>"; };
 		9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontEditorViewController.m; sourceTree = "<group>"; };
+		9E2515D718C2888100F542F5 /* BackEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackEditorViewController.h; sourceTree = "<group>"; };
+		9E2515D818C2888100F542F5 /* BackEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackEditorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +125,7 @@
 				9E2515A818C2768900F542F5 /* Main.storyboard */,
 				9E2515CB18C2772E00F542F5 /* ShellViewController.h */,
 				9E2515CC18C2772E00F542F5 /* ShellViewController.m */,
-				9E2515D318C2790200F542F5 /* Front */,
+				9E2515D318C2790200F542F5 /* Editors */,
 				9E2515AE18C2768900F542F5 /* Images.xcassets */,
 				9E25159D18C2768900F542F5 /* Supporting Files */,
 			);
@@ -167,13 +170,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		9E2515D318C2790200F542F5 /* Front */ = {
+		9E2515D318C2790200F542F5 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
 				9E2515D418C2793C00F542F5 /* FrontEditorViewController.h */,
 				9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */,
+				9E2515D718C2888100F542F5 /* BackEditorViewController.h */,
+				9E2515D818C2888100F542F5 /* BackEditorViewController.m */,
 			);
-			name = Front;
+			name = Editors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +281,7 @@
 			files = (
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
+				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
 				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 			);

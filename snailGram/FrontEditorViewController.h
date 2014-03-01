@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (nonatomic, strong) UIImage *image;
 
+-(IBAction)didClickFlip:(id)sender;
+
 @end
