@@ -87,7 +87,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Edit your message here" translatesAutoresizingMaskIntoConstraints="NO" id="cKO-Wo-YDj">
-                                <rect key="frame" x="20" y="203" width="199" height="97"/>
+                                <rect key="frame" x="20" y="88" width="199" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -100,16 +100,76 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rdc-yu-RVg"/>
+                    <navigationItem key="navigationItem" id="rdc-yu-RVg">
+                        <barButtonItem key="rightBarButtonItem" title="Flip" id="x5u-n9-0Ta">
+                            <connections>
+                                <action selector="didClickFlip:" destination="2w3-QL-dDk" id="ViP-LF-jJ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="imageView" destination="mIx-3J-Uau" id="p0f-Ur-bRX"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
+                        <segue destination="qBy-bk-JQz" kind="push" identifier="PushBackEditor" id="ugv-BY-Juv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUt-dk-ZKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1411" y="29"/>
+        </scene>
+        <!--Back Editor View Controller-->
+        <scene sceneID="8vI-hQ-SvI">
+            <objects>
+                <viewController id="qBy-bk-JQz" customClass="BackEditorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iSw-lf-xDz"/>
+                        <viewControllerLayoutGuide type="bottom" id="sPP-iz-mfp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XV1-lL-dIv">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="From:" translatesAutoresizingMaskIntoConstraints="NO" id="kl6-PE-48H">
+                                <rect key="frame" x="20" y="81" width="221" height="129"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qBy-bk-JQz" id="uj5-aB-WEa"/>
+                                </connections>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="To:" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-yS-LaD">
+                                <rect key="frame" x="281" y="171" width="221" height="129"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vkn-PQ-caN">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="AbC-C9-EKz">
+                            <connections>
+                                <action selector="didClickSave:" destination="qBy-bk-JQz" id="GkC-u3-upx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="textViewFrom" destination="kl6-PE-48H" id="pEu-WE-u0o"/>
+                        <outlet property="textViewTo" destination="VWa-yS-LaD" id="wQF-fZ-sqf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHJ-rP-mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="29"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
