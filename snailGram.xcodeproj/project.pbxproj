@@ -14,13 +14,15 @@
 		9E2515A318C2768900F542F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515A218C2768900F542F5 /* main.m */; };
 		9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515A618C2768900F542F5 /* AppDelegate.m */; };
 		9E2515AA18C2768900F542F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515A818C2768900F542F5 /* Main.storyboard */; };
-		9E2515AD18C2768900F542F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515AC18C2768900F542F5 /* ViewController.m */; };
 		9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515AE18C2768900F542F5 /* Images.xcassets */; };
 		9E2515B618C2768900F542F5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2515B518C2768900F542F5 /* XCTest.framework */; };
 		9E2515B718C2768900F542F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25159618C2768900F542F5 /* Foundation.framework */; };
 		9E2515B818C2768900F542F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25159A18C2768900F542F5 /* UIKit.framework */; };
 		9E2515C018C2768900F542F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515BE18C2768900F542F5 /* InfoPlist.strings */; };
 		9E2515C218C2768900F542F5 /* snailGramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515C118C2768900F542F5 /* snailGramTests.m */; };
+		9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515CC18C2772E00F542F5 /* ShellViewController.m */; };
+		9E2515D218C2780F00F542F5 /* DSC_0377.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515D118C2780F00F542F5 /* DSC_0377.jpg */; };
+		9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,17 @@
 		9E2515A518C2768900F542F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E2515A618C2768900F542F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9E2515A918C2768900F542F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9E2515AB18C2768900F542F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9E2515AC18C2768900F542F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9E2515AE18C2768900F542F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9E2515B418C2768900F542F5 /* snailGramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snailGramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2515B518C2768900F542F5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9E2515BD18C2768900F542F5 /* snailGramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snailGramTests-Info.plist"; sourceTree = "<group>"; };
 		9E2515BF18C2768900F542F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9E2515C118C2768900F542F5 /* snailGramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snailGramTests.m; sourceTree = "<group>"; };
+		9E2515CB18C2772E00F542F5 /* ShellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShellViewController.h; sourceTree = "<group>"; };
+		9E2515CC18C2772E00F542F5 /* ShellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShellViewController.m; sourceTree = "<group>"; };
+		9E2515D118C2780F00F542F5 /* DSC_0377.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DSC_0377.jpg; sourceTree = "<group>"; };
+		9E2515D418C2793C00F542F5 /* FrontEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontEditorViewController.h; sourceTree = "<group>"; };
+		9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontEditorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +120,9 @@
 				9E2515A518C2768900F542F5 /* AppDelegate.h */,
 				9E2515A618C2768900F542F5 /* AppDelegate.m */,
 				9E2515A818C2768900F542F5 /* Main.storyboard */,
-				9E2515AB18C2768900F542F5 /* ViewController.h */,
-				9E2515AC18C2768900F542F5 /* ViewController.m */,
+				9E2515CB18C2772E00F542F5 /* ShellViewController.h */,
+				9E2515CC18C2772E00F542F5 /* ShellViewController.m */,
+				9E2515D318C2790200F542F5 /* Front */,
 				9E2515AE18C2768900F542F5 /* Images.xcassets */,
 				9E25159D18C2768900F542F5 /* Supporting Files */,
 			);
@@ -126,6 +132,7 @@
 		9E25159D18C2768900F542F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E2515D018C2780F00F542F5 /* Images */,
 				9E25159E18C2768900F542F5 /* snailGram-Info.plist */,
 				9E25159F18C2768900F542F5 /* InfoPlist.strings */,
 				9E2515A218C2768900F542F5 /* main.m */,
@@ -150,6 +157,23 @@
 				9E2515BE18C2768900F542F5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9E2515D018C2780F00F542F5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9E2515D118C2780F00F542F5 /* DSC_0377.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		9E2515D318C2790200F542F5 /* Front */ = {
+			isa = PBXGroup;
+			children = (
+				9E2515D418C2793C00F542F5 /* FrontEditorViewController.h */,
+				9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */,
+			);
+			name = Front;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +254,7 @@
 			files = (
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
+				9E2515D218C2780F00F542F5 /* DSC_0377.jpg in Resources */,
 				9E2515AA18C2768900F542F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,9 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E2515AD18C2768900F542F5 /* ViewController.m in Sources */,
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
+				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
+				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +408,7 @@
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
 				INFOPLIST_FILE = "snailGram/snailGram-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -395,6 +422,7 @@
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
 				INFOPLIST_FILE = "snailGram/snailGram-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
