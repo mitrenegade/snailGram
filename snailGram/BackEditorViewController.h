@@ -13,8 +13,5 @@
 @property (weak, nonatomic) IBOutlet UITextView *textViewFrom;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;
 
-@property (nonatomic, strong) NSString *textFrom;
-@property (nonatomic, strong) NSString *textTo;
-
 -(IBAction)didClickSave:(id)sender;
 @end

@@ -30,6 +30,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    if ([_currentPostCard.from length])
+        self.textViewFrom.text = _currentPostCard.from;
+    if ([_currentPostCard.to length])
+        self.textViewTo.text = _currentPostCard.to;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,9 +50,9 @@
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     if (textView == self.textViewFrom)
-        textView.text = self.textFrom;
+        textView.text = _currentPostCard.from;
     else if (textView == self.textViewTo)
-        textView.text = self.textTo;
+        textView.text = _currentPostCard.to;
     textView.font = [UIFont systemFontOfSize:15];
     textView.textColor = [UIColor darkGrayColor];
 }
@@ -56,11 +61,11 @@
     NSString *message;
     NSString *placeholder;
     if (textView == self.textViewFrom) {
-        message = self.textFrom;
+        message = _currentPostCard.from;
         placeholder = PLACEHOLDER_TEXT_FROM;
     }
     else if (textView == self.textViewTo) {
-        message = self.textTo;
+        message = _currentPostCard.to;
         placeholder = PLACEHOLDER_TEXT_TO;
     }
 
@@ -82,19 +87,19 @@
     }
     NSString *oldComments;
     if (textView == self.textViewFrom) {
-        oldComments = self.textFrom;
-        self.textFrom = [textView.text stringByReplacingCharactersInRange:range withString:text];
-        if ([self.textFrom length] > ADDRESS_LIMIT) {
-            self.textFrom = oldComments;
+        oldComments = _currentPostCard.from;
+        _currentPostCard.from = [textView.text stringByReplacingCharactersInRange:range withString:text];
+        if ([_currentPostCard.from length] > ADDRESS_LIMIT) {
+            _currentPostCard.from = oldComments;
             textView.text = oldComments;
             return NO;
         }
     }
     else if (textView == self.textViewTo) {
-        oldComments = self.textTo;
-        self.textTo = [textView.text stringByReplacingCharactersInRange:range withString:text];
-        if ([self.textTo length] > ADDRESS_LIMIT) {
-            self.textTo = oldComments;
+        oldComments = _currentPostCard.to;
+        _currentPostCard.to = [textView.text stringByReplacingCharactersInRange:range withString:text];
+        if ([_currentPostCard.to length] > ADDRESS_LIMIT) {
+            _currentPostCard.to = oldComments;
             textView.text = oldComments;
             return NO;
         }

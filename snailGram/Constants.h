@@ -12,4 +12,7 @@
 #define _appDelegate ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define _currentPostCard [_appDelegate postCard]
 
+#define MESSAGE_PLACEHOLDER_TEXT @"Please enter a message"
+#define MESSAGE_LENGTH_LIMIT 500
+
 #endif

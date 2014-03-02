@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FrontEditorViewController : UIViewController <UITextViewDelegate>
-{
-    NSString *message;
-}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (nonatomic, strong) UIImage *image;
