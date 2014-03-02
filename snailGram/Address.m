@@ -7,6 +7,7 @@
 //
 
 #import "Address.h"
+#import "Recipient.h"
 
 
 @implementation Address
@@ -16,6 +17,7 @@
 @dynamic state;
 @dynamic zip;
 @dynamic id;
+@dynamic street2;
 @dynamic inhabitants;
 
 @end

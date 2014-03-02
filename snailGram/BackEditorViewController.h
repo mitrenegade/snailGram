@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddressEditorViewController.h"
 
-@interface BackEditorViewController : UIViewController <UITextViewDelegate>
+@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewFrom;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;

@@ -15,4 +15,9 @@
 
     return object;
 }
+
+-(void)updateEntityWithParams:(NSDictionary *)params {
+    NSLog(@"Attributes available: %@", [self.entity attributesByName]);
+    [self setValuesForKeysWithDictionary:params];
+}
 @end

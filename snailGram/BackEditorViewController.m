@@ -7,6 +7,7 @@
 //
 
 #import "BackEditorViewController.h"
+#import "Address+Info.h"
 
 #define PLACEHOLDER_TEXT_FROM @"From:"
 #define PLACEHOLDER_TEXT_TO @"To:"
@@ -31,10 +32,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    if ([_currentPostCard.from length])
-        self.textViewFrom.text = _currentPostCard.from;
-    if ([_currentPostCard.to length])
-        self.textViewTo.text = _currentPostCard.to;
+    if (_currentPostCard.from)
+        self.textViewFrom.text = _currentPostCard.from.toString;
+    if (_currentPostCard.to)
+        self.textViewTo.text = _currentPostCard.to.toString;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +48,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#if 0
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     if (textView == self.textViewFrom)
@@ -107,4 +109,34 @@
 
     return YES;
 }
+#else
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    AddressEditorViewController *addressController = [[AddressEditorViewController alloc] init];
+    addressController.delegate = self;
+    if (textView == self.textViewFrom) {
+        if (!_currentPostCard.from)
+            _currentPostCard.from = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
+
+        [addressController setAddress:_currentPostCard.from];
+    }
+    else if (textView == self.textViewTo) {
+        if (!_currentPostCard.to)
+            _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
+
+        [addressController setAddress:_currentPostCard.to];
+    }
+    [self.navigationController presentViewController:addressController animated:YES completion:nil];
+}
+
+-(void)didSaveAddress:(Address *)newAddress {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.textViewFrom resignFirstResponder];
+    [self.textViewTo resignFirstResponder];
+
+    [self.textViewFrom setText:[_currentPostCard.from toString]];
+    [self.textViewTo setText:[_currentPostCard.to toString]];
+}
+#endif
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "FrontEditorViewController.h"
+#import "AddressEditorViewController.h"
 
 @interface FrontEditorViewController ()
 
@@ -43,8 +44,6 @@
     [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
 }
 
-#pragma mark Segues
-
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     textView.text = _currentPostCard.message;
@@ -79,5 +78,4 @@
 
     return YES;
 }
-
 @end
