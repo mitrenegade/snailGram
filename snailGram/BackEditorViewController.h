@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddressEditorViewController.h"
 
-@interface BackEditorViewController : UIViewController <UITextViewDelegate>
+@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewFrom;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;
-
-@property (nonatomic, strong) NSString *textFrom;
-@property (nonatomic, strong) NSString *textTo;
 
 -(IBAction)didClickSave:(id)sender;
 @end

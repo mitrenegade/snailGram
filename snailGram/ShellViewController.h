@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostCard.h"
 
 @interface ShellViewController : UIViewController
 {
@@ -14,6 +15,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonCamera;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLibrary;
+
+@property (nonatomic, strong) PostCard *postCard;
 - (IBAction)didClickButton:(id)sender;
 
 @end

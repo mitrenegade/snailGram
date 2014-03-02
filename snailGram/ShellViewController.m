@@ -45,6 +45,13 @@
     else if (button == self.buttonLibrary) {
         
     }
+    if (!self.postCard) {
+        self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+        self.postCard.message = @"";
+        self.postCard.to = nil;
+        self.postCard.from = nil;
+        self.postCard.image_url = @""; // todo: upload image to AWS then store url
+    }
     [self performSegueWithIdentifier:@"PushFrontEditor" sender:nil];
 }
 
@@ -55,4 +62,5 @@
         controller.image = selectedImage;
     }
 }
+
 @end
