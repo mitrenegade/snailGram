@@ -38,8 +38,10 @@
 		9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FA18C2AC0000F542F5 /* UIImage+Resize.m */; };
 		9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FC18C2AC0000F542F5 /* UIImage+RoundedCorner.m */; };
 		9E25160B18C2AC0000F542F5 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FE18C2AC0000F542F5 /* Util.m */; };
-		9E25160E18C2ACA100F542F5 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25160D18C2ACA100F542F5 /* PostCard.m */; };
 		9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25160F18C2B77600F542F5 /* CoreData.framework */; };
+		9E25161318C2FFCD00F542F5 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161218C2FFCD00F542F5 /* PostCard.m */; };
+		9E25161618C2FFCD00F542F5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161518C2FFCD00F542F5 /* Address.m */; };
+		9E25161918C2FFCD00F542F5 /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161818C2FFCD00F542F5 /* Recipient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,9 +108,13 @@
 		9E2515FC18C2AC0000F542F5 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		9E2515FD18C2AC0000F542F5 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9E2515FE18C2AC0000F542F5 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		9E25160C18C2ACA100F542F5 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9E25160D18C2ACA100F542F5 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E25160F18C2B77600F542F5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9E25161118C2FFCD00F542F5 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E25161218C2FFCD00F542F5 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		9E25161418C2FFCD00F542F5 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		9E25161518C2FFCD00F542F5 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		9E25161718C2FFCD00F542F5 /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipient.h; sourceTree = "<group>"; };
+		9E25161818C2FFCD00F542F5 /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,9 +243,13 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				9E25160C18C2ACA100F542F5 /* PostCard.h */,
-				9E25160D18C2ACA100F542F5 /* PostCard.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
+				9E25161118C2FFCD00F542F5 /* PostCard.h */,
+				9E25161218C2FFCD00F542F5 /* PostCard.m */,
+				9E25161718C2FFCD00F542F5 /* Recipient.h */,
+				9E25161818C2FFCD00F542F5 /* Recipient.m */,
+				9E25161418C2FFCD00F542F5 /* Address.h */,
+				9E25161518C2FFCD00F542F5 /* Address.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -387,13 +397,14 @@
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
+				9E25161918C2FFCD00F542F5 /* Recipient.m in Sources */,
 				9E25160118C2AC0000F542F5 /* NSObject+MKBlockAdditions.m in Sources */,
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
-				9E25160E18C2ACA100F542F5 /* PostCard.m in Sources */,
+				9E25161318C2FFCD00F542F5 /* PostCard.m in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
 				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 				9E25160718C2AC0000F542F5 /* Query.m in Sources */,
@@ -402,6 +413,7 @@
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
 				9E25160218C2AC0000F542F5 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				9E25161618C2FFCD00F542F5 /* Address.m in Sources */,
 				9E25160318C2AC0000F542F5 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */,
 			);
