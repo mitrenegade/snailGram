@@ -83,7 +83,7 @@ static NSArray *states;
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return states[row];
 }
-
+    
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     [self.inputState setText:[self pickerView:pickerView titleForRow:row forComponent:component]];
 }

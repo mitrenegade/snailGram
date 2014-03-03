@@ -8,6 +8,7 @@
 
 #import "BackEditorViewController.h"
 #import "Address+Info.h"
+#import "Address+Parse.h"
 
 #define PLACEHOLDER_TEXT_FROM @"From:"
 #define PLACEHOLDER_TEXT_TO @"To:"
@@ -130,7 +131,9 @@
 
 -(void)didSaveAddress:(Address *)newAddress {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
+
+    [newAddress saveOrUpdateToParse];
+
     [self.textViewFrom resignFirstResponder];
     [self.textViewTo resignFirstResponder];
 

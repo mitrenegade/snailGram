@@ -2,7 +2,7 @@
 //  Recipient.h
 //  snailGram
 //
-//  Created by Bobby Ren on 3/1/14.
+//  Created by Bobby Ren on 3/2/14.
 //  Copyright (c) 2014 SnailGram. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface Recipient : NSManagedObject
 
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSSet *addresses;
 @end
 
