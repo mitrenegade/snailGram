@@ -130,7 +130,7 @@
 -(void)didSaveAddress:(Address *)newAddress {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 
-    [newAddress saveOrUpdateToParse];
+    [newAddress saveOrUpdateToParseWithCompletion:nil];
     NSError *error;
     [_appDelegate.managedObjectContext save:&error];
     

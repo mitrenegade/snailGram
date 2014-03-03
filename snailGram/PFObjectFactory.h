@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+static char const * const PFObjectTagKey = "PFObjectTagKey";
+
 @protocol PFObjectFactory
 
 +(Address *)fromPFObject:(PFObject *)object;
 -(void)updateFromParse;
--(void)saveOrUpdateToParse;
+-(void)saveOrUpdateToParseWithCompletion:(void(^)(BOOL success))completion;
 
 @property (nonatomic, retain) NSString * className;
 @property (nonatomic, retain) PFObject *pfObject;

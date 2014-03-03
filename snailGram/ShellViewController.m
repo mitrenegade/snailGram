@@ -8,6 +8,9 @@
 
 #import "ShellViewController.h"
 #import "FrontEditorViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
+#import "PostCard+Parse.h"
+#import "AWSHelper.h"
 
 @interface ShellViewController ()
 
@@ -45,14 +48,39 @@
     else if (button == self.buttonLibrary) {
         
     }
+
     if (!self.postCard) {
         self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
         self.postCard.message = @"";
         self.postCard.to = nil;
         self.postCard.from = nil;
         self.postCard.image_url = @""; // todo: upload image to AWS then store url
+
+        // if postCard doesn't exist on Parse yet, we don't have an image key
+        [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            if (success) {
+                [self startImageUpload];
+            }
+        }];
     }
+    else {
+        // if postCard already exists, start image upload
+        [self startImageUpload];
+    }
+
     [self performSegueWithIdentifier:@"PushFrontEditor" sender:nil];
+}
+
+-(void)startImageUpload {
+    [AWSHelper uploadImage:selectedImage withName:[self keyForPhoto] toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+        NSLog(@"Final url: %@", url);
+        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:[self keyForPhoto]];
+        [self.postCard saveOrUpdateToParseWithCompletion:nil];
+    }];
+}
+
+-(NSString *)keyForPhoto {
+    return self.postCard.parseID;
 }
 
 #pragma mark Segue preparation

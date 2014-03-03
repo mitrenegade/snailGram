@@ -7,7 +7,6 @@
 //
 
 #import "Address.h"
-#import <Parse/Parse.h>
 #import "PFObjectFactory.h"
 
 @interface Address (Parse) <PFObjectFactory>

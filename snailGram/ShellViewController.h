@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PostCard.h"
+#import "AWSHelper.h"
 
 @interface ShellViewController : UIViewController
 {

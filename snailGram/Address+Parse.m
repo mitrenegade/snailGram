@@ -10,8 +10,6 @@
 #import <Parse/Parse.h>
 #import <objc/runtime.h>
 
-static char const * const PFObjectTagKey = "PFObjectTagKey";
-
 @implementation Address (Parse)
 
 -(NSString *)className {
@@ -43,7 +41,7 @@ static char const * const PFObjectTagKey = "PFObjectTagKey";
     self.parseID = self.pfObject.objectId;
 }
 
--(void)saveOrUpdateToParse {
+-(void)saveOrUpdateToParseWithCompletion:(void (^)(BOOL))completion {
     if (!self.pfObject)
         self.pfObject = [PFObject objectWithClassName:self.className];
 
@@ -57,6 +55,8 @@ static char const * const PFObjectTagKey = "PFObjectTagKey";
     [self.pfObject saveEventually:^(BOOL succeeded, NSError *error) {
         if (succeeded)
             self.parseID = self.pfObject.objectId;
+        if (completion)
+            completion(succeeded);
     }];
 }
 
