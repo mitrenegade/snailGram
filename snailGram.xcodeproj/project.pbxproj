@@ -44,9 +44,6 @@
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
-		9E9B63F018C3F9410048142D /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63EF18C3F9410048142D /* PostCard.m */; };
-		9E9B63F318C3F9420048142D /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63F218C3F9420048142D /* Recipient.m */; };
-		9E9B63F618C3F9420048142D /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63F518C3F9420048142D /* Address.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
 		9E9B63FA18C403C50048142D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F918C403C50048142D /* CFNetwork.framework */; };
 		9E9B63FC18C403D10048142D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63FB18C403D10048142D /* CoreLocation.framework */; };
@@ -56,6 +53,8 @@
 		9E9B640418C403E90048142D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640318C403E90048142D /* Security.framework */; };
 		9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640518C403EF0048142D /* StoreKit.framework */; };
 		9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640718C403F50048142D /* SystemConfiguration.framework */; };
+		9E9B641418C410FF0048142D /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B641318C410FF0048142D /* Address.m */; };
+		9E9B641718C411100048142D /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B641618C411100048142D /* PostCard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,12 +131,6 @@
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
 		9E9B63EC18C3F2060048142D /* PFObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFObjectFactory.h; sourceTree = "<group>"; };
-		9E9B63EE18C3F9410048142D /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9E9B63EF18C3F9410048142D /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
-		9E9B63F118C3F9420048142D /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipient.h; sourceTree = "<group>"; };
-		9E9B63F218C3F9420048142D /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipient.m; sourceTree = "<group>"; };
-		9E9B63F418C3F9420048142D /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		9E9B63F518C3F9420048142D /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		9E9B63F718C403C00048142D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9E9B63F918C403C50048142D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9E9B63FB18C403D10048142D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -147,6 +140,10 @@
 		9E9B640318C403E90048142D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9E9B640518C403EF0048142D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9E9B640718C403F50048142D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9E9B641218C410FF0048142D /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		9E9B641318C410FF0048142D /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		9E9B641518C411100048142D /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E9B641618C411100048142D /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,12 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
-				9E9B63EE18C3F9410048142D /* PostCard.h */,
-				9E9B63F118C3F9420048142D /* Recipient.h */,
-				9E9B63F418C3F9420048142D /* Address.h */,
-				9E9B63F518C3F9420048142D /* Address.m */,
-				9E9B63F218C3F9420048142D /* Recipient.m */,
-				9E9B63EF18C3F9410048142D /* PostCard.m */,
+				9E9B641518C411100048142D /* PostCard.h */,
+				9E9B641618C411100048142D /* PostCard.m */,
+				9E9B641218C410FF0048142D /* Address.h */,
+				9E9B641318C410FF0048142D /* Address.m */,
 				9E25162318C30A3100F542F5 /* Address+Info.h */,
 				9E25162418C30A3100F542F5 /* Address+Info.m */,
 				9E9B63E418C3C3680048142D /* Address+Parse.h */,
@@ -472,25 +467,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
-				9E9B63F018C3F9410048142D /* PostCard.m in Sources */,
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
 				9E25160118C2AC0000F542F5 /* NSObject+MKBlockAdditions.m in Sources */,
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
+				9E9B641718C411100048142D /* PostCard.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */,
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
-				9E9B63F318C3F9420048142D /* Recipient.m in Sources */,
-				9E9B63F618C3F9420048142D /* Address.m in Sources */,
 				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 				9E25160718C2AC0000F542F5 /* Query.m in Sources */,
 				9E25160518C2AC0000F542F5 /* NSManagedObject+Query.m in Sources */,
 				9E25162518C30A3100F542F5 /* Address+Info.m in Sources */,
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
+				9E9B641418C410FF0048142D /* Address.m in Sources */,
 				9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */,
 				9E25160218C2AC0000F542F5 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,

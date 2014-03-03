@@ -12,9 +12,9 @@
 
 @implementation PostCard
 
-@dynamic parseID;
 @dynamic image_url;
 @dynamic message;
+@dynamic parseID;
 @dynamic from;
 @dynamic to;
 

@@ -34,6 +34,7 @@ static char const * const PFObjectTagKey = "PFObjectTagKey";
 }
 
 -(void)updateFromParse {
+    self.name = self.pfObject[@"name"];
     self.street = self.pfObject[@"street"];
     self.street2 = self.pfObject[@"street2"];
     self.city = self.pfObject[@"city"];
@@ -46,6 +47,7 @@ static char const * const PFObjectTagKey = "PFObjectTagKey";
     if (!self.pfObject)
         self.pfObject = [PFObject objectWithClassName:self.className];
 
+    self.pfObject[@"name"] = self.name;
     self.pfObject[@"street"] = self.street;
     self.pfObject[@"street2"] = self.street2;
     self.pfObject[@"city"] = self.city;

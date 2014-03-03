@@ -13,9 +13,9 @@
 
 @interface PostCard : NSManagedObject
 
-@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSString * image_url;
 @property (nonatomic, retain) NSString * message;
+@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) Address *from;
 @property (nonatomic, retain) Address *to;
 

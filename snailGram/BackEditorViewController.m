@@ -117,14 +117,12 @@
     if (textView == self.textViewFrom) {
         if (!_currentPostCard.from)
             _currentPostCard.from = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-
-        [addressController setAddress:_currentPostCard.from];
+        textViewEditing = self.textViewFrom;
     }
     else if (textView == self.textViewTo) {
         if (!_currentPostCard.to)
             _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-
-        [addressController setAddress:_currentPostCard.to];
+        textViewEditing = self.textViewTo;
     }
     [self.navigationController presentViewController:addressController animated:YES completion:nil];
 }
@@ -132,13 +130,17 @@
 -(void)didSaveAddress:(Address *)newAddress {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 
-    [newAddress saveOrUpdateToParse];
-
     [self.textViewFrom resignFirstResponder];
     [self.textViewTo resignFirstResponder];
 
     [self.textViewFrom setText:[_currentPostCard.from toString]];
     [self.textViewTo setText:[_currentPostCard.to toString]];
+
+    [newAddress saveOrUpdateToParse];
+    if (textViewEditing == self.textViewFrom)
+        _currentPostCard.from = newAddress;
+    else if (textViewEditing == self.textViewTo)
+        _currentPostCard.to = newAddress;
 }
 #endif
 

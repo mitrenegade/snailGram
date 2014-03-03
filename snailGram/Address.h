@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Recipient;
 
 @interface Address : NSManagedObject
 
@@ -19,13 +18,14 @@
 @property (nonatomic, retain) NSString * street;
 @property (nonatomic, retain) NSString * street2;
 @property (nonatomic, retain) NSString * zip;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *inhabitants;
 @end
 
 @interface Address (CoreDataGeneratedAccessors)
 
-- (void)addInhabitantsObject:(Recipient *)value;
-- (void)removeInhabitantsObject:(Recipient *)value;
+- (void)addInhabitantsObject:(NSManagedObject *)value;
+- (void)removeInhabitantsObject:(NSManagedObject *)value;
 - (void)addInhabitants:(NSSet *)values;
 - (void)removeInhabitants:(NSSet *)values;
 

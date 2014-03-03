@@ -56,6 +56,8 @@ static NSArray *states;
         self.inputState.text = self.address.state;
         self.inputZip.text = self.address.zip;
     }
+    else
+        self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +91,6 @@ static NSArray *states;
 }
 
 -(void)closePicker:(id)sender {
-    [self.address setState:self.inputState.text];
     [self.inputState resignFirstResponder];
 }
 
@@ -100,6 +101,7 @@ static NSArray *states;
 }
 
 -(void)didClickSave:(id)sender {
+    self.address.name = self.inputName.text;
     self.address.street = self.inputStreet1.text;
     self.address.street2 = self.inputStreet2.text;
     self.address.city = self.inputCity.text;
