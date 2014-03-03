@@ -7,6 +7,7 @@
 //
 
 #import "AddressEditorViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface AddressEditorViewController ()
 
@@ -32,6 +33,7 @@ static NSArray *states;
 
     pickerViewState = [[UIPickerView alloc] init];
     pickerViewState.delegate = self;
+    pickerViewState.dataSource = self;
     self.inputState.inputView = pickerViewState;
 
     UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
@@ -39,10 +41,24 @@ static NSArray *states;
     keyboardDoneButtonView.translucent = YES;
     keyboardDoneButtonView.tintColor = [UIColor whiteColor];
     [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") style:UIBarButtonItemStyleBordered target:self action:@selector(closePicker:)];
-    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPicker:)];
+    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") style:UIBarButtonItemStyleBordered target:self action:@selector(closePickerState:)];
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPickerState:)];
     [keyboardDoneButtonView setItems:@[done, cancel]];
     self.inputState.inputAccessoryView = keyboardDoneButtonView;
+
+    pickerViewAddress = [[UIPickerView alloc] init];
+    pickerViewAddress.delegate = self;
+    pickerViewAddress.dataSource = self;
+    self.inputExistingRecipient.inputView = pickerViewAddress;
+    UIToolbar* keyboardDoneButtonView2 = [[UIToolbar alloc] init];
+    keyboardDoneButtonView2.barStyle = UIBarStyleBlack;
+    keyboardDoneButtonView2.translucent = YES;
+    keyboardDoneButtonView2.tintColor = [UIColor whiteColor];
+    [keyboardDoneButtonView2 sizeToFit];
+    UIBarButtonItem *done2 = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") style:UIBarButtonItemStyleBordered target:self action:@selector(closePickerAddress:)];
+    UIBarButtonItem *cancel2 = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPickerAddress:)];
+    [keyboardDoneButtonView2 setItems:@[done2, cancel2]];
+    self.inputExistingRecipient.inputAccessoryView = keyboardDoneButtonView2;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -56,6 +72,11 @@ static NSArray *states;
         self.inputState.text = self.address.state;
         self.inputZip.text = self.address.zip;
     }
+    else
+        self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
+
+    // load existing addresses
+    existingAddresses = [[[Address where:@{}] descending:@"name"] all];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +86,10 @@ static NSArray *states;
 }
 
 #pragma mark TextFieldDelegate
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.inputExistingRecipient) {
+    }
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -76,30 +101,75 @@ static NSArray *states;
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [states count];
+    if (pickerView == pickerViewState)
+        return [states count];
+    else if (pickerView == pickerViewAddress)
+        return [existingAddresses count];
+    return 0;
 }
 
 #pragma mark PickerViewDelegate
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return states[row];
+    if (pickerView == pickerViewState)
+        return states[row];
+    else if (pickerView == pickerViewAddress)
+        return [existingAddresses[row] name];
+    return nil;
 }
-
+    
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [self.inputState setText:[self pickerView:pickerView titleForRow:row forComponent:component]];
+    if (pickerView == pickerViewState)
+        [self.inputState setText:[self pickerView:pickerView titleForRow:row forComponent:component]];
+    else if (pickerView == pickerViewAddress) {
+        self.selectedAddress = existingAddresses[row];
+        [self.inputExistingRecipient setText:[self.selectedAddress name]];
+    }
 }
 
--(void)closePicker:(id)sender {
-    [self.address setState:self.inputState.text];
+-(void)closePickerState:(id)sender {
     [self.inputState resignFirstResponder];
 }
 
--(void)cancelPicker:(id)sender {
+-(void)cancelPickerState:(id)sender {
     if ([self.address state])
         [self.inputState setText:[self.address state]];
     [self.inputState resignFirstResponder];
 }
 
+-(void)closePickerAddress:(id)sender {
+    [self.inputExistingRecipient resignFirstResponder];
+}
+
+-(void)cancelPickerAddress:(id)sender {
+    self.inputExistingRecipient.text = nil;
+    self.selectedAddress = nil;
+    [self.inputExistingRecipient resignFirstResponder];
+}
+
+#pragma mark Save or Load address
 -(void)didClickSave:(id)sender {
+    if (![self.inputName.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a name" message:nil];
+        return;
+    }
+    if (![self.inputStreet1.text length] && ![self.inputStreet2.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a street" message:nil];
+        return;
+    }
+    if (![self.inputCity.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a city" message:nil];
+        return;
+    }
+    if (![self.inputState.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a state" message:nil];
+        return;
+    }
+    if (![self.inputZip.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a zip code" message:nil];
+        return;
+    }
+
+    self.address.name = self.inputName.text;
     self.address.street = self.inputStreet1.text;
     self.address.street2 = self.inputStreet2.text;
     self.address.city = self.inputCity.text;
@@ -107,5 +177,13 @@ static NSArray *states;
     self.address.zip = self.inputZip.text;
 
     [self.delegate didSaveAddress:self.address];
+}
+
+-(void)didClickLoad:(id)sender {
+    if (!self.selectedAddress) {
+        [UIAlertView alertViewWithTitle:@"Please select an existing recipient" message:nil];
+        return;
+    }
+    [self.delegate didSaveAddress:self.selectedAddress];
 }
 @end

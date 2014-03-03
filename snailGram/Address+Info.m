@@ -12,28 +12,28 @@
 
 -(NSString *)toString {
     NSString *string = @"";
-    if (self.street && self.street2)
-        string = [NSString stringWithFormat:@"%@\n%@", self.street, self.street2];
-    else if (self.street)
-        string = self.street;
+    if (self.name)
+        string = [NSString stringWithFormat:@"%@\n", self.name];
+    if (self.street)
+        string = [NSString stringWithFormat:@"%@%@\n", string, self.street];
     else if (self.street2)
-        string = self.street2;
+        string = [NSString stringWithFormat:@"%@%@\n", string, self.street2];
 
     NSString *citystate = @"";
-    if (self.city && self.state) {
+    if ([self.city length] && [self.state length]) {
         citystate = [NSString stringWithFormat:@"%@, %@", self.city, self.state];
     }
-    else if (self.city)
+    else if ([self.city length])
         citystate = self.city;
-    else if (self.state)
+    else if ([self.state length])
         citystate = self.state;
 
-    if ([string length] && [citystate length]) {
-        string = [NSString stringWithFormat:@"%@\n%@", string, citystate];
+    if ([citystate length]) {
+        string = [NSString stringWithFormat:@"%@%@\n", string, citystate];
     }
 
     if (self.zip) {
-        string = [NSString stringWithFormat:@"%@\n%@", string, self.zip];
+        string = [NSString stringWithFormat:@"%@%@", string, self.zip];
     }
 
     return string;

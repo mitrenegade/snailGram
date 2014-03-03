@@ -10,6 +10,9 @@
 #import "AddressEditorViewController.h"
 
 @interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate>
+{
+    UITextView *textViewEditing;
+}
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewFrom;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;

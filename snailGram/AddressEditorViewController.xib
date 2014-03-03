@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressEditorViewController">
             <connections>
                 <outlet property="inputCity" destination="6sg-zf-4kj" id="uj7-Qc-AQ3"/>
+                <outlet property="inputExistingRecipient" destination="UF3-pU-DZx" id="mtC-oz-Xmu"/>
+                <outlet property="inputName" destination="kSS-we-OOw" id="qIP-yE-c4G"/>
                 <outlet property="inputState" destination="TqV-NO-42q" id="9n1-UF-TnE"/>
                 <outlet property="inputStreet1" destination="PHU-Wg-Jlz" id="O50-hu-Kkl"/>
                 <outlet property="inputStreet2" destination="N13-QL-OEs" id="ovI-vH-SIS"/>
@@ -65,13 +67,48 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAu-9B-Chq">
-                    <rect key="frame" x="325" y="202" width="93" height="30"/>
+                    <rect key="frame" x="20" y="240" width="240" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Save">
+                    <state key="normal" title="Save new recipient">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="didClickSave:" destination="-1" eventType="touchUpInside" id="9gY-tZ-gQz"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select existing addressee" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UF3-pU-DZx">
+                    <rect key="frame" x="308" y="35" width="240" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="svf-Fj-zk6"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name for new addressee" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSS-we-OOw">
+                    <rect key="frame" x="20" y="35" width="240" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="hT9-b8-zZi"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-gH-bVZ">
+                    <rect key="frame" x="268" y="38" width="32" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkP-Qw-hkk">
+                    <rect key="frame" x="308" y="73" width="240" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Use existing recipient">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didClickLoad:" destination="-1" eventType="touchUpInside" id="mHY-Qc-YHv"/>
                     </connections>
                 </button>
             </subviews>

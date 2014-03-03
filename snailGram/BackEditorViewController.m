@@ -8,6 +8,7 @@
 
 #import "BackEditorViewController.h"
 #import "Address+Info.h"
+#import "Address+Parse.h"
 
 #define PLACEHOLDER_TEXT_FROM @"From:"
 #define PLACEHOLDER_TEXT_TO @"To:"
@@ -116,26 +117,35 @@
     if (textView == self.textViewFrom) {
         if (!_currentPostCard.from)
             _currentPostCard.from = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-
-        [addressController setAddress:_currentPostCard.from];
+        textViewEditing = self.textViewFrom;
     }
     else if (textView == self.textViewTo) {
         if (!_currentPostCard.to)
             _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-
-        [addressController setAddress:_currentPostCard.to];
+        textViewEditing = self.textViewTo;
     }
     [self.navigationController presentViewController:addressController animated:YES completion:nil];
 }
 
 -(void)didSaveAddress:(Address *)newAddress {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
-    [self.textViewFrom resignFirstResponder];
-    [self.textViewTo resignFirstResponder];
 
-    [self.textViewFrom setText:[_currentPostCard.from toString]];
-    [self.textViewTo setText:[_currentPostCard.to toString]];
+    [newAddress saveOrUpdateToParse];
+    NSError *error;
+    [_appDelegate.managedObjectContext save:&error];
+    
+    if (textViewEditing == self.textViewFrom) {
+        [self.textViewFrom resignFirstResponder];
+
+        _currentPostCard.from = newAddress;
+        [self.textViewFrom setText:[_currentPostCard.from toString]];
+    }
+    else if (textViewEditing == self.textViewTo) {
+        [self.textViewTo resignFirstResponder];
+
+        _currentPostCard.to = newAddress;
+        [self.textViewTo setText:[_currentPostCard.to toString]];
+    }
 }
 #endif
 
