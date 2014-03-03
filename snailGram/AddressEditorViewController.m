@@ -7,6 +7,7 @@
 //
 
 #import "AddressEditorViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface AddressEditorViewController ()
 
@@ -147,7 +148,26 @@ static NSArray *states;
 
 #pragma mark Save or Load address
 -(void)didClickSave:(id)sender {
-    // todo: need validation that data exists
+    if (![self.inputName.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a name" message:nil];
+        return;
+    }
+    if (![self.inputStreet1.text length] && ![self.inputStreet2.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a street" message:nil];
+        return;
+    }
+    if (![self.inputCity.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a city" message:nil];
+        return;
+    }
+    if (![self.inputState.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a state" message:nil];
+        return;
+    }
+    if (![self.inputZip.text length]) {
+        [UIAlertView alertViewWithTitle:@"Please enter a zip code" message:nil];
+        return;
+    }
 
     self.address.name = self.inputName.text;
     self.address.street = self.inputStreet1.text;
@@ -160,8 +180,10 @@ static NSArray *states;
 }
 
 -(void)didClickLoad:(id)sender {
-    // todo: need validation that an address was selected
-
+    if (!self.selectedAddress) {
+        [UIAlertView alertViewWithTitle:@"Please select an existing recipient" message:nil];
+        return;
+    }
     [self.delegate didSaveAddress:self.selectedAddress];
 }
 @end

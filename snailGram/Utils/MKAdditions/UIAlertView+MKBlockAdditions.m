@@ -62,6 +62,7 @@ static NSMutableArray * alertQueue;
     
     if (!alertQueue) {
         alertQueue = [NSMutableArray array];
+        [alertQueue retain];
     }
     if ([alertQueue count] == 0) {
         [alert show];
@@ -90,6 +91,7 @@ static NSMutableArray * alertQueue;
                                           otherButtonTitles: nil];
     if (!alertQueue) {
         alertQueue = [NSMutableArray array];
+        [alertQueue retain];
     }
     if ([alertQueue count] == 0) {
         [alert show];

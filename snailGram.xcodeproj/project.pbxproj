@@ -34,9 +34,9 @@
 		9E25160518C2AC0000F542F5 /* NSManagedObject+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515F218C2AC0000F542F5 /* NSManagedObject+Query.m */; };
 		9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515F418C2AC0000F542F5 /* NSObject+Notify.m */; };
 		9E25160718C2AC0000F542F5 /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515F618C2AC0000F542F5 /* Query.m */; };
-		9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515F818C2AC0000F542F5 /* UIImage+Alpha.m */; };
-		9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FA18C2AC0000F542F5 /* UIImage+Resize.m */; };
-		9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FC18C2AC0000F542F5 /* UIImage+RoundedCorner.m */; };
+		9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515F818C2AC0000F542F5 /* UIImage+Alpha.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FA18C2AC0000F542F5 /* UIImage+Resize.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FC18C2AC0000F542F5 /* UIImage+RoundedCorner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E25160B18C2AC0000F542F5 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515FE18C2AC0000F542F5 /* Util.m */; };
 		9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25160F18C2B77600F542F5 /* CoreData.framework */; };
 		9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161C18C3033D00F542F5 /* AddressEditorViewController.m */; };
