@@ -59,9 +59,9 @@
 		9E9B646E18C4F82C0048142D /* AsyncImageUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646618C4F82C0048142D /* AsyncImageUploader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E9B646F18C4F82C0048142D /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646818C4F82C0048142D /* AsyncImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E9B647018C4F82C0048142D /* AWSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646A18C4F82C0048142D /* AWSHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E9B647118C4F82C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B646B18C4F82C0048142D /* AWSRuntime.framework */; };
-		9E9B647218C4F82C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B646C18C4F82C0048142D /* AWSS3.framework */; };
 		9E9B647518C4F8A50048142D /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B647418C4F8A50048142D /* LoadingAnimationView.m */; };
+		9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647918C4FC9C0048142D /* AWSRuntime.framework */; };
+		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,10 +159,10 @@
 		9E9B646818C4F82C0048142D /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = AWS/AsyncImageView.m; sourceTree = "<group>"; };
 		9E9B646918C4F82C0048142D /* AWSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWSHelper.h; path = AWS/AWSHelper.h; sourceTree = "<group>"; };
 		9E9B646A18C4F82C0048142D /* AWSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWSHelper.m; path = AWS/AWSHelper.m; sourceTree = "<group>"; };
-		9E9B646B18C4F82C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
-		9E9B646C18C4F82C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
 		9E9B647318C4F8A50048142D /* LoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingAnimationView.h; path = AWS/LoadingAnimationView.h; sourceTree = "<group>"; };
 		9E9B647418C4F8A50048142D /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingAnimationView.m; path = AWS/LoadingAnimationView.m; sourceTree = "<group>"; };
+		9E9B647918C4FC9C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
+		9E9B647A18C4FC9C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +173,7 @@
 				9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */,
 				9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */,
 				9E9B640418C403E90048142D /* Security.framework in Frameworks */,
-				9E9B647118C4F82C0048142D /* AWSRuntime.framework in Frameworks */,
+				9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */,
 				9E9B640218C403E40048142D /* QuartzCore.framework in Frameworks */,
 				9E9B640018C403DF0048142D /* MobileCoreServices.framework in Frameworks */,
 				9E9B63FE18C403D80048142D /* libz.dylib in Frameworks */,
@@ -182,7 +182,7 @@
 				9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */,
 				9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */,
 				9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */,
-				9E9B647218C4F82C0048142D /* AWSS3.framework in Frameworks */,
+				9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */,
 				9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */,
 				9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */,
 				9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */,
@@ -394,6 +394,8 @@
 		9E9B641E18C4E5760048142D /* AWS */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B647918C4FC9C0048142D /* AWSRuntime.framework */,
+				9E9B647A18C4FC9C0048142D /* AWSS3.framework */,
 				9E9B646518C4F82C0048142D /* AsyncImageUploader.h */,
 				9E9B646618C4F82C0048142D /* AsyncImageUploader.m */,
 				9E9B646718C4F82C0048142D /* AsyncImageView.h */,
@@ -402,8 +404,6 @@
 				9E9B646A18C4F82C0048142D /* AWSHelper.m */,
 				9E9B647318C4F8A50048142D /* LoadingAnimationView.h */,
 				9E9B647418C4F8A50048142D /* LoadingAnimationView.m */,
-				9E9B646B18C4F82C0048142D /* AWSRuntime.framework */,
-				9E9B646C18C4F82C0048142D /* AWSS3.framework */,
 			);
 			name = AWS;
 			sourceTree = "<group>";
