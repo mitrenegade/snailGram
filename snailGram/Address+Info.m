@@ -20,12 +20,12 @@
         string = [NSString stringWithFormat:@"%@%@\n", string, self.street2];
 
     NSString *citystate = @"";
-    if (self.city && self.state) {
+    if ([self.city length] && [self.state length]) {
         citystate = [NSString stringWithFormat:@"%@, %@", self.city, self.state];
     }
-    else if (self.city)
+    else if ([self.city length])
         citystate = self.city;
-    else if (self.state)
+    else if ([self.state length])
         citystate = self.state;
 
     if ([citystate length]) {

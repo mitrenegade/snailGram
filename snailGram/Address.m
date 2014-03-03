@@ -18,6 +18,5 @@
 @dynamic street2;
 @dynamic zip;
 @dynamic name;
-@dynamic inhabitants;
 
 @end

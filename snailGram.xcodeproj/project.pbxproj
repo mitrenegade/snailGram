@@ -53,8 +53,8 @@
 		9E9B640418C403E90048142D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640318C403E90048142D /* Security.framework */; };
 		9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640518C403EF0048142D /* StoreKit.framework */; };
 		9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640718C403F50048142D /* SystemConfiguration.framework */; };
-		9E9B641418C410FF0048142D /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B641318C410FF0048142D /* Address.m */; };
 		9E9B641718C411100048142D /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B641618C411100048142D /* PostCard.m */; };
+		9E9B641D18C417CB0048142D /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B641C18C417CB0048142D /* Address.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,10 +140,10 @@
 		9E9B640318C403E90048142D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9E9B640518C403EF0048142D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9E9B640718C403F50048142D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9E9B641218C410FF0048142D /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		9E9B641318C410FF0048142D /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		9E9B641518C411100048142D /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
 		9E9B641618C411100048142D /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		9E9B641B18C417CB0048142D /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		9E9B641C18C417CB0048142D /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,10 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
+				9E9B641B18C417CB0048142D /* Address.h */,
+				9E9B641C18C417CB0048142D /* Address.m */,
 				9E9B641518C411100048142D /* PostCard.h */,
 				9E9B641618C411100048142D /* PostCard.m */,
-				9E9B641218C410FF0048142D /* Address.h */,
-				9E9B641318C410FF0048142D /* Address.m */,
 				9E25162318C30A3100F542F5 /* Address+Info.h */,
 				9E25162418C30A3100F542F5 /* Address+Info.m */,
 				9E9B63E418C3C3680048142D /* Address+Parse.h */,
@@ -484,7 +484,7 @@
 				9E25162518C30A3100F542F5 /* Address+Info.m in Sources */,
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
-				9E9B641418C410FF0048142D /* Address.m in Sources */,
+				9E9B641D18C417CB0048142D /* Address.m in Sources */,
 				9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */,
 				9E25160218C2AC0000F542F5 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,

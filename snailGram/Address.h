@@ -19,14 +19,5 @@
 @property (nonatomic, retain) NSString * street2;
 @property (nonatomic, retain) NSString * zip;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *inhabitants;
-@end
-
-@interface Address (CoreDataGeneratedAccessors)
-
-- (void)addInhabitantsObject:(NSManagedObject *)value;
-- (void)removeInhabitantsObject:(NSManagedObject *)value;
-- (void)addInhabitants:(NSSet *)values;
-- (void)removeInhabitants:(NSSet *)values;
 
 @end

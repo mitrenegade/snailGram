@@ -130,17 +130,22 @@
 -(void)didSaveAddress:(Address *)newAddress {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 
-    [self.textViewFrom resignFirstResponder];
-    [self.textViewTo resignFirstResponder];
-
-    [self.textViewFrom setText:[_currentPostCard.from toString]];
-    [self.textViewTo setText:[_currentPostCard.to toString]];
-
     [newAddress saveOrUpdateToParse];
-    if (textViewEditing == self.textViewFrom)
+    NSError *error;
+    [_appDelegate.managedObjectContext save:&error];
+    
+    if (textViewEditing == self.textViewFrom) {
+        [self.textViewFrom resignFirstResponder];
+
         _currentPostCard.from = newAddress;
-    else if (textViewEditing == self.textViewTo)
+        [self.textViewFrom setText:[_currentPostCard.from toString]];
+    }
+    else if (textViewEditing == self.textViewTo) {
+        [self.textViewTo resignFirstResponder];
+
         _currentPostCard.to = newAddress;
+        [self.textViewTo setText:[_currentPostCard.to toString]];
+    }
 }
 #endif
 

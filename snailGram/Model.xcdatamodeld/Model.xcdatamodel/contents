@@ -8,7 +8,6 @@
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inhabitants" optional="YES" toMany="YES" deletionRule="Nullify" syncable="YES"/>
     </entity>
     <entity name="PostCard" representedClassName="PostCard" syncable="YES">
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>

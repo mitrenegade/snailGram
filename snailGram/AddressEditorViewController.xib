@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressEditorViewController">
             <connections>
                 <outlet property="inputCity" destination="6sg-zf-4kj" id="uj7-Qc-AQ3"/>
+                <outlet property="inputExistingRecipient" destination="UF3-pU-DZx" id="mtC-oz-Xmu"/>
                 <outlet property="inputName" destination="kSS-we-OOw" id="qIP-yE-c4G"/>
                 <outlet property="inputState" destination="TqV-NO-42q" id="9n1-UF-TnE"/>
                 <outlet property="inputStreet1" destination="PHU-Wg-Jlz" id="O50-hu-Kkl"/>
@@ -80,6 +81,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="svf-Fj-zk6"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name for new addressee" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSS-we-OOw">
                     <rect key="frame" x="20" y="35" width="240" height="30"/>
@@ -97,6 +101,16 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkP-Qw-hkk">
+                    <rect key="frame" x="308" y="73" width="240" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Use existing recipient">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didClickLoad:" destination="-1" eventType="touchUpInside" id="mHY-Qc-YHv"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
