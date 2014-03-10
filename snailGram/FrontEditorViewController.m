@@ -32,6 +32,8 @@
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     [self.imageView setImage:self.image];
+
+//    [self.imageView.layer setBorderWidth:2];
 }
 
 - (void)didReceiveMemoryWarning

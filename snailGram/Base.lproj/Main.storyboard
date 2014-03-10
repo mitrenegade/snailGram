@@ -8,7 +8,7 @@
         <scene sceneID="ufU-qb-PtW">
             <objects>
                 <navigationController definesPresentationContext="YES" id="pvG-Hj-KLF" sceneMemberID="viewController">
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dyJ-ap-mhn">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="32" y="29"/>
         </scene>
-        <!--Shell View Controller-->
+        <!--Shell View Controller - Select a photo-->
         <scene sceneID="fEH-R8-nNT">
             <objects>
                 <viewController id="vCl-81-0FK" customClass="ShellViewController" sceneMemberID="viewController">
@@ -29,13 +29,13 @@
                         <viewControllerLayoutGuide type="bottom" id="caV-gq-TEf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gAU-AL-YpB">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-8H-2BV">
-                                <rect key="frame" x="159" y="120" width="80" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-8H-2BV">
+                                <rect key="frame" x="192" y="338" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera">
+                                <state key="normal" image="camera.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -43,10 +43,10 @@
                                     <action selector="didClickButton:" destination="vCl-81-0FK" eventType="touchUpInside" id="HDo-Lm-gbT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGq-1J-1U2">
-                                <rect key="frame" x="325" y="120" width="80" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGq-1J-1U2">
+                                <rect key="frame" x="250" y="338" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Library">
+                                <state key="normal" image="polaroid.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -54,23 +54,28 @@
                                     <action selector="didClickButton:" destination="vCl-81-0FK" eventType="touchUpInside" id="KDm-TY-REP"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bora-bora.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kN0-CK-ilx">
+                                <rect key="frame" x="0.0" y="100" width="320" height="230"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9B6-Ie-GP7"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationItem key="navigationItem" title="Select a photo" id="9B6-Ie-GP7"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="buttonCamera" destination="CFy-8H-2BV" id="4cD-da-9kE"/>
                         <outlet property="buttonLibrary" destination="oGq-1J-1U2" id="dei-eh-Q7C"/>
+                        <outlet property="imageView" destination="kN0-CK-ilx" id="oVg-4q-7gI"/>
                         <segue destination="2w3-QL-dDk" kind="push" identifier="PushFrontEditor" id="z6m-2b-inb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ru4-1b-b8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="29"/>
+            <point key="canvasLocation" x="445" y="29"/>
         </scene>
-        <!--Front Editor View Controller-->
+        <!--Front Editor View Controller - Enter your message-->
         <scene sceneID="17V-cC-ecC">
             <objects>
                 <viewController id="2w3-QL-dDk" customClass="FrontEditorViewController" sceneMemberID="viewController">
@@ -79,15 +84,16 @@
                         <viewControllerLayoutGuide type="bottom" id="kcz-SM-Rgw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g0I-80-1LF">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-3J-Uau">
-                                <rect key="frame" x="248" y="88" width="300" height="200"/>
+                                <rect key="frame" x="0.0" y="100" width="320" height="230"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Edit your message here" translatesAutoresizingMaskIntoConstraints="NO" id="cKO-Wo-YDj">
-                                <rect key="frame" x="20" y="98" width="199" height="97"/>
+                                <rect key="frame" x="14" y="196" width="127" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -97,17 +103,16 @@
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rdc-yu-RVg">
+                    <navigationItem key="navigationItem" title="Enter your message" id="rdc-yu-RVg">
                         <barButtonItem key="rightBarButtonItem" title="Flip" id="x5u-n9-0Ta">
                             <connections>
                                 <action selector="didClickFlip:" destination="2w3-QL-dDk" id="ViP-LF-jJ1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="mIx-3J-Uau" id="p0f-Ur-bRX"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
@@ -116,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUt-dk-ZKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1411" y="29"/>
+            <point key="canvasLocation" x="875" y="29"/>
         </scene>
         <!--Back Editor View Controller-->
         <scene sceneID="8vI-hQ-SvI">
@@ -127,39 +132,52 @@
                         <viewControllerLayoutGuide type="bottom" id="sPP-iz-mfp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XV1-lL-dIv">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit addresses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXe-Jx-Z2h">
-                                <rect key="frame" x="381" y="81" width="158" height="39"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zeC-x4-71d">
+                                <rect key="frame" x="0.0" y="100" width="320" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="From:" translatesAutoresizingMaskIntoConstraints="NO" id="kl6-PE-48H">
-                                <rect key="frame" x="20" y="81" width="221" height="129"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qBy-bk-JQz" id="uj5-aB-WEa"/>
-                                </connections>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="To:" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-yS-LaD">
-                                <rect key="frame" x="281" y="171" width="221" height="129"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
-                                </connections>
-                            </textView>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="To:" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-yS-LaD">
+                                        <rect key="frame" x="194" y="56" width="115" height="88"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
+                                        </connections>
+                                    </textView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xUQ-v0-xEy">
+                                        <rect key="frame" x="183" y="10" width="3" height="210"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="snailGram100.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eqs-No-fyb">
+                                        <rect key="frame" x="262" y="152" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSQ-LA-t8U">
+                                        <rect key="frame" x="290" y="10" width="22" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter a message" translatesAutoresizingMaskIntoConstraints="NO" id="7Bv-GM-uSX">
+                                        <rect key="frame" x="11" y="10" width="156" height="210"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qBy-bk-JQz" id="51t-P8-HL7"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <color key="backgroundColor" red="0.17254901960784313" green="0.42352941176470588" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="vkn-PQ-caN">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="AbC-C9-EKz">
@@ -168,17 +186,24 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="textViewFrom" destination="kl6-PE-48H" id="pEu-WE-u0o"/>
+                        <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>
                         <outlet property="textViewTo" destination="VWa-yS-LaD" id="wQF-fZ-sqf"/>
+                        <outlet property="viewPostcard" destination="zeC-x4-71d" id="Ib3-cl-EOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHJ-rP-mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2055" y="29"/>
+            <point key="canvasLocation" x="1483" y="-82"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bora-bora.jpg" width="550" height="383"/>
+        <image name="camera.png" width="250" height="250"/>
+        <image name="polaroid.png" width="250" height="250"/>
+        <image name="snailGram100.png" width="98" height="99"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

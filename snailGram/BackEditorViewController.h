@@ -14,8 +14,9 @@
     UITextView *textViewEditing;
 }
 
-@property (weak, nonatomic) IBOutlet UITextView *textViewFrom;
+@property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;
+@property (weak, nonatomic) IBOutlet UIView *viewPostcard;
 
 -(IBAction)didClickSave:(id)sender;
 @end

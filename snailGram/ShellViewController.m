@@ -11,6 +11,7 @@
 #import "UIAlertView+MKBlockAdditions.h"
 #import "PostCard+Parse.h"
 #import "AWSHelper.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ShellViewController ()
 
@@ -31,6 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+//    [self.imageView.layer setBorderWidth:2];
 }
 
 - (void)didReceiveMemoryWarning
