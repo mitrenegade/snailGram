@@ -60,8 +60,6 @@
         textView.text = _currentPostCard.message;
     }
     else if (textView == self.textViewTo) {
-        if (!_currentPostCard.to)
-            _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
         textViewEditing = self.textViewTo;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
         [self.navigationController presentViewController:nav animated:YES completion:^{
