@@ -473,6 +473,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = SnailGram;
 				TargetAttributes = {
+					9E25159218C2768900F542F5 = {
+						DevelopmentTeam = H799H8B8DD;
+					};
 					9E2515B318C2768900F542F5 = {
 						TestTargetID = 9E25159218C2768900F542F5;
 					};
@@ -686,6 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
@@ -705,7 +709,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bobby Ren (H799H8B8DD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bobby Ren (H799H8B8DD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

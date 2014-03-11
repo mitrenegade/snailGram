@@ -9,8 +9,8 @@
 #import "BackEditorViewController.h"
 #import "Address+Info.h"
 #import "Address+Parse.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
-#define PLACEHOLDER_TEXT_FROM @"From:"
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
 @interface BackEditorViewController ()
@@ -33,7 +33,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    NSLog(@"message: %@", _currentPostCard.message);
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
@@ -47,7 +46,9 @@
 }
 
 -(IBAction)didClickSave:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 #pragma mark TextView Delegate
