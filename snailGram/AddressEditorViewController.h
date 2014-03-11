@@ -27,6 +27,7 @@
 @property (nonatomic, weak) Address *selectedAddress;
 
 #pragma mark new recipient inputs
+@property (nonatomic, weak) IBOutlet UIButton *buttonNewRecipient;
 @property (nonatomic, weak) IBOutlet UITextField *inputName;
 @property (nonatomic, weak) IBOutlet UITextField *inputStreet1;
 @property (nonatomic, weak) IBOutlet UITextField *inputStreet2;
@@ -35,6 +36,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *inputZip;
 
 #pragma mark existing recipients
+@property (nonatomic, weak) IBOutlet UIButton *buttonExistingRecipient;
 @property (nonatomic, weak) IBOutlet UITextField *inputExistingRecipient;
 
 -(IBAction)didClickSave:(id)sender;

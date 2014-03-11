@@ -56,7 +56,7 @@
         self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
         self.postCard.message = @"";
         self.postCard.to = nil;
-        self.postCard.from = nil;
+        self.postCard.text = nil;
         self.postCard.image_url = @""; // todo: upload image to AWS then store url
 
         // if postCard doesn't exist on Parse yet, we don't have an image key

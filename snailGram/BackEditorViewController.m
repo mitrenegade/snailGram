@@ -61,7 +61,9 @@
         if (!_currentPostCard.to)
             _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
         textViewEditing = self.textViewTo;
-        [self.navigationController presentViewController:addressController animated:YES completion:nil];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
+        [self.navigationController presentViewController:nav animated:YES completion:^{
+        }];
     }
 
     textView.font = [UIFont systemFontOfSize:15];
@@ -71,15 +73,14 @@
 -(void)textViewDidEndEditing:(UITextView *)textView {
     NSString *message;
     NSString *placeholder;
-    if (textView == self.textViewTo) {
+    if (textView == self.textViewMessage) {
         message = _currentPostCard.message;
-        placeholder = PLACEHOLDER_TEXT_TO;
-    }
 
-    if (message.length == 0) {
-        textView.text = placeholder;
-        textView.font = [UIFont fontWithName:@"Noteworthy-light" size:15];
-        textView.textColor = [UIColor blackColor];
+        if (message.length == 0) {
+            textView.text = placeholder;
+            textView.font = [UIFont fontWithName:@"Noteworthy-light" size:15];
+            textView.textColor = [UIColor blackColor];
+        }
     }
 }
 
