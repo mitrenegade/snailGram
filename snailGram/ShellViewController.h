@@ -13,6 +13,7 @@
 @interface ShellViewController : UIViewController
 {
     UIImage *selectedImage;
+    UIAlertView *alertView;
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonCamera;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLibrary;

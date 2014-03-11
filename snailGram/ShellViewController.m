@@ -52,6 +52,8 @@
         
     }
 
+    alertView = [UIAlertView alertViewWithTitle:@"Selecting and uploading photo..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
+
     if (!self.postCard) {
         self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
         self.postCard.message = @"";
@@ -70,7 +72,10 @@
         // if postCard already exists, start image upload
         [self startImageUpload];
     }
+}
 
+-(void)imageSaved {
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
     [self performSegueWithIdentifier:@"PushFrontEditor" sender:nil];
 }
 
@@ -78,7 +83,9 @@
     [AWSHelper uploadImage:selectedImage withName:[self keyForPhoto] toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         NSLog(@"Final url: %@", url);
         self.postCard.image_url = [AWSHelper urlForPhotoWithKey:[self keyForPhoto]];
-        [self.postCard saveOrUpdateToParseWithCompletion:nil];
+        [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            [self imageSaved];
+        }];
     }];
 }
 
