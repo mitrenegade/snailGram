@@ -30,6 +30,8 @@ static NSArray *states;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = left;
 
     pickerViewState = [[UIPickerView alloc] init];
     pickerViewState.delegate = self;
@@ -77,6 +79,8 @@ static NSArray *states;
 
     // load existing addresses
     existingAddresses = [[[Address where:@{}] descending:@"name"] all];
+
+    [self.buttonExistingRecipient setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,8 +90,19 @@ static NSArray *states;
 }
 
 #pragma mark TextFieldDelegate
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.inputExistingRecipient) {
+        if ([existingAddresses count] == 0) {
+            [UIAlertView alertViewWithTitle:@"No saved addresses" message:@"There are no saved recipients. Please create a new address."];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.inputExistingRecipient) {
+        [self pickerView:pickerViewAddress didSelectRow:0 inComponent:0];
     }
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -138,6 +153,12 @@ static NSArray *states;
 
 -(void)closePickerAddress:(id)sender {
     [self.inputExistingRecipient resignFirstResponder];
+
+    if ([[self.inputExistingRecipient text] length] > 0) {
+        [self.buttonExistingRecipient setEnabled:YES];
+    }
+    else
+        [self.buttonExistingRecipient setEnabled:NO];
 }
 
 -(void)cancelPickerAddress:(id)sender {
@@ -185,5 +206,9 @@ static NSArray *states;
         return;
     }
     [self.delegate didSaveAddress:self.selectedAddress];
+}
+
+-(void)cancel {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

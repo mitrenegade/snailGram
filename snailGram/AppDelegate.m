@@ -69,6 +69,9 @@
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
         [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
+    else {
+        NSLog(@"Error no persistent store");
+    }
 
     return _managedObjectContext;
 }

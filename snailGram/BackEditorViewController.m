@@ -33,8 +33,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    if (_currentPostCard.from)
-        self.textViewFrom.text = _currentPostCard.from.toString;
+    if (_currentPostCard.message)
+        self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
         self.textViewTo.text = _currentPostCard.to.toString;
 }
@@ -49,13 +49,23 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-#if 0
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-    if (textView == self.textViewFrom)
-        textView.text = _currentPostCard.from;
-    else if (textView == self.textViewTo)
-        textView.text = _currentPostCard.to;
+    AddressEditorViewController *addressController = [[AddressEditorViewController alloc] init];
+    addressController.delegate = self;
+    if (textView == self.textViewMessage) {
+        textViewEditing = self.textViewMessage;
+        textView.text = _currentPostCard.message;
+    }
+    else if (textView == self.textViewTo) {
+        if (!_currentPostCard.to)
+            _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
+        textViewEditing = self.textViewTo;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
+        [self.navigationController presentViewController:nav animated:YES completion:^{
+        }];
+    }
+
     textView.font = [UIFont systemFontOfSize:15];
     textView.textColor = [UIColor darkGrayColor];
 }
@@ -63,23 +73,21 @@
 -(void)textViewDidEndEditing:(UITextView *)textView {
     NSString *message;
     NSString *placeholder;
-    if (textView == self.textViewFrom) {
-        message = _currentPostCard.from;
-        placeholder = PLACEHOLDER_TEXT_FROM;
-    }
-    else if (textView == self.textViewTo) {
-        message = _currentPostCard.to;
-        placeholder = PLACEHOLDER_TEXT_TO;
-    }
+    if (textView == self.textViewMessage) {
+        message = _currentPostCard.message;
 
-    if (message.length == 0) {
-        textView.text = placeholder;
-        textView.font = [UIFont fontWithName:@"Noteworthy-light" size:15];
-        textView.textColor = [UIColor blackColor];
+        if (message.length == 0) {
+            textView.text = placeholder;
+            textView.font = [UIFont fontWithName:@"Noteworthy-light" size:15];
+            textView.textColor = [UIColor blackColor];
+        }
     }
 }
 
 - (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+
+    if (textView != self.textViewMessage)
+        return YES;
 
     if ([text isEqualToString:@"\n"]) {
         // Be sure to test for equality using the "isEqualToString" message
@@ -89,42 +97,15 @@
         return NO;
     }
     NSString *oldComments;
-    if (textView == self.textViewFrom) {
-        oldComments = _currentPostCard.from;
-        _currentPostCard.from = [textView.text stringByReplacingCharactersInRange:range withString:text];
-        if ([_currentPostCard.from length] > ADDRESS_LIMIT) {
-            _currentPostCard.from = oldComments;
-            textView.text = oldComments;
-            return NO;
-        }
-    }
-    else if (textView == self.textViewTo) {
-        oldComments = _currentPostCard.to;
-        _currentPostCard.to = [textView.text stringByReplacingCharactersInRange:range withString:text];
-        if ([_currentPostCard.to length] > ADDRESS_LIMIT) {
-            _currentPostCard.to = oldComments;
-            textView.text = oldComments;
-            return NO;
-        }
+    oldComments = _currentPostCard.message;
+    _currentPostCard.message = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    if ([_currentPostCard.message length] > MESSAGE_LENGTH_LIMIT) {
+        _currentPostCard.message = oldComments;
+        textView.text = oldComments;
+        return NO;
     }
 
     return YES;
-}
-#else
--(void)textViewDidBeginEditing:(UITextView *)textView {
-    AddressEditorViewController *addressController = [[AddressEditorViewController alloc] init];
-    addressController.delegate = self;
-    if (textView == self.textViewFrom) {
-        if (!_currentPostCard.from)
-            _currentPostCard.from = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-        textViewEditing = self.textViewFrom;
-    }
-    else if (textView == self.textViewTo) {
-        if (!_currentPostCard.to)
-            _currentPostCard.to = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-        textViewEditing = self.textViewTo;
-    }
-    [self.navigationController presentViewController:addressController animated:YES completion:nil];
 }
 
 -(void)didSaveAddress:(Address *)newAddress {
@@ -134,19 +115,12 @@
     NSError *error;
     [_appDelegate.managedObjectContext save:&error];
     
-    if (textViewEditing == self.textViewFrom) {
-        [self.textViewFrom resignFirstResponder];
-
-        _currentPostCard.from = newAddress;
-        [self.textViewFrom setText:[_currentPostCard.from toString]];
-    }
-    else if (textViewEditing == self.textViewTo) {
+    if (textViewEditing == self.textViewTo) {
         [self.textViewTo resignFirstResponder];
 
         _currentPostCard.to = newAddress;
         [self.textViewTo setText:[_currentPostCard.to toString]];
     }
 }
-#endif
 
 @end

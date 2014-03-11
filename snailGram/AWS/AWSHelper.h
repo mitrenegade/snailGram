@@ -19,8 +19,8 @@
 #define USE_SSL                      NO
 
 // if not using TVM, use this. should not be in release version
-#define AWS_ACCESS_KEY @"AKIAITYWBOUSFNOLYMKQ"
-#define AWS_SECRET_KEY @"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"
+#define AWS_ACCESS_KEY @"AKIAJL6ZNU2J54KM3R3Q"
+#define AWS_SECRET_KEY @"qMcGc4484FYnJFovYNKkQbzalFwvQMpYFokpr2WL"
 
 #define CREDENTIALS_ALERT_MESSAGE    @"Please update the Constants.h file with your credentials or Token Vending Machine URL."
 
