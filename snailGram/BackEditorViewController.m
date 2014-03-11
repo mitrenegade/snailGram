@@ -33,7 +33,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    if (_currentPostCard.message)
+    NSLog(@"message: %@", _currentPostCard.message);
+    if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
         self.textViewTo.text = _currentPostCard.to.toString;
