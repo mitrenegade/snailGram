@@ -33,7 +33,7 @@
         self.textViewMessage.text = _currentPostCard.text;
     [self.imageView setImage:self.image];
 
-//    [self.imageView.layer setBorderWidth:2];
+    [self.canvas.layer setBorderWidth:2];
 
     // gestures
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];

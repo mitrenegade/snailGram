@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-//    [self.imageView.layer setBorderWidth:2];
+    [self.canvas.layer setBorderWidth:2];
 }
 
 - (void)didReceiveMemoryWarning
