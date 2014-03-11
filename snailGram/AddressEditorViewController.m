@@ -74,11 +74,9 @@ static NSArray *states;
         self.inputState.text = self.address.state;
         self.inputZip.text = self.address.zip;
     }
-    else
-        self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
 
     // load existing addresses
-    existingAddresses = [[[Address where:@{}] descending:@"name"] all];
+    existingAddresses = [[[[Address where:@{}] not:@{@"name":@""}] descending:@"name"] all];
 
     [self.buttonExistingRecipient setEnabled:NO];
 }
@@ -190,6 +188,8 @@ static NSArray *states;
         return;
     }
 
+    if (!self.address)
+        self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
     self.address.name = self.inputName.text;
     self.address.street = self.inputStreet1.text;
     self.address.street2 = self.inputStreet2.text;
