@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PostCard.h"
 #import "AWSHelper.h"
+#import "GPCameraDelegate.h"
 
-@interface ShellViewController : UIViewController
+@class GPCamera;
+@interface ShellViewController : UIViewController <GPCameraDelegate>
 {
     UIImage *selectedImage;
     UIAlertView *alertView;
+    GPCamera *camera;
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonCamera;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLibrary;

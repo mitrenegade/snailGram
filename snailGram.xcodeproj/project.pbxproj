@@ -13,6 +13,9 @@
 		9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1518CE0D07003E3021 /* camera@2x.png */; };
 		9E103E1918CE136A003E3021 /* snailGram100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1818CE136A003E3021 /* snailGram100.png */; };
 		9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1A18CE184B003E3021 /* bora-bora.jpg */; };
+		9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E22DFF018CFE17100F8B4A8 /* GPCamera.m */; };
+		9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */; };
+		9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */; };
 		9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25159618C2768900F542F5 /* Foundation.framework */; };
 		9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25159818C2768900F542F5 /* CoreGraphics.framework */; };
 		9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E25159A18C2768900F542F5 /* UIKit.framework */; };
@@ -27,7 +30,6 @@
 		9E2515C018C2768900F542F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515BE18C2768900F542F5 /* InfoPlist.strings */; };
 		9E2515C218C2768900F542F5 /* snailGramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515C118C2768900F542F5 /* snailGramTests.m */; };
 		9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515CC18C2772E00F542F5 /* ShellViewController.m */; };
-		9E2515D218C2780F00F542F5 /* DSC_0377.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E2515D118C2780F00F542F5 /* DSC_0377.jpg */; };
 		9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */; };
 		9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515D818C2888100F542F5 /* BackEditorViewController.m */; };
 		9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */; };
@@ -87,6 +89,11 @@
 		9E103E1518CE0D07003E3021 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		9E103E1818CE136A003E3021 /* snailGram100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snailGram100.png; sourceTree = "<group>"; };
 		9E103E1A18CE184B003E3021 /* bora-bora.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bora-bora.jpg"; sourceTree = "<group>"; };
+		9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCamera.h; sourceTree = "<group>"; };
+		9E22DFF018CFE17100F8B4A8 /* GPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCamera.m; sourceTree = "<group>"; };
+		9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCameraDelegate.h; sourceTree = "<group>"; };
+		9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotateCamera.png; sourceTree = "<group>"; };
+		9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotateCamera@2x.png"; sourceTree = "<group>"; };
 		9E25159318C2768900F542F5 /* snailGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snailGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E25159618C2768900F542F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9E25159818C2768900F542F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,7 +113,6 @@
 		9E2515C118C2768900F542F5 /* snailGramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snailGramTests.m; sourceTree = "<group>"; };
 		9E2515CB18C2772E00F542F5 /* ShellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShellViewController.h; sourceTree = "<group>"; };
 		9E2515CC18C2772E00F542F5 /* ShellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShellViewController.m; sourceTree = "<group>"; };
-		9E2515D118C2780F00F542F5 /* DSC_0377.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DSC_0377.jpg; sourceTree = "<group>"; };
 		9E2515D418C2793C00F542F5 /* FrontEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontEditorViewController.h; sourceTree = "<group>"; };
 		9E2515D518C2793C00F542F5 /* FrontEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontEditorViewController.m; sourceTree = "<group>"; };
 		9E2515D718C2888100F542F5 /* BackEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackEditorViewController.h; sourceTree = "<group>"; };
@@ -214,6 +220,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E22DFDE18CFE0A400F8B4A8 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */,
+				9E22DFF018CFE17100F8B4A8 /* GPCamera.m */,
+				9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		9E25158A18C2768900F542F5 = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +276,7 @@
 				9E9B641E18C4E5760048142D /* AWS */,
 				9E9B63E118C3B9630048142D /* Parse */,
 				9E2515E018C2A87D00F542F5 /* Core Data */,
+				9E22DFDE18CFE0A400F8B4A8 /* Camera */,
 				9E2515A518C2768900F542F5 /* AppDelegate.h */,
 				9E2515A618C2768900F542F5 /* AppDelegate.m */,
 				9E2515A818C2768900F542F5 /* Main.storyboard */,
@@ -308,11 +325,12 @@
 		9E2515D018C2780F00F542F5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */,
+				9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */,
 				9E103E1A18CE184B003E3021 /* bora-bora.jpg */,
 				9E103E1818CE136A003E3021 /* snailGram100.png */,
 				9E103E1418CE0D07003E3021 /* camera.png */,
 				9E103E1518CE0D07003E3021 /* camera@2x.png */,
-				9E2515D118C2780F00F542F5 /* DSC_0377.jpg */,
 				9E103E0E18CBDB4F003E3021 /* polaroid.png */,
 				9E103E0F18CBDB4F003E3021 /* polaroid@2x.png */,
 			);
@@ -506,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E103E1318CBDB4F003E3021 /* polaroid@2x.png in Resources */,
+				9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */,
 				9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */,
 				9E103E1918CE136A003E3021 /* snailGram100.png in Resources */,
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,
@@ -513,9 +532,9 @@
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
 				9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */,
-				9E2515D218C2780F00F542F5 /* DSC_0377.jpg in Resources */,
 				9E103E1618CE0D07003E3021 /* camera.png in Resources */,
 				9E2515AA18C2768900F542F5 /* Main.storyboard in Resources */,
+				9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +558,7 @@
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
 				9E25160118C2AC0000F542F5 /* NSObject+MKBlockAdditions.m in Sources */,
+				9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */,
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
 				9EC75B4918CF778C00040847 /* PostCard.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
