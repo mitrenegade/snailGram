@@ -16,9 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
+@property (weak, nonatomic) IBOutlet UIView *textCanvas;
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) IBOutlet UIButton *buttonText;
 
--(IBAction)didClickFlip:(id)sender;
-
+-(IBAction)didClickNext:(id)sender;
+-(IBAction)didClickButtonText:(id)sender;
 @end

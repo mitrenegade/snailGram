@@ -44,6 +44,8 @@
 
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.canvas addGestureRecognizer:pan];
+
+    [self.textCanvas setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,8 +54,19 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)didClickFlip:(id)sender {
+-(IBAction)didClickNext:(id)sender {
     [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+}
+
+-(IBAction)didClickButtonText:(id)sender {
+    [self.textCanvas setHidden:!self.textCanvas.hidden];
+    if (self.textCanvas.hidden == NO) {
+        [self.textViewMessage becomeFirstResponder];
+        [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
+    }
+    else {
+        [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark TextView Delegate

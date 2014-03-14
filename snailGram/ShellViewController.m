@@ -97,7 +97,7 @@
 }
 
 -(void)didSelectPhoto:(UIImage *)photo meta:(NSDictionary *)meta {
-    alertView = [UIAlertView alertViewWithTitle:@"Selecting and uploading photo..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
+    alertView = [UIAlertView alertViewWithTitle:@"Uploading photo..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
 
     //selectedImage = [UIImage imageNamed:@"DSC_0377.jpg"];
     selectedImage = photo;

@@ -41,13 +41,20 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click below to select your photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eei-U0-7zn">
+                                        <rect key="frame" x="36" y="165" width="248" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-8H-2BV">
-                                <rect key="frame" x="192" y="338" width="50" height="50"/>
+                                <rect key="frame" x="20" y="338" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="camera.png">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Camera">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -56,9 +63,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGq-1J-1U2">
-                                <rect key="frame" x="250" y="338" width="50" height="50"/>
+                                <rect key="frame" x="20" y="396" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="polaroid.png">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Library">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -66,13 +74,6 @@
                                     <action selector="didClickButton:" destination="vCl-81-0FK" eventType="touchUpInside" id="KDm-TY-REP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your photo goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eei-U0-7zn">
-                                <rect key="frame" x="78" y="165" width="165" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -88,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ru4-1b-b8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445" y="29"/>
+            <point key="canvasLocation" x="413" y="4"/>
         </scene>
         <!--Front Editor View Controller - Enter your message-->
         <scene sceneID="17V-cC-ecC">
@@ -137,20 +138,34 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgp-XL-xun">
+                                <rect key="frame" x="20" y="363" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Add Text">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickButtonText:" destination="2w3-QL-dDk" eventType="touchUpInside" id="Aig-gQ-nep"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Enter your message" id="rdc-yu-RVg">
-                        <barButtonItem key="rightBarButtonItem" title="Flip" id="x5u-n9-0Ta">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="x5u-n9-0Ta">
                             <connections>
-                                <action selector="didClickFlip:" destination="2w3-QL-dDk" id="ViP-LF-jJ1"/>
+                                <action selector="didClickNext:" destination="2w3-QL-dDk" id="cgd-lH-qMa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
                         <outlet property="imageView" destination="mIx-3J-Uau" id="p0f-Ur-bRX"/>
+                        <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
                         <segue destination="qBy-bk-JQz" kind="push" identifier="PushBackEditor" id="ugv-BY-Juv"/>
                     </connections>
@@ -236,8 +251,6 @@
     </scenes>
     <resources>
         <image name="bora-bora.jpg" width="550" height="383"/>
-        <image name="camera.png" width="250" height="250"/>
-        <image name="polaroid.png" width="250" height="250"/>
         <image name="snailGram100.png" width="98" height="99"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
