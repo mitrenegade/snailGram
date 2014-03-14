@@ -19,7 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIView *textCanvas;
 
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) IBOutlet UIButton *buttonText;
+@property (nonatomic, weak) IBOutlet UIButton *buttonText;
+
+// hints
+@property (nonatomic, weak) IBOutlet UILabel *labelHint;
 
 -(IBAction)didClickNext:(id)sender;
 -(IBAction)didClickButtonText:(id)sender;

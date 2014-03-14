@@ -46,6 +46,7 @@
     [self.canvas addGestureRecognizer:pan];
 
     [self.textCanvas setHidden:YES];
+    [self.labelHint setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,26 +62,24 @@
 -(IBAction)didClickButtonText:(id)sender {
     [self.textCanvas setHidden:!self.textCanvas.hidden];
     if (self.textCanvas.hidden == NO) {
-        [self.textViewMessage becomeFirstResponder];
+        [self.textViewMessage performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
+        [self.labelHint setHidden:NO];
     }
     else {
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
+        [self.labelHint setHidden:YES];
     }
 }
 
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     textView.text = _currentPostCard.text;
-    textView.font = [UIFont systemFontOfSize:15];
-    textView.textColor = [UIColor darkGrayColor];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
     if (_currentPostCard.text.length == 0) {
         textView.text = MESSAGE_PLACEHOLDER_TEXT;
-        textView.font = [UIFont fontWithName:@"Noteworthy-light" size:15];
-        textView.textColor = [UIColor blackColor];
     }
 }
 
