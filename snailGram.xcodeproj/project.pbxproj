@@ -50,6 +50,7 @@
 		9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161C18C3033D00F542F5 /* AddressEditorViewController.m */; };
 		9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E25161D18C3033D00F542F5 /* AddressEditorViewController.xib */; };
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
+		9E3D9B0818D2A93B00DA32C0 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D9B0718D2A93B00DA32C0 /* PostCard.m */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
@@ -69,7 +70,6 @@
 		9E9B647518C4F8A50048142D /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B647418C4F8A50048142D /* LoadingAnimationView.m */; };
 		9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647918C4FC9C0048142D /* AWSRuntime.framework */; };
 		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
-		9EC75B4918CF778C00040847 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC75B4818CF778C00040847 /* PostCard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +152,9 @@
 		9E25161D18C3033D00F542F5 /* AddressEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressEditorViewController.xib; sourceTree = "<group>"; };
 		9E25162318C30A3100F542F5 /* Address+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Info.h"; sourceTree = "<group>"; };
 		9E25162418C30A3100F542F5 /* Address+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Info.m"; sourceTree = "<group>"; };
+		9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model_2.xcdatamodel; sourceTree = "<group>"; };
+		9E3D9B0618D2A93B00DA32C0 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E3D9B0718D2A93B00DA32C0 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
@@ -179,8 +182,6 @@
 		9E9B647418C4F8A50048142D /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingAnimationView.m; path = AWS/LoadingAnimationView.m; sourceTree = "<group>"; };
 		9E9B647918C4FC9C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
 		9E9B647A18C4FC9C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
-		9EC75B4718CF778C00040847 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9EC75B4818CF778C00040847 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,9 +352,9 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				9E3D9B0618D2A93B00DA32C0 /* PostCard.h */,
+				9E3D9B0718D2A93B00DA32C0 /* PostCard.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
-				9EC75B4718CF778C00040847 /* PostCard.h */,
-				9EC75B4818CF778C00040847 /* PostCard.m */,
 				9E9B641B18C417CB0048142D /* Address.h */,
 				9E9B641C18C417CB0048142D /* Address.m */,
 				9E9B645318C4E8CA0048142D /* PostCard+Parse.h */,
@@ -560,7 +561,6 @@
 				9E25160118C2AC0000F542F5 /* NSObject+MKBlockAdditions.m in Sources */,
 				9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */,
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
-				9EC75B4918CF778C00040847 /* PostCard.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */,
 				9E9B647018C4F82C0048142D /* AWSHelper.m in Sources */,
@@ -583,6 +583,7 @@
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				9E25160318C2AC0000F542F5 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */,
+				9E3D9B0818D2A93B00DA32C0 /* PostCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,9 +825,10 @@
 		9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */,
 				9E2515DB18C292D500F542F5 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9E2515DB18C292D500F542F5 /* Model.xcdatamodel */;
+			currentVersion = 9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

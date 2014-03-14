@@ -43,6 +43,8 @@
 
     [self.textCanvas setHidden:YES];
     [self.labelHint setHidden:YES];
+
+    _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,8 +139,11 @@
                     int dy = point.y - initialTouch.y;
                     CGRect frame = initialFrame;
                     frame.origin.y += dy;
-                    if (frame.origin.y >= IMAGE_BORDER && frame.origin.y <= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER)
+                    if (frame.origin.y >= IMAGE_BORDER && frame.origin.y <= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER) {
                         viewDragging.frame = frame;
+
+                        _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
+                    }
                 }
             }
         }
