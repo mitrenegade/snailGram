@@ -12,6 +12,8 @@
 {
     BOOL dragging;
     UIView *viewDragging;
+    CGPoint initialTouch;
+    CGRect initialFrame;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

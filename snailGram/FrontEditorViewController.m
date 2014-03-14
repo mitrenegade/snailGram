@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 SnailGram. All rights reserved.
 //
 
+#define IMAGE_BORDER 10
+
 #import "FrontEditorViewController.h"
 #import "AddressEditorViewController.h"
 
@@ -36,12 +38,6 @@
     [self.canvas.layer setBorderWidth:2];
 
     // gestures
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    [tap setNumberOfTapsRequired:1];
-    [tap setNumberOfTouchesRequired:1];
-    [tap setDelegate:self];
-    [self.canvas addGestureRecognizer:tap];
-
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.canvas addGestureRecognizer:pan];
 
@@ -62,13 +58,20 @@
 -(IBAction)didClickButtonText:(id)sender {
     [self.textCanvas setHidden:!self.textCanvas.hidden];
     if (self.textCanvas.hidden == NO) {
-        [self.textViewMessage performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:2];
+        [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
         [self.labelHint setHidden:NO];
     }
     else {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
         [self.labelHint setHidden:YES];
+    }
+}
+
+-(void)beginEdit {
+    if (!dragging) {
+        [self.textViewMessage becomeFirstResponder];
     }
 }
 
@@ -106,24 +109,37 @@
 #pragma mark Gesture recognizers
 -(void)handleGesture:(UIGestureRecognizer *)gesture {
     CGPoint point = [gesture locationInView:self.canvas];
-    if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
-        
-    }
-    else if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
+    if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             if (!dragging) {
                 dragging = YES;
-                if (CGRectContainsPoint(self.textViewMessage.frame, point)) {
-                    viewDragging = self.textViewMessage;
+                initialTouch = point;
+                if (CGRectContainsPoint(self.textCanvas.frame, point)) {
+                    viewDragging = self.textCanvas;
+                    initialFrame = viewDragging.frame;
+
+                    [self.textViewMessage resignFirstResponder];
                 }
                 else if (CGRectContainsPoint(self.imageView.frame, point)) {
                     viewDragging = self.imageView;
+                    initialFrame = viewDragging.frame;
+                }
+                else {
+                    dragging = NO;
                 }
             }
         }
         else if ([gesture state] == UIGestureRecognizerStateChanged) {
             if (dragging) {
                 // update frame of viewDragging
+                if (viewDragging == self.textCanvas) {
+                    // only change Y position
+                    int dy = point.y - initialTouch.y;
+                    CGRect frame = initialFrame;
+                    frame.origin.y += dy;
+                    if (frame.origin.y >= IMAGE_BORDER && frame.origin.y <= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER)
+                        viewDragging.frame = frame;
+                }
             }
         }
         else if ([gesture state] == UIGestureRecognizerStateEnded) {
