@@ -20,8 +20,10 @@
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonCamera;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLibrary;
+@property (weak, nonatomic) IBOutlet UIButton *buttonReupload;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *canvas;
+@property (weak, nonatomic) IBOutlet UILabel *labelInstructions;
 @property (nonatomic, strong) PostCard *postCard;
 - (IBAction)didClickButton:(id)sender;
 

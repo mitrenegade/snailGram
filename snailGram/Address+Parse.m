@@ -52,7 +52,7 @@
     self.pfObject[@"state"] = self.state;
     self.pfObject[@"zip"] = self.zip;
 
-    [self.pfObject saveEventually:^(BOOL succeeded, NSError *error) {
+    [self.pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
             self.parseID = self.pfObject.objectId;
         if (completion)

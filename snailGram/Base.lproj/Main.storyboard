@@ -74,6 +74,18 @@
                                     <action selector="didClickButton:" destination="vCl-81-0FK" eventType="touchUpInside" id="KDm-TY-REP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSR-Rj-d7o">
+                                <rect key="frame" x="20" y="454" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Retry upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickButton:" destination="vCl-81-0FK" eventType="touchUpInside" id="aFt-ow-UGQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -82,8 +94,10 @@
                     <connections>
                         <outlet property="buttonCamera" destination="CFy-8H-2BV" id="4cD-da-9kE"/>
                         <outlet property="buttonLibrary" destination="oGq-1J-1U2" id="dei-eh-Q7C"/>
+                        <outlet property="buttonReupload" destination="MSR-Rj-d7o" id="AMq-2T-fg3"/>
                         <outlet property="canvas" destination="xaZ-We-z6f" id="JbD-wO-ZQh"/>
                         <outlet property="imageView" destination="kN0-CK-ilx" id="oVg-4q-7gI"/>
+                        <outlet property="labelInstructions" destination="Eei-U0-7zn" id="Eqw-Fb-oXo"/>
                         <segue destination="2w3-QL-dDk" kind="push" identifier="PushFrontEditor" id="z6m-2b-inb"/>
                     </connections>
                 </viewController>
