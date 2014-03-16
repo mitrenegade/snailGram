@@ -16,6 +16,7 @@
     CGRect initialFrame;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
+@property (weak, nonatomic) IBOutlet UIView *viewBounds;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UIView *textCanvas;
