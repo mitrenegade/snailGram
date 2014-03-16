@@ -15,4 +15,5 @@
 #define MESSAGE_PLACEHOLDER_TEXT @"Please enter a message"
 #define MESSAGE_LENGTH_LIMIT 500
 
+#define DebugLog(...) NSLog(__VA_ARGS__)
 #endif

@@ -12,13 +12,20 @@
 {
     BOOL dragging;
     UIView *viewDragging;
+    CGPoint initialTouch;
+    CGRect initialFrame;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
+@property (weak, nonatomic) IBOutlet UIView *textCanvas;
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, weak) IBOutlet UIButton *buttonText;
 
--(IBAction)didClickFlip:(id)sender;
+// hints
+@property (nonatomic, weak) IBOutlet UILabel *labelHint;
 
+-(IBAction)didClickNext:(id)sender;
+-(IBAction)didClickButtonText:(id)sender;
 @end
