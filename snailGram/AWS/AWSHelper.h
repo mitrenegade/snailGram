@@ -19,12 +19,15 @@
 #define USE_SSL                      NO
 
 // if not using TVM, use this. should not be in release version
-#define AWS_ACCESS_KEY @"AKIAJL6ZNU2J54KM3R3Q"
-#define AWS_SECRET_KEY @"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"
+//#define AWS_ACCESS_KEY @"AKIAJL6ZNU2J54KM3R3Q"
+//#define AWS_SECRET_KEY @"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"
+// new
+#define AWS_ACCESS_KEY @"AKIAI66662IFQYKUSEKA"
+#define AWS_SECRET_KEY @"qHLe9kEK5ZAvAAKb3GP5AX86e1y9iKwA8RRkz2EW"
 
 #define CREDENTIALS_ALERT_MESSAGE    @"Please update the Constants.h file with your credentials or Token Vending Machine URL."
 
-#define AWS_BUCKET @"snailgram"
+#define AWS_BUCKET @"snailgramcards"
 
 @interface AWSHelper : NSObject <AmazonServiceRequestDelegate>
 

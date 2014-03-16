@@ -64,14 +64,19 @@
     //NSString *filename   = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
     NSData * data = UIImageJPEGRepresentation(image, .85);
 
-    /*
+
     // Creates the Bucket to put the Object.
-    S3CreateBucketResponse *createBucketResponse = [[AWSHelper s3] createBucketWithName:bucketName];
-    if(createBucketResponse.error != nil)
-    {
-        NSLog(@"Error: %@", createBucketResponse.error);
+    @try {
+        S3CreateBucketResponse *createBucketResponse = [[AWSHelper s3] createBucketWithName:bucketName];
+        if(createBucketResponse.error != nil)
+        {
+            NSLog(@"Error: %@", createBucketResponse.error);
+        }
     }
-     */
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+        return;
+    }
     
     // Puts the file as an object in the bucket.
     S3PutObjectRequest *putObjectRequest = [[[S3PutObjectRequest alloc] initWithKey:keyName inBucket:bucketName] autorelease];
