@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="100" width="320" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bora-bora.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kN0-CK-ilx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bora-bora.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kN0-CK-ilx">
                                         <rect key="frame" x="10" y="10" width="300" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -121,16 +121,9 @@
                                 <rect key="frame" x="0.0" y="100" width="320" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Luj-kj-gT0" userLabel="View - bounding">
+                                    <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Luj-kj-gT0" userLabel="View - bounding">
                                         <rect key="frame" x="10" y="10" width="300" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-3J-Uau">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbG-DV-Oeg">
@@ -192,7 +185,6 @@
                     <connections>
                         <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
-                        <outlet property="imageView" destination="mIx-3J-Uau" id="p0f-Ur-bRX"/>
                         <outlet property="labelHint" destination="UtC-cL-cw4" id="MNW-1u-0hS"/>
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>

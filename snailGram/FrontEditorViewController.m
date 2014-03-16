@@ -10,6 +10,8 @@
 
 #import "FrontEditorViewController.h"
 #import "AddressEditorViewController.h"
+#import "PostCard+Parse.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface FrontEditorViewController ()
 
@@ -34,7 +36,14 @@
     if ([_currentPostCard.text length])
         self.textViewMessage.text = _currentPostCard.text;
 
+    self.imageView = [[UIImageView alloc] init];
+    [self.viewBounds addSubview:self.imageView];
     [self.imageView setImage:self.image];
+    float targetWidth = self.viewBounds.frame.size.width;
+    float scale = targetWidth / self.image.size.width;
+    CGRect frame = CGRectMake(0, -self.viewBounds.frame.size.height/2 + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
+    [self.imageView setFrame:frame];
+
     [self.canvas.layer setBorderWidth:2];
 
     NSLog(@"Initial image size: %f %f", self.image.size.width, self.image.size.height);
@@ -52,13 +61,6 @@
     [self.viewBounds setClipsToBounds:YES];
 
     _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    CGRect frame = CGRectMake(0, 0, self.image.size.width, self.image.size.height);
-    [self.imageView setFrame:frame];
-    self.imageView.center = CGPointMake(self.viewBounds.frame.size.width/2, self.viewBounds.frame.size.height);
 
 }
 
@@ -69,7 +71,14 @@
 }
 
 -(IBAction)didClickNext:(id)sender {
-    [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+    // Create the screenshot
+    UIGraphicsBeginImageContext(self.canvas.frame.size);
+    // Put everything in the current view into the screenshot
+    [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+    // Save the current image context info into a UIImage
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self uploadImage:newImage];
 }
 
 -(IBAction)didClickButtonText:(id)sender {
@@ -92,6 +101,24 @@
     }
 }
 
+#pragma mark AWS
+-(void)uploadImage:(UIImage *)image {
+    [AWSHelper uploadImage:image withName:_currentPostCard.parseID toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+        NSLog(@"Final url: %@", url);
+        // update postcard with the url
+        _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:_currentPostCard.parseID];
+        [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            if (success) {
+                [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+            }
+            else {
+                [UIAlertView alertViewWithTitle:@"Could not save image" message:@"We couldn't save your image. Please try again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
+                    [self uploadImage:image];
+                } onCancel:nil];
+            }
+        }];
+    }];
+}
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     textView.text = _currentPostCard.text;

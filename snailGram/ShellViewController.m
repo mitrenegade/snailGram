@@ -36,6 +36,7 @@
 
     [self.canvas.layer setBorderWidth:2];
     [self.buttonReupload setHidden:YES];
+    [self.imageView setClipsToBounds:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,10 +80,10 @@
 
 -(void)startImageUpload {
     // todo: upload asynchronously after image has been edited
-    [AWSHelper uploadImage:selectedImage withName:[self keyForPhoto] toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+    [AWSHelper uploadImage:selectedImage withName:_currentPostCard.parseID toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         NSLog(@"Final url: %@", url);
         // update postcard with the url
-        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:[self keyForPhoto]];
+        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:_currentPostCard.parseID];
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             if (success) {
                 [self imageSaved];
@@ -92,10 +93,6 @@
             }
         }];
     }];
-}
-
--(NSString *)keyForPhoto {
-    return self.postCard.parseID;
 }
 
 #pragma mark Segue preparation
@@ -135,7 +132,11 @@
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             // new postcard must be saved to parse first so we can get a parse ID
             if (success) {
+#if 0
                 [self startImageUpload];
+#else
+                [self imageSaved];
+#endif
             }
             else {
                 [alertView dismissWithClickedButtonIndex:0 animated:YES];
@@ -146,7 +147,11 @@
     }
     else {
         // if postCard already exists, start image upload
+#if 0
         [self startImageUpload];
+#else
+        [self imageSaved];
+#endif
     }
 #endif
 }

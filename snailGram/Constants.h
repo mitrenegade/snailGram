@@ -16,5 +16,5 @@
 #define MESSAGE_LENGTH_LIMIT 500
 
 #define DebugLog(...) NSLog(__VA_ARGS__)
-#define AIRPLANE_MODE 1
+#define AIRPLANE_MODE 0
 #endif
