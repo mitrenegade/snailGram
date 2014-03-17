@@ -133,6 +133,7 @@
 -(void)uploadImage:(UIImage *)image {
     NSString *name = [NSString stringWithFormat:@"%@-f", _currentPostCard.parseID];
     [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+        // todo: must handle internet connectivity errors
         // update postcard with the url
         _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:name];
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
