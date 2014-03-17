@@ -52,6 +52,7 @@
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
 		9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338318D5B67F00A7EA50 /* FlipSegue.m */; };
 		9E50338718D6D04200A7EA50 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338618D6D04200A7EA50 /* PostCard.m */; };
+		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
@@ -158,6 +159,7 @@
 		9E50338318D5B67F00A7EA50 /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
 		9E50338518D6D04200A7EA50 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
 		9E50338618D6D04200A7EA50 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		9E50338818D6DB5B00A7EA50 /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				9E103E1518CE0D07003E3021 /* camera@2x.png */,
 				9E103E0E18CBDB4F003E3021 /* polaroid.png */,
 				9E103E0F18CBDB4F003E3021 /* polaroid@2x.png */,
+				9E50338818D6DB5B00A7EA50 /* stamp@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,
 				9E103E1218CBDB4F003E3021 /* polaroid.png in Resources */,
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
+				9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
 				9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */,
 				9E103E1618CE0D07003E3021 /* camera.png in Resources */,

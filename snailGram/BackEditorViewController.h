@@ -12,6 +12,7 @@
 @interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate>
 {
     UITextView *textViewEditing;
+    UIAlertView *alertView;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;

@@ -237,11 +237,6 @@
                                         <rect key="frame" x="262" y="152" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSQ-LA-t8U">
-                                        <rect key="frame" x="290" y="10" width="22" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter a message" translatesAutoresizingMaskIntoConstraints="NO" id="7Bv-GM-uSX">
                                         <rect key="frame" x="11" y="10" width="156" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -262,6 +257,10 @@
                                             <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
                                         </connections>
                                     </textView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="stamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="xuc-R6-Ndu">
+                                        <rect key="frame" x="282" y="10" width="30" height="37"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -296,6 +295,7 @@
     <resources>
         <image name="bora-bora.jpg" width="550" height="383"/>
         <image name="snailGram100.png" width="98" height="99"/>
+        <image name="stamp.png" width="225" height="297"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

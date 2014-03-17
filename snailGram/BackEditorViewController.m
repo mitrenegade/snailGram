@@ -34,6 +34,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
+    [self.canvas.layer setBorderWidth:2];
+
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
@@ -48,7 +50,13 @@
 
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
+    [self.textViewMessage resignFirstResponder];
+    [self.textViewTo resignFirstResponder];
+
+    if ([_currentPostCard.message length] == 0)
+        [self.textViewMessage setHidden:YES];
     [self saveScreenshot];
+    [self.textViewMessage setHidden:NO];
 }
 
 -(IBAction)didClickFront:(id)sender {
@@ -63,6 +71,8 @@
 }
 
 -(void)saveScreenshot {
+    alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:nil];
+
     // Create the screenshot
     float scale = 5;
 
@@ -88,6 +98,7 @@
         // update postcard with the url
         _currentPostCard.image_url_back = [AWSHelper urlForPhotoWithKey:name];
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
                     [self.navigationController popToRootViewControllerAnimated:YES];

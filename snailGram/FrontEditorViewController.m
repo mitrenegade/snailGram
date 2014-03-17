@@ -107,6 +107,7 @@
 }
 
 -(void)saveScreenshot {
+    alertView = [UIAlertView alertViewWithTitle:@"Uploading image..." message:nil];
     // Create the screenshot
     float scale = 5;
 
@@ -135,6 +136,7 @@
         // update postcard with the url
         _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:name];
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
                 edited = NO;

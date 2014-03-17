@@ -16,6 +16,8 @@
     CGRect initialFrame;
 
     BOOL edited;
+
+    UIAlertView *alertView;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIView *viewBounds;
