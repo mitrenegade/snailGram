@@ -27,11 +27,7 @@
 // hints
 @property (nonatomic, weak) IBOutlet UILabel *labelHint;
 
-// autolayout constraint updates
-@property (nonatomic, weak) NSLayoutConstraint *constraintWidth;
-@property (nonatomic, weak) NSLayoutConstraint *constraintHeight;
-@property (nonatomic, weak) NSLayoutConstraint *constraintOriginX;
-@property (nonatomic, weak) NSLayoutConstraint *constraintOriginY;
 -(IBAction)didClickNext:(id)sender;
 -(IBAction)didClickButtonText:(id)sender;
+-(IBAction)didClickBack:(id)sender;
 @end

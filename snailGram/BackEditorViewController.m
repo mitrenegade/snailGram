@@ -45,10 +45,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
     [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
+}
+
+-(IBAction)didClickFront:(id)sender {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration: 0.25];
+
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:YES];
+
+    [[self navigationController] popViewControllerAnimated:NO];
+
+    [UIView commitAnimations];
 }
 
 #pragma mark TextView Delegate

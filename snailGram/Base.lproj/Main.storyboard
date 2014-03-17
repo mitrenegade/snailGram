@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="4"/>
         </scene>
-        <!--Front Editor View Controller - Enter your message-->
+        <!--Front Editor View Controller - Enter message-->
         <scene sceneID="17V-cC-ecC">
             <objects>
                 <viewController id="2w3-QL-dDk" customClass="FrontEditorViewController" sceneMemberID="viewController">
@@ -174,12 +174,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Enter your message" id="rdc-yu-RVg">
+                    <navigationItem key="navigationItem" title="Enter message" id="rdc-yu-RVg">
+                        <barButtonItem key="leftBarButtonItem" title="Photo" id="iG2-9k-LQG">
+                            <connections>
+                                <action selector="didClickBack:" destination="2w3-QL-dDk" id="OT4-A3-sal"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="x5u-n9-0Ta">
                             <connections>
                                 <action selector="didClickNext:" destination="2w3-QL-dDk" id="cgd-lH-qMa"/>
                             </connections>
                         </barButtonItem>
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="iG2-9k-LQG" id="90T-jt-jlW"/>
+                        </connections>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -189,14 +197,14 @@
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
                         <outlet property="viewBounds" destination="Luj-kj-gT0" id="KNN-y7-ruI"/>
-                        <segue destination="qBy-bk-JQz" kind="push" identifier="PushBackEditor" id="ugv-BY-Juv"/>
+                        <segue destination="qBy-bk-JQz" kind="custom" identifier="PushBackEditor" customClass="FlipSegue" id="ugv-BY-Juv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUt-dk-ZKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875" y="29"/>
         </scene>
-        <!--Back Editor View Controller-->
+        <!--Back Editor View Controller - Message To-->
         <scene sceneID="8vI-hQ-SvI">
             <objects>
                 <viewController id="qBy-bk-JQz" customClass="BackEditorViewController" sceneMemberID="viewController">
@@ -252,13 +260,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.42352941176470588" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vkn-PQ-caN">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="AbC-C9-EKz">
+                    <navigationItem key="navigationItem" title="Message To" id="Zfm-5l-Tom">
+                        <barButtonItem key="leftBarButtonItem" title="Front" id="qcM-K5-Rna">
                             <connections>
-                                <action selector="didClickSave:" destination="qBy-bk-JQz" id="GkC-u3-upx"/>
+                                <action selector="didClickFront:" destination="qBy-bk-JQz" id="Tuf-fq-5OB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="2US-K8-k4I">
+                            <connections>
+                                <action selector="didClickSave:" destination="qBy-bk-JQz" id="mv5-bX-Bv4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>

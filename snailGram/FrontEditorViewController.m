@@ -61,7 +61,6 @@
     [self.viewBounds setClipsToBounds:YES];
 
     _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +92,10 @@
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
         [self.labelHint setHidden:YES];
     }
+}
+
+-(void)didClickBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)beginEdit {
