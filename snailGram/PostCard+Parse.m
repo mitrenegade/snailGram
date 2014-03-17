@@ -48,7 +48,7 @@
 
     // todo: need to establish relationships
 
-    [self.pfObject saveEventually:^(BOOL succeeded, NSError *error) {
+    [self.pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
             self.parseID = self.pfObject.objectId;
         if (completion)

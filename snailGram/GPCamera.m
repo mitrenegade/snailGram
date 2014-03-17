@@ -140,18 +140,9 @@
     // select from photo library or capture
     DebugLog(@"Completed");
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    // resize/crop
-    float width = image.size.width;
-    float y0 = CAMERA_TOP_OFFSET * width / 320; // this value adjusts the top offset
-    // this function doesn't do what we think. the second value seems to scale.
-    image = [image croppedImage:CGRectMake(y0, 0, width-y0/2, width-y0/2) orientation:image.imageOrientation];
-
-    float factor = .5;
-    CGSize size = CGSizeMake(image.size.width*factor, image.size.height*factor);
-    UIImage *resizedImage = [image resizedImage:size interpolationQuality:kCGInterpolationDefault];
 
     [GPCamera getMetaForInfo:info withCompletion:^(NSDictionary *result) {
-        [self.delegate didSelectPhoto:resizedImage meta:result];
+        [self.delegate didSelectPhoto:image meta:result];
 
         if (picker.sourceType == UIImagePickerControllerSourceTypeCamera && result) {
             // save a larger res to the album. also, [image resizedImage:] doesn't store orientation correctly, but shows up correctly on AWS and viewer

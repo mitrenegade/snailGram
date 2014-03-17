@@ -19,4 +19,5 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPostcard;
 
 -(IBAction)didClickSave:(id)sender;
+-(IBAction)didClickFront:(id)sender;
 @end

@@ -35,6 +35,8 @@
     // Do any additional setup after loading the view from its nib.
 
     [self.canvas.layer setBorderWidth:2];
+    [self.buttonReupload setHidden:YES];
+    [self.imageView setClipsToBounds:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,25 +64,35 @@
 
         [self presentViewController:library animated:YES completion:nil];
     }
+    else if (button == self.buttonReupload) {
+        if (!selectedImage)
+            [self.buttonReupload setHidden:YES];
+        else
+            [self didSelectPhoto:selectedImage meta:nil];
+    }
 }
 
 -(void)imageSaved {
-    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    if (alertView)
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
     [self performSegueWithIdentifier:@"PushFrontEditor" sender:nil];
 }
 
 -(void)startImageUpload {
-    [AWSHelper uploadImage:selectedImage withName:[self keyForPhoto] toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+    // todo: upload asynchronously after image has been edited
+    [AWSHelper uploadImage:selectedImage withName:_currentPostCard.parseID toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         NSLog(@"Final url: %@", url);
-        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:[self keyForPhoto]];
+        // update postcard with the url
+        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:_currentPostCard.parseID];
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-            [self imageSaved];
+            if (success) {
+                [self imageSaved];
+            }
+            else {
+                
+            }
         }];
     }];
-}
-
--(NSString *)keyForPhoto {
-    return self.postCard.parseID;
 }
 
 #pragma mark Segue preparation
@@ -101,9 +113,16 @@
 
     //selectedImage = [UIImage imageNamed:@"DSC_0377.jpg"];
     selectedImage = photo;
-
-    if (!self.postCard) {
-        self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+    [self.imageView setImage:photo];
+    [self.buttonReupload setHidden:YES];
+    [self.labelInstructions setHidden:YES];
+#if AIRPLANE_MODE
+    [self imageSaved];
+#else
+    if (!self.postCard.pfObject.objectId) {
+        if (!self.postCard) {
+            self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+        }
         self.postCard.message = @"";
         self.postCard.to = nil;
         self.postCard.text = nil;
@@ -111,14 +130,30 @@
 
         // if postCard doesn't exist on Parse yet, we don't have an image key
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            // new postcard must be saved to parse first so we can get a parse ID
             if (success) {
+#if 0
                 [self startImageUpload];
+#else
+                [self imageSaved];
+#endif
+            }
+            else {
+                [alertView dismissWithClickedButtonIndex:0 animated:YES];
+                [UIAlertView alertViewWithTitle:@"Upload failed" message:@"We could not create a new postcard. Please check your internet connection."];
+                [self.buttonReupload setHidden:NO];
             }
         }];
     }
     else {
         // if postCard already exists, start image upload
+#if 0
         [self startImageUpload];
+#else
+        [self imageSaved];
+#endif
     }
+#endif
 }
+
 @end

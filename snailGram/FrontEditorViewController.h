@@ -16,7 +16,8 @@
     CGRect initialFrame;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *viewBounds;
+@property (strong, nonatomic) UIImageView *imageView; // add programmatically
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UIView *textCanvas;
 
@@ -28,4 +29,5 @@
 
 -(IBAction)didClickNext:(id)sender;
 -(IBAction)didClickButtonText:(id)sender;
+-(IBAction)didClickBack:(id)sender;
 @end
