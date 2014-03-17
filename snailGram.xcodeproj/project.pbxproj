@@ -50,8 +50,9 @@
 		9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161C18C3033D00F542F5 /* AddressEditorViewController.m */; };
 		9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E25161D18C3033D00F542F5 /* AddressEditorViewController.xib */; };
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
-		9E3D9B0818D2A93B00DA32C0 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D9B0718D2A93B00DA32C0 /* PostCard.m */; };
 		9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338318D5B67F00A7EA50 /* FlipSegue.m */; };
+		9E50338718D6D04200A7EA50 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338618D6D04200A7EA50 /* PostCard.m */; };
+		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
@@ -154,10 +155,11 @@
 		9E25162318C30A3100F542F5 /* Address+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Info.h"; sourceTree = "<group>"; };
 		9E25162418C30A3100F542F5 /* Address+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Info.m"; sourceTree = "<group>"; };
 		9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_2.xcdatamodel; sourceTree = "<group>"; };
-		9E3D9B0618D2A93B00DA32C0 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9E3D9B0718D2A93B00DA32C0 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E50338218D5B67F00A7EA50 /* FlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSegue.h; sourceTree = "<group>"; };
 		9E50338318D5B67F00A7EA50 /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
+		9E50338518D6D04200A7EA50 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E50338618D6D04200A7EA50 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		9E50338818D6DB5B00A7EA50 /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				9E103E1518CE0D07003E3021 /* camera@2x.png */,
 				9E103E0E18CBDB4F003E3021 /* polaroid.png */,
 				9E103E0F18CBDB4F003E3021 /* polaroid@2x.png */,
+				9E50338818D6DB5B00A7EA50 /* stamp@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -357,9 +360,9 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				9E3D9B0618D2A93B00DA32C0 /* PostCard.h */,
-				9E3D9B0718D2A93B00DA32C0 /* PostCard.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
+				9E50338518D6D04200A7EA50 /* PostCard.h */,
+				9E50338618D6D04200A7EA50 /* PostCard.m */,
 				9E9B641B18C417CB0048142D /* Address.h */,
 				9E9B641C18C417CB0048142D /* Address.m */,
 				9E9B645318C4E8CA0048142D /* PostCard+Parse.h */,
@@ -536,6 +539,7 @@
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,
 				9E103E1218CBDB4F003E3021 /* polaroid.png in Resources */,
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
+				9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
 				9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */,
 				9E103E1618CE0D07003E3021 /* camera.png in Resources */,
@@ -560,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
+				9E50338718D6D04200A7EA50 /* PostCard.m in Sources */,
 				9E9B646F18C4F82C0048142D /* AsyncImageView.m in Sources */,
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
@@ -589,7 +594,6 @@
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				9E25160318C2AC0000F542F5 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */,
-				9E3D9B0818D2A93B00DA32C0 /* PostCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

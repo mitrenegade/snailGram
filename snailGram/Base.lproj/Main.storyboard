@@ -171,6 +171,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hint: drag or pinch the image to reposition it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26P-2E-Obp">
+                                <rect key="frame" x="20" y="71" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -193,7 +200,8 @@
                     <connections>
                         <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
-                        <outlet property="labelHint" destination="UtC-cL-cw4" id="MNW-1u-0hS"/>
+                        <outlet property="labelHintDrag" destination="26P-2E-Obp" id="MNB-dU-zpL"/>
+                        <outlet property="labelHintText" destination="UtC-cL-cw4" id="Dx0-Tt-7UW"/>
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
                         <outlet property="viewBounds" destination="Luj-kj-gT0" id="KNN-y7-ruI"/>
@@ -229,11 +237,6 @@
                                         <rect key="frame" x="262" y="152" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSQ-LA-t8U">
-                                        <rect key="frame" x="290" y="10" width="22" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter a message" translatesAutoresizingMaskIntoConstraints="NO" id="7Bv-GM-uSX">
                                         <rect key="frame" x="11" y="10" width="156" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -254,6 +257,10 @@
                                             <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
                                         </connections>
                                     </textView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="stamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="xuc-R6-Ndu">
+                                        <rect key="frame" x="282" y="10" width="30" height="37"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -275,9 +282,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="canvas" destination="zeC-x4-71d" id="ckh-1Q-YOR"/>
                         <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>
                         <outlet property="textViewTo" destination="VWa-yS-LaD" id="wQF-fZ-sqf"/>
-                        <outlet property="viewPostcard" destination="zeC-x4-71d" id="Ib3-cl-EOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHJ-rP-mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,6 +295,7 @@
     <resources>
         <image name="bora-bora.jpg" width="550" height="383"/>
         <image name="snailGram100.png" width="98" height="99"/>
+        <image name="stamp.png" width="225" height="297"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

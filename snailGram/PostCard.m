@@ -2,7 +2,7 @@
 //  PostCard.m
 //  snailGram
 //
-//  Created by Bobby Ren on 3/13/14.
+//  Created by Bobby Ren on 3/16/14.
 //  Copyright (c) 2014 SnailGram. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @dynamic message;
 @dynamic parseID;
 @dynamic text;
-@dynamic textPosY;
+@dynamic image_url_back;
 @dynamic to;
 
 @end
