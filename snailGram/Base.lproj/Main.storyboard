@@ -171,6 +171,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hint: drag or pinch the image to reposition it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26P-2E-Obp">
+                                <rect key="frame" x="20" y="71" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -193,7 +200,8 @@
                     <connections>
                         <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
-                        <outlet property="labelHint" destination="UtC-cL-cw4" id="MNW-1u-0hS"/>
+                        <outlet property="labelHintDrag" destination="26P-2E-Obp" id="MNB-dU-zpL"/>
+                        <outlet property="labelHintText" destination="UtC-cL-cw4" id="Dx0-Tt-7UW"/>
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
                         <outlet property="viewBounds" destination="Luj-kj-gT0" id="KNN-y7-ruI"/>

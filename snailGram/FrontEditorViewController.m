@@ -56,11 +56,14 @@
     [self.view addGestureRecognizer:pinch];
 
     [self.textCanvas setHidden:YES];
-    [self.labelHint setHidden:YES];
+    [self.labelHintText setAlpha:0];
+    [self.labelHintDrag setAlpha:0];
 
     [self.viewBounds setClipsToBounds:YES];
 
-    _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
+    [self performSelector:@selector(showHintDrag) withObject:nil afterDelay:3];
+
+    edited = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,27 +73,33 @@
 }
 
 -(IBAction)didClickNext:(id)sender {
-    // Create the screenshot
-    UIGraphicsBeginImageContext(self.canvas.frame.size);
-    // Put everything in the current view into the screenshot
-    [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
-    // Save the current image context info into a UIImage
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [self uploadImage:newImage];
+    if (edited) {
+        // Create the screenshot
+        UIGraphicsBeginImageContext(self.canvas.frame.size);
+        // Put everything in the current view into the screenshot
+        [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+        // Save the current image context info into a UIImage
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [self uploadImage:newImage];
+    }
+    else {
+        [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+    }
 }
 
 -(IBAction)didClickButtonText:(id)sender {
+    edited = YES;
     [self.textCanvas setHidden:!self.textCanvas.hidden];
     if (self.textCanvas.hidden == NO) {
         [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
-        [self.labelHint setHidden:NO];
+        [self showHintText];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
-        [self.labelHint setHidden:YES];
+        [self hideHintText];
     }
 }
 
@@ -113,6 +122,7 @@
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             if (success) {
                 [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
+                edited = NO;
             }
             else {
                 [UIAlertView alertViewWithTitle:@"Could not save image" message:@"We couldn't save your image. Please try again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
@@ -150,6 +160,7 @@
         return NO;
     }
 
+    edited = YES;
     return YES;
 }
 
@@ -158,6 +169,8 @@
     if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             if (!dragging) {
+                [self.textViewMessage resignFirstResponder];
+                [self hideOrCancelHintDrag];
                 dragging = YES;
                 CGPoint point = [gesture locationInView:self.canvas];
                 initialTouch = point;
@@ -188,8 +201,6 @@
                     frame.origin.y += dy;
                     if (frame.origin.y >= IMAGE_BORDER && frame.origin.y <= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER) {
                         viewDragging.frame = frame;
-
-                        _currentPostCard.textPosY = @(self.textCanvas.frame.origin.y);
                     }
                 }
                 else if (viewDragging == self.imageView) {
@@ -217,6 +228,7 @@
             if (dragging) {
                 dragging = NO;
                 viewDragging = nil;
+                edited = YES;
             }
         }
     }
@@ -226,6 +238,8 @@
     if ([gesture isKindOfClass:[UIPinchGestureRecognizer class]]) {
         UIPinchGestureRecognizer *pinch = (UIPinchGestureRecognizer *)gesture;
         if ([gesture state] == UIGestureRecognizerStateBegan) {
+            [self.textViewMessage resignFirstResponder];
+            [self hideOrCancelHintDrag];
             initialFrame = self.imageView.frame;
             NSLog(@"Initial: %f %f %f %f", initialFrame.origin.x, initialFrame.origin.y, initialFrame.size.width, initialFrame.size.height);
         }
@@ -257,7 +271,36 @@
             if (frame.origin.y + frame.size.height < self.viewBounds.frame.size.height)
                 frame.origin.y = self.viewBounds.frame.size.height - frame.size.height;
             self.imageView.frame = frame;
+            edited = YES;
         }
     }
+}
+
+#pragma mark hint
+-(void)showHintDrag {
+    [UIView animateWithDuration:.5 animations:^{
+        [self.labelHintDrag setAlpha:1];
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(hideOrCancelHintDrag) withObject:nil afterDelay:5];
+    }];
+}
+
+-(void)hideOrCancelHintDrag {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showHintDrag) object:nil];
+    [UIView animateWithDuration:.5 animations:^{
+        [self.labelHintDrag setAlpha:0];
+    }];
+}
+
+-(void)showHintText {
+    [UIView animateWithDuration:.5 animations:^{
+        [self.labelHintText setAlpha:1];
+    }];
+}
+
+-(void)hideHintText {
+    [UIView animateWithDuration:.5 animations:^{
+        [self.labelHintText setAlpha:0];
+    }];
 }
 @end

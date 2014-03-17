@@ -14,6 +14,8 @@
     UIView *viewDragging;
     CGPoint initialTouch;
     CGRect initialFrame;
+
+    BOOL edited;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIView *viewBounds;
@@ -25,7 +27,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *buttonText;
 
 // hints
-@property (nonatomic, weak) IBOutlet UILabel *labelHint;
+@property (nonatomic, weak) IBOutlet UILabel *labelHintText;
+@property (nonatomic, weak) IBOutlet UILabel *labelHintDrag;
 
 -(IBAction)didClickNext:(id)sender;
 -(IBAction)didClickButtonText:(id)sender;
