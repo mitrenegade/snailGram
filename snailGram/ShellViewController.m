@@ -78,23 +78,6 @@
     [self performSegueWithIdentifier:@"PushFrontEditor" sender:nil];
 }
 
--(void)startImageUpload {
-    // todo: upload asynchronously after image has been edited
-    [AWSHelper uploadImage:selectedImage withName:_currentPostCard.parseID toBucket:AWS_BUCKET withCallback:^(NSString *url) {
-        NSLog(@"Final url: %@", url);
-        // update postcard with the url
-        self.postCard.image_url = [AWSHelper urlForPhotoWithKey:_currentPostCard.parseID];
-        [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-            if (success) {
-                [self imageSaved];
-            }
-            else {
-                
-            }
-        }];
-    }];
-}
-
 #pragma mark Segue preparation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PushFrontEditor"]) {
@@ -109,9 +92,8 @@
 }
 
 -(void)didSelectPhoto:(UIImage *)photo meta:(NSDictionary *)meta {
-    alertView = [UIAlertView alertViewWithTitle:@"Uploading photo..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
+    alertView = [UIAlertView alertViewWithTitle:@"Generating postcard..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
 
-    //selectedImage = [UIImage imageNamed:@"DSC_0377.jpg"];
     selectedImage = photo;
     [self.imageView setImage:photo];
     [self.buttonReupload setHidden:YES];
@@ -125,18 +107,15 @@
         }
         self.postCard.message = @"";
         self.postCard.to = nil;
-        self.postCard.text = nil;
-        self.postCard.image_url = @""; // todo: upload image to AWS then store url
+        self.postCard.text = @"";
+        self.postCard.image_url = @"";
+        self.postCard.image_url_back = @"";
 
         // if postCard doesn't exist on Parse yet, we don't have an image key
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             // new postcard must be saved to parse first so we can get a parse ID
             if (success) {
-#if 0
-                [self startImageUpload];
-#else
                 [self imageSaved];
-#endif
             }
             else {
                 [alertView dismissWithClickedButtonIndex:0 animated:YES];
@@ -147,11 +126,7 @@
     }
     else {
         // if postCard already exists, start image upload
-#if 0
-        [self startImageUpload];
-#else
         [self imageSaved];
-#endif
     }
 #endif
 }

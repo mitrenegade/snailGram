@@ -10,6 +10,7 @@
 #import "Address+Info.h"
 #import "Address+Parse.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "PostCard+Parse.h"
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -47,9 +48,7 @@
 
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
-    [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
+    [self saveScreenshot];
 }
 
 -(IBAction)didClickFront:(id)sender {
@@ -61,6 +60,46 @@
     [[self navigationController] popViewControllerAnimated:NO];
 
     [UIView commitAnimations];
+}
+
+-(void)saveScreenshot {
+    // Create the screenshot
+    float scale = 5;
+
+    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
+    CGSize size = CGSizeMake(self.canvas.frame.size.width * scale, self.canvas.frame.size.height * scale);
+    UIGraphicsBeginImageContext(size);
+    // Put everything in the current view into the screenshot
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGContextConcatCTM(ctx, t);
+    [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CGContextRestoreGState(ctx);
+    // Save the current image context info into a UIImage
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self uploadImage:newImage];
+}
+
+#pragma mark AWS
+-(void)uploadImage:(UIImage *)image {
+    NSString *name = [NSString stringWithFormat:@"%@-b", _currentPostCard.parseID];
+    [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+        // update postcard with the url
+        _currentPostCard.image_url_back = [AWSHelper urlForPhotoWithKey:name];
+        [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            if (success) {
+                [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }];
+            }
+            else {
+                [UIAlertView alertViewWithTitle:@"Could not save image" message:@"We couldn't save your image. Please try again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
+                    [self uploadImage:image];
+                } onCancel:nil];
+            }
+        }];
+    }];
 }
 
 #pragma mark TextView Delegate

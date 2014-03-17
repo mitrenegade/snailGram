@@ -283,9 +283,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="canvas" destination="zeC-x4-71d" id="ckh-1Q-YOR"/>
                         <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>
                         <outlet property="textViewTo" destination="VWa-yS-LaD" id="wQF-fZ-sqf"/>
-                        <outlet property="viewPostcard" destination="zeC-x4-71d" id="Ib3-cl-EOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHJ-rP-mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>

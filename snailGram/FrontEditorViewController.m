@@ -74,14 +74,7 @@
 
 -(IBAction)didClickNext:(id)sender {
     if (edited) {
-        // Create the screenshot
-        UIGraphicsBeginImageContext(self.canvas.frame.size);
-        // Put everything in the current view into the screenshot
-        [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
-        // Save the current image context info into a UIImage
-        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        [self uploadImage:newImage];
+        [self saveScreenshot];
     }
     else {
         [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
@@ -113,12 +106,34 @@
     }
 }
 
+-(void)saveScreenshot {
+    // Create the screenshot
+    float scale = 5;
+
+    if ([_currentPostCard.text length] == 0)
+        [self.textCanvas setHidden:YES];
+
+    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
+    CGSize size = CGSizeMake(self.canvas.frame.size.width * scale, self.canvas.frame.size.height * scale);
+    UIGraphicsBeginImageContext(size);
+    // Put everything in the current view into the screenshot
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGContextConcatCTM(ctx, t);
+    [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CGContextRestoreGState(ctx);
+    // Save the current image context info into a UIImage
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self uploadImage:newImage];
+}
+
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
-    [AWSHelper uploadImage:image withName:_currentPostCard.parseID toBucket:AWS_BUCKET withCallback:^(NSString *url) {
-        NSLog(@"Final url: %@", url);
+    NSString *name = [NSString stringWithFormat:@"%@-f", _currentPostCard.parseID];
+    [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         // update postcard with the url
-        _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:_currentPostCard.parseID];
+        _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:name];
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             if (success) {
                 [self performSegueWithIdentifier:@"PushBackEditor" sender:self];

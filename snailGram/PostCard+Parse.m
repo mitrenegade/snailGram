@@ -33,6 +33,8 @@
 
 -(void)updateFromParse {
     self.image_url = self.pfObject[@"image_url"];
+    self.image_url_back = self.pfObject[@"image_url_back"];
+    self.text = self.pfObject[@"text"];
     self.message = self.pfObject[@"message"];
     self.parseID = self.pfObject.objectId;
 
@@ -43,8 +45,14 @@
     if (!self.pfObject)
         self.pfObject = [PFObject objectWithClassName:self.className];
 
-    self.pfObject[@"image_url"] = self.image_url;
-    self.pfObject[@"message"] = self.message;
+    if (self.image_url)
+        self.pfObject[@"image_url"] = self.image_url;
+    if (self.image_url_back)
+        self.pfObject[@"image_url_back"] = self.image_url_back;
+    if (self.text)
+        self.pfObject[@"text"] = self.text;
+    if (self.message)
+        self.pfObject[@"message"] = self.message;
 
     // todo: need to establish relationships
 

@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UITextView *textViewTo;
-@property (weak, nonatomic) IBOutlet UIView *viewPostcard;
+@property (weak, nonatomic) IBOutlet UIView *canvas;
 
 -(IBAction)didClickSave:(id)sender;
 -(IBAction)didClickFront:(id)sender;
