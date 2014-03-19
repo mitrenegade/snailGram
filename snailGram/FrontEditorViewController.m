@@ -41,7 +41,7 @@
     [self.imageView setImage:self.image];
     float targetWidth = self.viewBounds.frame.size.width;
     float scale = targetWidth / self.image.size.width;
-    CGRect frame = CGRectMake(0, -self.viewBounds.frame.size.height/2 + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
+    CGRect frame = CGRectMake(0, -((self.image.size.height * scale)/2 - self.viewBounds.frame.size.height/2) + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
     [self.imageView setFrame:frame];
 
     [self.canvas.layer setBorderWidth:2];
