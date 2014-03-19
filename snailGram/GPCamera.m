@@ -56,49 +56,35 @@
     CALayer *top = [[CALayer alloc] init];
     top.frame = CGRectMake(0, 0, CAMERA_SIZE, CAMERA_TOP_OFFSET);
     top.backgroundColor = [[UIColor blackColor] CGColor];
-    /*
-    CALayer *bottom = [[CALayer alloc] init];
-    bottom.frame = CGRectMake(0, CAMERA_TOP_OFFSET + CAMERA_SIZE, CAMERA_SIZE, frame.size.height - (CAMERA_TOP_OFFSET + CAMERA_SIZE));
-    bottom.backgroundColor = [[UIColor blackColor] CGColor];
-     */
+    top.opacity = .25;
 
     overlay = [[UIView alloc] initWithFrame:frame];
     [overlay.layer addSublayer:top];
-    //[overlay.layer addSublayer:bottom];
 
     buttonCamera = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 72, 72)];
     [buttonCamera setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
     [buttonCamera setContentMode:UIViewContentModeCenter];
     [buttonCamera setBackgroundColor:[UIColor clearColor]];
-    [buttonCamera setCenter:CGPointMake(160, frame.size.height - 100)];
+    [buttonCamera setCenter:CGPointMake(160, frame.size.height - CAMERA_TOP_OFFSET)];
     [buttonCamera addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
 
-    /*
-    buttonLibrary = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonLibrary setFrame:CGRectMake(0, 0, 80, 40)];
-    [buttonLibrary setTitle:@"Library" forState:UIControlStateNormal];
-    [buttonLibrary setTintColor:[UIColor whiteColor]];
-    [buttonLibrary setCenter:CGPointMake(260, frame.size.height - bottom.frame.size.height / 2)];
-    [buttonLibrary addTarget:self action:@selector(showLibrary) forControlEvents:UIControlEventTouchUpInside];
-     */
-
     buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonCancel setFrame:CGRectMake(0, 0, 80, 40)];
+    [buttonCancel setFrame:CGRectMake(0, 0, 100, 40)];
     [buttonCancel setTitle:@"Cancel" forState:UIControlStateNormal];
     [buttonCancel setTintColor:[UIColor whiteColor]];
-    [buttonCancel setCenter:CGPointMake(60, 30)];
+    [buttonCancel setCenter:CGPointMake(40, 40)];
+    [buttonCancel.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [buttonCancel addTarget:self.delegate action:@selector(dismissCamera) forControlEvents:UIControlEventTouchUpInside];
 
     buttonRotate = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonRotate setFrame:CGRectMake(0, 0, 80, 40)];
+    [buttonRotate setFrame:CGRectMake(0, 0, 40, 40)];
     [buttonRotate setBackgroundColor:[UIColor clearColor]];
-    [buttonRotate setCenter:CGPointMake(280, 30)];
+    [buttonRotate setCenter:CGPointMake(280, 40)];
     [buttonRotate setImage:[UIImage imageNamed:@"rotateCamera"] forState:UIControlStateNormal];
     [buttonRotate addTarget:self action:@selector(rotateCamera) forControlEvents:UIControlEventTouchUpInside];
 
     [overlay addSubview:buttonCamera];
     [overlay addSubview:buttonCancel];
-//    [overlay addSubview:buttonLibrary];
     if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
         [overlay addSubview:buttonRotate];
     }

@@ -41,7 +41,7 @@
     [self.imageView setImage:self.image];
     float targetWidth = self.viewBounds.frame.size.width;
     float scale = targetWidth / self.image.size.width;
-    CGRect frame = CGRectMake(0, -self.viewBounds.frame.size.height/2 + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
+    CGRect frame = CGRectMake(0, -((self.image.size.height * scale)/2 - self.viewBounds.frame.size.height/2) + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
     [self.imageView setFrame:frame];
 
     [self.canvas.layer setBorderWidth:2];
@@ -64,6 +64,9 @@
     [self performSelector:@selector(showHintDrag) withObject:nil afterDelay:3];
 
     edited = YES;
+    [self.buttonTextColor setHidden:YES];
+    textColorState = LightTextDarkBG;
+    [self updateTextColors];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,12 +90,41 @@
     if (self.textCanvas.hidden == NO) {
         [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
+        [self.buttonTextColor setHidden:NO];
         [self showHintText];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
+        [self.buttonTextColor setHidden:YES];
         [self hideHintText];
+    }
+}
+
+-(IBAction)didToggleTextColor:(id)sender {
+    textColorState += 1;
+    if (textColorState == TextColorMax)
+        textColorState = 0;
+
+    [self updateTextColors];
+}
+
+-(void)updateTextColors {
+    if (textColorState == LightTextDarkBG) {
+        self.textBG.backgroundColor = [UIColor blackColor];
+        self.textViewMessage.textColor = [UIColor whiteColor];
+    }
+    else if (textColorState == DarkTextLightBG) {
+        self.textBG.backgroundColor = [UIColor whiteColor];
+        self.textViewMessage.textColor = [UIColor blackColor];
+    }
+    else if (textColorState == LightText) {
+        self.textBG.backgroundColor = [UIColor clearColor];
+        self.textViewMessage.textColor = [UIColor whiteColor];
+    }
+    else if (textColorState == DarkText) {
+        self.textBG.backgroundColor = [UIColor clearColor];
+        self.textViewMessage.textColor = [UIColor blackColor];
     }
 }
 
@@ -296,6 +328,8 @@
 
 #pragma mark hint
 -(void)showHintDrag {
+    if (self.labelHintText.alpha == 1)
+        [self hideHintText];
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintDrag setAlpha:1];
     } completion:^(BOOL finished) {
@@ -311,6 +345,8 @@
 }
 
 -(void)showHintText {
+    if (self.labelHintDrag.alpha == 1)
+        [self hideOrCancelHintDrag];
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintText setAlpha:1];
     }];
