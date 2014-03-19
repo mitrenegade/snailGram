@@ -55,6 +55,7 @@
     if (button == self.buttonCamera) {
         [camera startCameraFrom:self];
         [camera addOverlayWithFrame:_appDelegate.window.bounds];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     }
     else if (button == self.buttonLibrary) {
         UIImagePickerController *library = [[UIImagePickerController alloc] init];
