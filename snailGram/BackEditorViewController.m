@@ -39,7 +39,10 @@
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
-        self.textViewTo.text = _currentPostCard.to.toString;
+        self.labelTo.text = _currentPostCard.to.toString;
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editAddress)];
+    [self.labelTo addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +54,6 @@
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
     [self.textViewMessage resignFirstResponder];
-    [self.textViewTo resignFirstResponder];
 
     if ([_currentPostCard.message length] == 0)
         [self.textViewMessage setHidden:YES];
@@ -115,17 +117,8 @@
 
 #pragma mark TextView Delegate
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-    AddressEditorViewController *addressController = [[AddressEditorViewController alloc] init];
-    addressController.delegate = self;
     if (textView == self.textViewMessage) {
-        textViewEditing = self.textViewMessage;
         textView.text = _currentPostCard.message;
-    }
-    else if (textView == self.textViewTo) {
-        textViewEditing = self.textViewTo;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
-        [self.navigationController presentViewController:nav animated:YES completion:^{
-        }];
     }
 
     textView.font = [UIFont systemFontOfSize:15];
@@ -177,12 +170,15 @@
     NSError *error;
     [_appDelegate.managedObjectContext save:&error];
     
-    if (textViewEditing == self.textViewTo) {
-        [self.textViewTo resignFirstResponder];
-
-        _currentPostCard.to = newAddress;
-        [self.textViewTo setText:[_currentPostCard.to toString]];
-    }
+    _currentPostCard.to = newAddress;
+    NSString *str = [_currentPostCard.to toString];
+    self.labelTo.text = [NSString stringWithFormat:@"To: %@", str];
 }
 
+-(void)editAddress {
+    AddressEditorViewController *addressController = [[AddressEditorViewController alloc] init];
+    addressController.delegate = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
 @end

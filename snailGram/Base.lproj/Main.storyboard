@@ -261,20 +261,18 @@
                                             <outlet property="delegate" destination="qBy-bk-JQz" id="51t-P8-HL7"/>
                                         </connections>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="To:" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-yS-LaD">
-                                        <rect key="frame" x="194" y="56" width="115" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="qBy-bk-JQz" id="dc6-CW-Wcs"/>
-                                        </connections>
-                                    </textView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="stamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="xuc-R6-Ndu">
                                         <rect key="frame" x="282" y="10" width="30" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="118" translatesAutoresizingMaskIntoConstraints="NO" id="Gef-fx-5a2">
+                                        <rect key="frame" x="194" y="53" width="118" height="91"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -297,8 +295,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="canvas" destination="zeC-x4-71d" id="ckh-1Q-YOR"/>
+                        <outlet property="labelTo" destination="Gef-fx-5a2" id="2zy-fq-X4U"/>
                         <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>
-                        <outlet property="textViewTo" destination="VWa-yS-LaD" id="wQF-fZ-sqf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHJ-rP-mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
