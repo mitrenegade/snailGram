@@ -13,6 +13,7 @@
 		9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1518CE0D07003E3021 /* camera@2x.png */; };
 		9E103E1918CE136A003E3021 /* snailGram100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1818CE136A003E3021 /* snailGram100.png */; };
 		9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1A18CE184B003E3021 /* bora-bora.jpg */; };
+		9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E13E01618D98C3B00D2E906 /* AdSupport.framework */; };
 		9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E22DFF018CFE17100F8B4A8 /* GPCamera.m */; };
 		9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */; };
 		9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */; };
@@ -72,7 +73,11 @@
 		9E9B647518C4F8A50048142D /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B647418C4F8A50048142D /* LoadingAnimationView.m */; };
 		9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647918C4FC9C0048142D /* AWSRuntime.framework */; };
 		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
+		9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAA647218DA7D0D006264FC /* FacebookSDK.framework */; };
 		9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A8818D984CE000FA41A /* libPayPalMobile.a */; };
+		9EF04A9318D98950000FA41A /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF04A9218D98950000FA41A /* PayPalHelper.m */; };
+		9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9418D98BC1000FA41A /* AVFoundation.framework */; };
+		9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9618D98BD1000FA41A /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +97,7 @@
 		9E103E1518CE0D07003E3021 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		9E103E1818CE136A003E3021 /* snailGram100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snailGram100.png; sourceTree = "<group>"; };
 		9E103E1A18CE184B003E3021 /* bora-bora.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bora-bora.jpg"; sourceTree = "<group>"; };
+		9E13E01618D98C3B00D2E906 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCamera.h; sourceTree = "<group>"; };
 		9E22DFF018CFE17100F8B4A8 /* GPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCamera.m; sourceTree = "<group>"; };
 		9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCameraDelegate.h; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 		9E9B647418C4F8A50048142D /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingAnimationView.m; path = AWS/LoadingAnimationView.m; sourceTree = "<group>"; };
 		9E9B647918C4FC9C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
 		9E9B647A18C4FC9C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
+		9EAA647218DA7D0D006264FC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9EF04A8818D984CE000FA41A /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
 		9EF04A8918D984CE000FA41A /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
 		9EF04A8A18D984CE000FA41A /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
@@ -195,6 +202,10 @@
 		9EF04A8C18D984CE000FA41A /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
 		9EF04A8D18D984CE000FA41A /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
 		9EF04A8F18D98625000FA41A /* ConstantsLocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantsLocal.h; sourceTree = "<group>"; };
+		9EF04A9118D98950000FA41A /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
+		9EF04A9218D98950000FA41A /* PayPalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalHelper.m; sourceTree = "<group>"; };
+		9EF04A9418D98BC1000FA41A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9EF04A9618D98BD1000FA41A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +213,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */,
+				9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */,
+				9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */,
 				9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */,
 				9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */,
 				9E9B640418C403E90048142D /* Security.framework in Frameworks */,
@@ -219,6 +233,7 @@
 				9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */,
 				9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */,
 				9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */,
+				9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +282,10 @@
 		9E25159518C2768900F542F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EAA647218DA7D0D006264FC /* FacebookSDK.framework */,
+				9E13E01618D98C3B00D2E906 /* AdSupport.framework */,
+				9EF04A9618D98BD1000FA41A /* MessageUI.framework */,
+				9EF04A9418D98BC1000FA41A /* AVFoundation.framework */,
 				9EF04A8718D984CE000FA41A /* PayPalMobile */,
 				9E9B640718C403F50048142D /* SystemConfiguration.framework */,
 				9E9B640518C403EF0048142D /* StoreKit.framework */,
@@ -289,6 +308,7 @@
 		9E25159C18C2768900F542F5 /* snailGram */ = {
 			isa = PBXGroup;
 			children = (
+				9EF04A9018D9893E000FA41A /* PayPal */,
 				9E9B641E18C4E5760048142D /* AWS */,
 				9E9B63E118C3B9630048142D /* Parse */,
 				9E2515E018C2A87D00F542F5 /* Core Data */,
@@ -477,6 +497,15 @@
 			path = PayPalMobile;
 			sourceTree = "<group>";
 		};
+		9EF04A9018D9893E000FA41A /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				9EF04A9118D98950000FA41A /* PayPalHelper.h */,
+				9EF04A9218D98950000FA41A /* PayPalHelper.m */,
+			);
+			name = PayPal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -603,6 +632,7 @@
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
+				9EF04A9318D98950000FA41A /* PayPalHelper.m in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
 				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 				9E25160718C2AC0000F542F5 /* Query.m in Sources */,
@@ -749,6 +779,7 @@
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
+					/Users/mitrenegade12/Desktop/Projects/snailGram,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -756,6 +787,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/PayPalMobile,
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -775,6 +810,7 @@
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
+					/Users/mitrenegade12/Desktop/Projects/snailGram,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -782,6 +818,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/PayPalMobile,
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ACFAF550-7B12-44D6-BE78-B50C5C1A15D1";
