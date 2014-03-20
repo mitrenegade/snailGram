@@ -17,5 +17,4 @@
 
 #define DebugLog(...) NSLog(__VA_ARGS__)
 #define AIRPLANE_MODE 0
-#define USE_PAYPAL 0
 #endif

@@ -12,6 +12,7 @@
 #import "UIAlertView+MKBlockAdditions.h"
 #import "PostCard+Parse.h"
 #import "PayPalHelper.h"
+#import "Payment+Parse.h"
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -183,21 +184,17 @@
 
 #pragma mark Payment
 -(void)goToPayment {
-#if USE_PAYPAL
     UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
     // Present the PayPalFuturePaymentViewController
     [self.navigationController presentViewController:controller animated:YES completion:nil];
-#else
-    [UIAlertView alertViewWithTitle:@"Upload completed" message:@"Thank you for trying out snailGram. Your postcard will be processed soon."];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-#endif
 }
 
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [UIAlertView alertViewWithTitle:@"PayPal completed" message:@"Thank you for paying with PayPal. Your postcard will be processed soon."];
+        [UIAlertView alertViewWithTitle:@"PayPal completed" message:@"Thank you for paying with PayPal. Your postcard is on its way."];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }
 
@@ -207,4 +204,5 @@
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
 }
+
 @end
