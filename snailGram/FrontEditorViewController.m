@@ -79,9 +79,8 @@
     if (edited) {
         [self saveScreenshot];
     }
-    else {
-        [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
-    }
+
+    [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
 }
 
 -(IBAction)didClickButtonText:(id)sender {
@@ -139,7 +138,7 @@
 }
 
 -(void)saveScreenshot {
-    alertView = [UIAlertView alertViewWithTitle:@"Uploading image..." message:nil];
+    //alertView = [UIAlertView alertViewWithTitle:@"Uploading image..." message:nil];
     // Create the screenshot
     float scale = 5;
 
@@ -171,7 +170,6 @@
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
-                [self performSegueWithIdentifier:@"PushBackEditor" sender:self];
                 edited = NO;
             }
             else {

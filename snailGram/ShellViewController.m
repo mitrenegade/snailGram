@@ -35,7 +35,6 @@
     // Do any additional setup after loading the view from its nib.
 
     [self.canvas.layer setBorderWidth:2];
-    [self.buttonReupload setHidden:YES];
     [self.imageView setClipsToBounds:YES];
 }
 
@@ -65,12 +64,6 @@
 
         [self presentViewController:library animated:YES completion:nil];
     }
-    else if (button == self.buttonReupload) {
-        if (!selectedImage)
-            [self.buttonReupload setHidden:YES];
-        else
-            [self didSelectPhoto:selectedImage meta:nil];
-    }
 }
 
 -(void)imageSaved {
@@ -93,15 +86,11 @@
 }
 
 -(void)didSelectPhoto:(UIImage *)photo meta:(NSDictionary *)meta {
-    alertView = [UIAlertView alertViewWithTitle:@"Generating postcard..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
+    //alertView = [UIAlertView alertViewWithTitle:@"Generating postcard..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
 
     selectedImage = photo;
-    [self.imageView setImage:photo];
-    [self.buttonReupload setHidden:YES];
-    [self.labelInstructions setHidden:YES];
-#if AIRPLANE_MODE
     [self imageSaved];
-#else
+
     if (!self.postCard.pfObject.objectId) {
         if (!self.postCard) {
             self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
@@ -115,21 +104,12 @@
         // if postCard doesn't exist on Parse yet, we don't have an image key
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             // new postcard must be saved to parse first so we can get a parse ID
-            if (success) {
-                [self imageSaved];
-            }
-            else {
-                [alertView dismissWithClickedButtonIndex:0 animated:YES];
+            if (!success) {
+                //[alertView dismissWithClickedButtonIndex:0 animated:YES];
                 [UIAlertView alertViewWithTitle:@"Upload failed" message:@"We could not create a new postcard. Please check your internet connection."];
-                [self.buttonReupload setHidden:NO];
             }
         }];
     }
-    else {
-        // if postCard already exists, start image upload
-        [self imageSaved];
-    }
-#endif
 }
 
 @end
