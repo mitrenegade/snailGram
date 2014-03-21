@@ -45,6 +45,19 @@
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editAddress)];
     [self.labelTo addGestureRecognizer:tap];
+
+    // done button
+    UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle = UIBarStyleBlack;
+    keyboardDoneButtonView.translucent = YES;
+    keyboardDoneButtonView.tintColor = [UIColor whiteColor];
+    [keyboardDoneButtonView sizeToFit];
+    [keyboardDoneButtonView setItems:@[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done")                                                                       style:UIBarButtonItemStyleBordered target:self action:@selector(closeKeyboardInput:)]]];
+    self.textViewMessage.inputAccessoryView = keyboardDoneButtonView;
+}
+
+-(void)closeKeyboardInput:(id)sender {
+    [self.textViewMessage resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,13 +159,6 @@
     if (textView != self.textViewMessage)
         return YES;
 
-    if ([text isEqualToString:@"\n"]) {
-        // Be sure to test for equality using the "isEqualToString" message
-        [textView resignFirstResponder];
-
-        // Return FALSE so that the final '\n' character doesn't get added
-        return NO;
-    }
     NSString *oldComments;
     oldComments = _currentPostCard.message;
     _currentPostCard.message = [textView.text stringByReplacingCharactersInRange:range withString:text];
