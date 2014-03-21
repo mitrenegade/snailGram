@@ -11,6 +11,7 @@
 #import "Address+Parse.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "PostCard+Parse.h"
+#import "PayPalHelper.h"
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -102,9 +103,7 @@
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
-                [UIAlertView alertViewWithTitle:@"Postcard saved" message:@"Thank you for creating a postcard. It has been saved and you will be able to view it through Parse soon." cancelButtonTitle:@"OK" otherButtonTitles:nil onDismiss:nil onCancel:^{
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                }];
+                [self goToPayment];
             }
             else {
                 [UIAlertView alertViewWithTitle:@"Could not save image" message:@"We couldn't save your image. Please try again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
@@ -180,5 +179,32 @@
     addressController.delegate = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addressController];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mark Payment
+-(void)goToPayment {
+#if USE_PAYPAL
+    UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
+    // Present the PayPalFuturePaymentViewController
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+#else
+    [UIAlertView alertViewWithTitle:@"Upload completed" message:@"Thank you for trying out snailGram. Your postcard will be processed soon."];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+#endif
+}
+
+#pragma mark PayPalHelperDelegate
+-(void)didFinishPayPalLogin {
+    NSLog(@"Paypal finished");
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [UIAlertView alertViewWithTitle:@"PayPal completed" message:@"Thank you for paying with PayPal. Your postcard will be processed soon."];
+    }];
+}
+
+-(void)didCancelPayPalLogin {
+    NSLog(@"Paypal cancelled");
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
+    }];
 }
 @end

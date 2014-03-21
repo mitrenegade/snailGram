@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AddressEditorViewController.h"
+#import "PayPalHelper.h"
 
-@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate>
+@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate, PayPalHelperDelegate>
 {
     UIAlertView *alertView;
 }
