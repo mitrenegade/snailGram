@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Address" representedClassName="Address" syncable="YES">
+    <entity name="Address" representedClassName="Address" parentEntity="ParseBase" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="parseID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="PostCard" representedClassName="PostCard" syncable="YES">
+    <entity name="ParseBase" representedClassName="ParseBase" isAbstract="YES" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="parseID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName="Payment" parentEntity="ParseBase" syncable="YES">
+        <attribute name="create_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="intent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paypal_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_card_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="postcard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostCard" inverseName="payments" inverseEntity="PostCard" syncable="YES"/>
+    </entity>
+    <entity name="PostCard" representedClassName="PostCard" parentEntity="ParseBase" syncable="YES">
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_url_back" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="parseID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="postcard" inverseEntity="Payment" syncable="YES"/>
         <relationship name="to" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" syncable="YES"/>
     </entity>
     <elements>
         <element name="Address" positionX="0" positionY="0" width="0" height="0"/>
         <element name="PostCard" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Payment" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ParseBase" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
