@@ -61,6 +61,8 @@
         [self.textViewMessage setHidden:YES];
     [self saveScreenshot];
     [self.textViewMessage setHidden:NO];
+
+    [self goToPayment];
 }
 
 -(IBAction)didClickFront:(id)sender {
@@ -75,7 +77,7 @@
 }
 
 -(void)saveScreenshot {
-    alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:nil];
+    //alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:nil];
 
     // Create the screenshot
     float scale = 5;
@@ -104,7 +106,7 @@
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
-                [self goToPayment];
+                NSLog(@"upload finished");
             }
             else {
                 [UIAlertView alertViewWithTitle:@"Could not save image" message:@"We couldn't save your image. Please try again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {

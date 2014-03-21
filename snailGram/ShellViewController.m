@@ -86,7 +86,7 @@
 }
 
 -(void)didSelectPhoto:(UIImage *)photo meta:(NSDictionary *)meta {
-    alertView = [UIAlertView alertViewWithTitle:@"Generating postcard..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
+    //alertView = [UIAlertView alertViewWithTitle:@"Generating postcard..." message:nil cancelButtonTitle:nil otherButtonTitles:nil onDismiss:nil onCancel:nil];
 
     selectedImage = photo;
     [self imageSaved];
@@ -105,7 +105,7 @@
         [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             // new postcard must be saved to parse first so we can get a parse ID
             if (!success) {
-                [alertView dismissWithClickedButtonIndex:0 animated:YES];
+                //[alertView dismissWithClickedButtonIndex:0 animated:YES];
                 [UIAlertView alertViewWithTitle:@"Upload failed" message:@"We could not create a new postcard. Please check your internet connection."];
             }
         }];
