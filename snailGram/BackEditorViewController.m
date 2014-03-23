@@ -119,6 +119,7 @@
     [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         // update postcard with the url
         _currentPostCard.image_url_back = [AWSHelper urlForPhotoWithKey:name];
+        _currentPostCard.back_loaded = @YES;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {

@@ -37,6 +37,8 @@
     self.text = self.pfObject[@"text"];
     self.message = self.pfObject[@"message"];
     self.parseID = self.pfObject.objectId;
+    self.front_loaded = self.pfObject[@"front_loaded"];
+    self.back_loaded = self.pfObject[@"back_loaded"];
 
     // todo: need to establish relationships
 }
@@ -53,7 +55,11 @@
         self.pfObject[@"text"] = self.text;
     if (self.message)
         self.pfObject[@"message"] = self.message;
-
+    if (self.front_loaded)
+        self.pfObject[@"front_loaded"] = self.front_loaded;
+    if (self.back_loaded)
+        self.pfObject[@"back_loaded"] = self.back_loaded;
+    
     // todo: need to establish relationships
 
     [self.pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
