@@ -89,23 +89,36 @@ static NSArray *states;
 
 #pragma mark TextFieldDelegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (textField == self.inputExistingRecipient) {
-        if ([existingAddresses count] == 0) {
-            [UIAlertView alertViewWithTitle:@"No saved addresses" message:@"There are no saved recipients. Please create a new address."];
-            return NO;
-        }
-    }
     return YES;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.inputExistingRecipient) {
-        [self pickerView:pickerViewAddress didSelectRow:0 inComponent:0];
+        if ([existingAddresses count] == 0) {
+            [UIAlertView alertViewWithTitle:@"No saved addresses" message:@"There are no saved recipients. Please create a new address."];
+            [textField resignFirstResponder];
+        }
+        else {
+            [self pickerView:pickerViewAddress didSelectRow:0 inComponent:0];
+        }
     }
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.inputName)
+        [self.inputStreet1 becomeFirstResponder];
+    if (textField == self.inputStreet1)
+        [self.inputStreet2 becomeFirstResponder];
+    if (textField == self.inputStreet2)
+        [self.inputCity becomeFirstResponder];
+    if (textField == self.inputCity)
+        [self.inputState becomeFirstResponder];
+    if (textField == self.inputState)
+        [self.inputZip becomeFirstResponder];
 }
 
 #pragma mark PickerViewDatasource
