@@ -19,7 +19,8 @@
 @dynamic text;
 @dynamic front_loaded;
 @dynamic back_loaded;
-@dynamic payments;
+@dynamic payment_id;
+@dynamic payment;
 @dynamic to;
 
 @end

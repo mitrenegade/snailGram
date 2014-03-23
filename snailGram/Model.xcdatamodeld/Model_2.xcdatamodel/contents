@@ -20,7 +20,7 @@
         <attribute name="paypal_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="post_card_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="postcard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostCard" inverseName="payments" inverseEntity="PostCard" syncable="YES"/>
+        <relationship name="postcard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostCard" inverseName="payment" inverseEntity="PostCard" syncable="YES"/>
     </entity>
     <entity name="PostCard" representedClassName="PostCard" parentEntity="ParseBase" syncable="YES">
         <attribute name="back_loaded" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -28,14 +28,15 @@
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_url_back" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="payment_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="postcard" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="postcard" inverseEntity="Payment" syncable="YES"/>
         <relationship name="to" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" syncable="YES"/>
     </entity>
     <elements>
         <element name="Address" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ParseBase" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Payment" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="PostCard" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="PostCard" positionX="0" positionY="0" width="128" height="178"/>
     </elements>
 </model>

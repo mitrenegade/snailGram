@@ -204,6 +204,10 @@
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
+    Payment *p = _currentPostCard.payment;
+    [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+        NSLog(@"Updated payment!");
+    }];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal completed" message:@"Thank you for paying with PayPal. Your postcard is on its way."];
         [self.navigationController popToRootViewControllerAnimated:YES];

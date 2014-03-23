@@ -9,6 +9,7 @@
 #import "PostCard+Parse.h"
 #import <Parse/Parse.h>
 #import <objc/runtime.h>
+#import "Payment+Parse.h"
 
 @implementation PostCard (Parse)
 
@@ -39,8 +40,9 @@
     self.parseID = self.pfObject.objectId;
     self.front_loaded = self.pfObject[@"front_loaded"];
     self.back_loaded = self.pfObject[@"back_loaded"];
+    self.payment_id = self.pfObject[@"payment_id"];
 
-    // todo: need to establish relationships
+    self.payment = self.pfObject[@"payment"];
 }
 
 -(void)saveOrUpdateToParseWithCompletion:(void (^)(BOOL))completion {
@@ -59,9 +61,13 @@
         self.pfObject[@"front_loaded"] = self.front_loaded;
     if (self.back_loaded)
         self.pfObject[@"back_loaded"] = self.back_loaded;
-    
-    // todo: need to establish relationships
+    if (self.payment_id)
+        self.pfObject[@"payment_id"] = self.payment_id;
 
+    // relationships
+    if (self.payment)
+        self.pfObject[@"payment"] = self.payment.pfObject;
+    
     [self.pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
             self.parseID = self.pfObject.objectId;

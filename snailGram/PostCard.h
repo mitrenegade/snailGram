@@ -20,15 +20,8 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSNumber * front_loaded;
 @property (nonatomic, retain) NSNumber * back_loaded;
-@property (nonatomic, retain) NSSet *payments;
+@property (nonatomic, retain) NSString * payment_id;
+@property (nonatomic, retain) Payment *payment;
 @property (nonatomic, retain) Address *to;
-@end
-
-@interface PostCard (CoreDataGeneratedAccessors)
-
-- (void)addPaymentsObject:(Payment *)value;
-- (void)removePaymentsObject:(Payment *)value;
-- (void)addPayments:(NSSet *)values;
-- (void)removePayments:(NSSet *)values;
 
 @end
