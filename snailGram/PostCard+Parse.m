@@ -7,8 +7,6 @@
 //
 
 #import "PostCard+Parse.h"
-#import <Parse/Parse.h>
-#import <objc/runtime.h>
 #import "Payment+Parse.h"
 
 @implementation PostCard (Parse)
@@ -33,6 +31,8 @@
 }
 
 -(void)updateFromParse {
+    [super updateFromParse];
+
     self.image_url = self.pfObject[@"image_url"];
     self.image_url_back = self.pfObject[@"image_url_back"];
     self.text = self.pfObject[@"text"];
@@ -63,7 +63,11 @@
         self.pfObject[@"back_loaded"] = self.back_loaded;
     if (self.payment_id)
         self.pfObject[@"payment_id"] = self.payment_id;
-
+    if (_currentUser) {
+        self.pfObject[@"user"] = _currentUser;
+        self.pfObject[@"pfUserID"] = _currentUser.objectId;
+    }
+    
     // relationships
     if (self.payment)
         self.pfObject[@"payment"] = self.payment.pfObject;
@@ -74,18 +78,6 @@
         if (completion)
             completion(succeeded);
     }];
-}
-
-#pragma mark Instance variable for category
-// http://oleb.net/blog/2011/05/faking-ivars-in-objc-categories-with-associative-references/
-// use associative reference in order to add a new instance variable in a category
-
--(PFObject *)pfObject {
-    return objc_getAssociatedObject(self, PFObjectTagKey);
-}
-
--(void)setPfObject:(PFObject *)pfObject {
-    objc_setAssociatedObject(self, PFObjectTagKey, pfObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

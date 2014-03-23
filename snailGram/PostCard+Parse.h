@@ -7,7 +7,7 @@
 //
 
 #import "PostCard.h"
-#import "PFObjectFactory.h"
+#import "ParseBase+Parse.h"
 
 @interface PostCard (Parse) <PFObjectFactory>
 

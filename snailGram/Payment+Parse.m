@@ -7,8 +7,6 @@
 //
 
 #import "Payment+Parse.h"
-#import <Parse/Parse.h>
-#import <objc/runtime.h>
 #import "PostCard+Parse.h"
 
 @implementation Payment (Parse)
@@ -33,6 +31,8 @@
 }
 
 -(void)updateFromParse {
+    [super updateFromParse];
+
     self.intent = self.pfObject[@"intent"];
     self.state = self.pfObject[@"state"];
     self.paypal_id = self.pfObject[@"paypal_id"];
@@ -57,7 +57,10 @@
         self.pfObject[@"create_time"] = self.create_time;
     if (self.post_card_id)
         self.pfObject[@"post_card_id"] = self.post_card_id;
-
+    if (_currentUser) {
+        self.pfObject[@"user"] = _currentUser;
+        self.pfObject[@"pfUserID"] = _currentUser.objectId;
+    }
     // relationships
     // do not save the postcard object relationship because Parse will get stuck in an infinite loop. only store the actual relationship on the main object, so postcard.pfObject should have a payment, but a payment should not point to the postcard on Parse
     //if (self.postcard)
@@ -70,18 +73,6 @@
         if (completion)
             completion(succeeded);
     }];
-}
-
-#pragma mark Instance variable for category
-// http://oleb.net/blog/2011/05/faking-ivars-in-objc-categories-with-associative-references/
-// use associative reference in order to add a new instance variable in a category
-
--(PFObject *)pfObject {
-    return objc_getAssociatedObject(self, PFObjectTagKey);
-}
-
--(void)setPfObject:(PFObject *)pfObject {
-    objc_setAssociatedObject(self, PFObjectTagKey, pfObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
