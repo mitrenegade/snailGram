@@ -9,6 +9,7 @@
 #import "Payment+Parse.h"
 #import <Parse/Parse.h>
 #import <objc/runtime.h>
+#import "PostCard+Parse.h"
 
 @implementation Payment (Parse)
 
@@ -38,7 +39,8 @@
     self.create_time = self.pfObject[@"create_time"];
     self.post_card_id = self.pfObject[@"post_card_id"];
 
-    // todo: need to establish relationships
+    // relationships
+    //self.postcard = self.pfObject[@"postcard"];
 }
 
 -(void)saveOrUpdateToParseWithCompletion:(void (^)(BOOL))completion {
@@ -56,7 +58,10 @@
     if (self.post_card_id)
         self.pfObject[@"post_card_id"] = self.post_card_id;
 
-    // todo: need to establish relationships
+    // relationships
+    // do not save the postcard object relationship because Parse will get stuck in an infinite loop. only store the actual relationship on the main object, so postcard.pfObject should have a payment, but a payment should not point to the postcard on Parse
+    //if (self.postcard)
+    //    self.pfObject[@"postcard"] = self.postcard.pfObject;
 
     // use save eventually to handle low internet conditions
     [self.pfObject saveEventually:^(BOOL succeeded, NSError *error) {

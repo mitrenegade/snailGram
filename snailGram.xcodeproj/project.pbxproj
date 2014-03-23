@@ -18,6 +18,8 @@
 		9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */; };
 		9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */; };
 		9E1FE03618DE646800C8A8EC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */; };
+		9E1FE04018DE72D200C8A8EC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FE03F18DE72D200C8A8EC /* Payment.m */; };
+		9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FE04618DE7AB800C8A8EC /* PostCard.m */; };
 		9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E22DFF018CFE17100F8B4A8 /* GPCamera.m */; };
 		9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */; };
 		9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */; };
@@ -77,9 +79,7 @@
 		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
 		9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAA647218DA7D0D006264FC /* FacebookSDK.framework */; };
 		9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA647818DACDD5006264FC /* Payment+Parse.m */; };
-		9EAA649D18DAD3D7006264FC /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649C18DAD3D7006264FC /* PostCard.m */; };
 		9EAA64A018DAD3D8006264FC /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649F18DAD3D8006264FC /* Address.m */; };
-		9EAA64A318DAD3D8006264FC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA64A218DAD3D8006264FC /* Payment.m */; };
 		9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA64A518DAD3D8006264FC /* ParseBase.m */; };
 		9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5899618DBF9460004A7B2 /* PayPalHelper.m */; };
 		9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A8818D984CE000FA41A /* libPayPalMobile.a */; };
@@ -110,6 +110,10 @@
 		9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		9E1FE03E18DE72D200C8A8EC /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
+		9E1FE03F18DE72D200C8A8EC /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
+		9E1FE04518DE7AB800C8A8EC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E1FE04618DE7AB800C8A8EC /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCamera.h; sourceTree = "<group>"; };
 		9E22DFF018CFE17100F8B4A8 /* GPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCamera.m; sourceTree = "<group>"; };
 		9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCameraDelegate.h; sourceTree = "<group>"; };
@@ -205,12 +209,8 @@
 		9EAA647218DA7D0D006264FC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9EAA647718DACDD5006264FC /* Payment+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Payment+Parse.h"; sourceTree = "<group>"; };
 		9EAA647818DACDD5006264FC /* Payment+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Payment+Parse.m"; sourceTree = "<group>"; };
-		9EAA649B18DAD3D7006264FC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9EAA649C18DAD3D7006264FC /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9EAA649E18DAD3D8006264FC /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		9EAA649F18DAD3D8006264FC /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		9EAA64A118DAD3D8006264FC /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
-		9EAA64A218DAD3D8006264FC /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		9EAA64A418DAD3D8006264FC /* ParseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBase.h; sourceTree = "<group>"; };
 		9EAA64A518DAD3D8006264FC /* ParseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBase.m; sourceTree = "<group>"; };
 		9EB5899518DBF9460004A7B2 /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
@@ -421,15 +421,15 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				9EAA649B18DAD3D7006264FC /* PostCard.h */,
-				9EAA64A118DAD3D8006264FC /* Payment.h */,
-				9EAA64A218DAD3D8006264FC /* Payment.m */,
 				9EAA64A418DAD3D8006264FC /* ParseBase.h */,
 				9EAA64A518DAD3D8006264FC /* ParseBase.m */,
 				9EAA649E18DAD3D8006264FC /* Address.h */,
 				9EAA649F18DAD3D8006264FC /* Address.m */,
-				9EAA649C18DAD3D7006264FC /* PostCard.m */,
+				9E1FE03E18DE72D200C8A8EC /* Payment.h */,
+				9E1FE03F18DE72D200C8A8EC /* Payment.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
+				9E1FE04518DE7AB800C8A8EC /* PostCard.h */,
+				9E1FE04618DE7AB800C8A8EC /* PostCard.m */,
 				9E9B645318C4E8CA0048142D /* PostCard+Parse.h */,
 				9E9B645418C4E8CA0048142D /* PostCard+Parse.m */,
 				9EAA647718DACDD5006264FC /* Payment+Parse.h */,
@@ -674,7 +674,6 @@
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
 				9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */,
 				9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */,
-				9EAA64A318DAD3D8006264FC /* Payment.m in Sources */,
 				9EAA64A018DAD3D8006264FC /* Address.m in Sources */,
 				9EF04A9318D98950000FA41A /* (null) in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
@@ -686,12 +685,13 @@
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
 				9E9B646E18C4F82C0048142D /* AsyncImageUploader.m in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
+				9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */,
+				9E1FE04018DE72D200C8A8EC /* Payment.m in Sources */,
 				9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */,
 				9E25160218C2AC0000F542F5 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				9E25160318C2AC0000F542F5 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */,
-				9EAA649D18DAD3D7006264FC /* PostCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

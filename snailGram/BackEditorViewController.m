@@ -119,6 +119,7 @@
     [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
         // update postcard with the url
         _currentPostCard.image_url_back = [AWSHelper urlForPhotoWithKey:name];
+        _currentPostCard.back_loaded = @YES;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
@@ -203,6 +204,10 @@
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
+    Payment *p = _currentPostCard.payment;
+    [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+        NSLog(@"Updated payment!");
+    }];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal completed" message:@"Thank you for paying with PayPal. Your postcard is on its way."];
         [self.navigationController popToRootViewControllerAnimated:YES];
