@@ -14,6 +14,10 @@
 		9E103E1918CE136A003E3021 /* snailGram100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1818CE136A003E3021 /* snailGram100.png */; };
 		9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1A18CE184B003E3021 /* bora-bora.jpg */; };
 		9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E13E01618D98C3B00D2E906 /* AdSupport.framework */; };
+		9E1FE03318DE646800C8A8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE02F18DE646800C8A8EC /* OpenSans-Bold.ttf */; };
+		9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */; };
+		9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */; };
+		9E1FE03618DE646800C8A8EC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */; };
 		9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E22DFF018CFE17100F8B4A8 /* GPCamera.m */; };
 		9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */; };
 		9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */; };
@@ -72,14 +76,14 @@
 		9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647918C4FC9C0048142D /* AWSRuntime.framework */; };
 		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
 		9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAA647218DA7D0D006264FC /* FacebookSDK.framework */; };
-		9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5899618DBF9460004A7B2 /* PayPalHelper.m */; };
 		9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA647818DACDD5006264FC /* Payment+Parse.m */; };
 		9EAA649D18DAD3D7006264FC /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649C18DAD3D7006264FC /* PostCard.m */; };
 		9EAA64A018DAD3D8006264FC /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649F18DAD3D8006264FC /* Address.m */; };
 		9EAA64A318DAD3D8006264FC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA64A218DAD3D8006264FC /* Payment.m */; };
 		9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA64A518DAD3D8006264FC /* ParseBase.m */; };
+		9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5899618DBF9460004A7B2 /* PayPalHelper.m */; };
 		9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A8818D984CE000FA41A /* libPayPalMobile.a */; };
-		9EF04A9318D98950000FA41A /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF04A9218D98950000FA41A /* PayPalHelper.m */; };
+		9EF04A9318D98950000FA41A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9418D98BC1000FA41A /* AVFoundation.framework */; };
 		9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9618D98BD1000FA41A /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -102,6 +106,10 @@
 		9E103E1818CE136A003E3021 /* snailGram100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snailGram100.png; sourceTree = "<group>"; };
 		9E103E1A18CE184B003E3021 /* bora-bora.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bora-bora.jpg"; sourceTree = "<group>"; };
 		9E13E01618D98C3B00D2E906 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		9E1FE02F18DE646800C8A8EC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCamera.h; sourceTree = "<group>"; };
 		9E22DFF018CFE17100F8B4A8 /* GPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCamera.m; sourceTree = "<group>"; };
 		9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCameraDelegate.h; sourceTree = "<group>"; };
@@ -195,8 +203,6 @@
 		9E9B647918C4FC9C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
 		9E9B647A18C4FC9C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
 		9EAA647218DA7D0D006264FC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		9EB5899518DBF9460004A7B2 /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
-		9EB5899618DBF9460004A7B2 /* PayPalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalHelper.m; sourceTree = "<group>"; };
 		9EAA647718DACDD5006264FC /* Payment+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Payment+Parse.h"; sourceTree = "<group>"; };
 		9EAA647818DACDD5006264FC /* Payment+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Payment+Parse.m"; sourceTree = "<group>"; };
 		9EAA649B18DAD3D7006264FC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 		9EAA64A218DAD3D8006264FC /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		9EAA64A418DAD3D8006264FC /* ParseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBase.h; sourceTree = "<group>"; };
 		9EAA64A518DAD3D8006264FC /* ParseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBase.m; sourceTree = "<group>"; };
+		9EB5899518DBF9460004A7B2 /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
+		9EB5899618DBF9460004A7B2 /* PayPalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalHelper.m; sourceTree = "<group>"; };
 		9EF04A8818D984CE000FA41A /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
 		9EF04A8918D984CE000FA41A /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
 		9EF04A8A18D984CE000FA41A /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
@@ -260,6 +268,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E1FE02E18DE646800C8A8EC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9E1FE02F18DE646800C8A8EC /* OpenSans-Bold.ttf */,
+				9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */,
+				9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */,
+				9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		9E22DFDE18CFE0A400F8B4A8 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +362,7 @@
 		9E25159D18C2768900F542F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E1FE02E18DE646800C8A8EC /* Fonts */,
 				9EF04A8F18D98625000FA41A /* ConstantsLocal.h */,
 				9E2515D018C2780F00F542F5 /* Images */,
 				9E25159E18C2768900F542F5 /* snailGram-Info.plist */,
@@ -604,14 +624,18 @@
 				9E103E1318CBDB4F003E3021 /* polaroid@2x.png in Resources */,
 				9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */,
 				9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */,
+				9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */,
 				9E103E1918CE136A003E3021 /* snailGram100.png in Resources */,
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,
+				9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */,
 				9E103E1218CBDB4F003E3021 /* polaroid.png in Resources */,
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
 				9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */,
+				9E1FE03318DE646800C8A8EC /* OpenSans-Bold.ttf in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
 				9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */,
 				9E103E1618CE0D07003E3021 /* camera.png in Resources */,
+				9E1FE03618DE646800C8A8EC /* OpenSans-Regular.ttf in Resources */,
 				9E2515AA18C2768900F542F5 /* Main.storyboard in Resources */,
 				9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */,
 			);
@@ -652,7 +676,7 @@
 				9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */,
 				9EAA64A318DAD3D8006264FC /* Payment.m in Sources */,
 				9EAA64A018DAD3D8006264FC /* Address.m in Sources */,
-				9EF04A9318D98950000FA41A /* PayPalHelper.m in Sources */,
+				9EF04A9318D98950000FA41A /* (null) in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
 				9E2515CE18C2772E00F542F5 /* ShellViewController.m in Sources */,
 				9E25160718C2AC0000F542F5 /* Query.m in Sources */,

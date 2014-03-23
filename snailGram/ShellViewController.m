@@ -36,6 +36,8 @@
 
     [self.canvas.layer setBorderWidth:2];
     [self.imageView setClipsToBounds:YES];
+
+    [self.labelInstructions setFont:FONT_ITALIC(17)];
 }
 
 - (void)didReceiveMemoryWarning

@@ -58,6 +58,8 @@
     [self.textCanvas setHidden:YES];
     [self.labelHintText setAlpha:0];
     [self.labelHintDrag setAlpha:0];
+    [self.labelHintText setFont:FONT_ITALIC(12)];
+    [self.labelHintDrag setFont:FONT_ITALIC(12)];
 
     [self.viewBounds setClipsToBounds:YES];
 
@@ -112,18 +114,22 @@
     if (textColorState == LightTextDarkBG) {
         self.textBG.backgroundColor = [UIColor blackColor];
         self.textViewMessage.textColor = [UIColor whiteColor];
+        [self.textViewMessage setFont:FONT_REGULAR(15)];
     }
     else if (textColorState == DarkTextLightBG) {
         self.textBG.backgroundColor = [UIColor whiteColor];
         self.textViewMessage.textColor = [UIColor blackColor];
+        [self.textViewMessage setFont:FONT_REGULAR(15)];
     }
     else if (textColorState == LightText) {
         self.textBG.backgroundColor = [UIColor clearColor];
         self.textViewMessage.textColor = [UIColor whiteColor];
+        [self.textViewMessage setFont:FONT_BOLD(15)];
     }
     else if (textColorState == DarkText) {
         self.textBG.backgroundColor = [UIColor clearColor];
         self.textViewMessage.textColor = [UIColor blackColor];
+        [self.textViewMessage setFont:FONT_BOLD(15)];
     }
 }
 
