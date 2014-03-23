@@ -54,6 +54,9 @@
     [keyboardDoneButtonView sizeToFit];
     [keyboardDoneButtonView setItems:@[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done")                                                                       style:UIBarButtonItemStyleBordered target:self action:@selector(closeKeyboardInput:)]]];
     self.textViewMessage.inputAccessoryView = keyboardDoneButtonView;
+
+    [self.textViewMessage setFont:FONT_REGULAR(14)];
+    [self.labelTo setFont:FONT_REGULAR(14)];
 }
 
 -(void)closeKeyboardInput:(id)sender {
