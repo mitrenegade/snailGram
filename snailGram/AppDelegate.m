@@ -56,9 +56,19 @@
 }
 
 -(PostCard *)postCard {
-    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    ShellViewController *shellViewController = (ShellViewController *)[[nav viewControllers] objectAtIndex:0];
-    return [shellViewController postCard];
+    if (!postCard)
+        [self resetPostcard];
+    return postCard;
+}
+
+-(void)resetPostcard {
+    postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+
+    postCard.message = @"";
+    postCard.to = nil;
+    postCard.text = @"";
+    postCard.image_url = @"";
+    postCard.image_url_back = @"";
 }
 
 #pragma mark CoreData

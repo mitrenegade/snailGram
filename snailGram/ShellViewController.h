@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UILabel *labelInstructions;
-@property (nonatomic, strong) PostCard *postCard;
 - (IBAction)didClickButton:(id)sender;
 
 @end
