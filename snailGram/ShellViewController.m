@@ -93,18 +93,13 @@
     selectedImage = photo;
     [self imageSaved];
 
-    if (!self.postCard.pfObject.objectId) {
-        if (!self.postCard) {
-            self.postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+    if (!_currentPostCard.pfObject.objectId) {
+        if (!_currentPostCard) {
+            [_appDelegate resetPostcard];
         }
-        self.postCard.message = @"";
-        self.postCard.to = nil;
-        self.postCard.text = @"";
-        self.postCard.image_url = @"";
-        self.postCard.image_url_back = @"";
 
         // if postCard doesn't exist on Parse yet, we don't have an image key
-        [self.postCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+        [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             // new postcard must be saved to parse first so we can get a parse ID
             if (!success) {
                 //[alertView dismissWithClickedButtonIndex:0 animated:YES];

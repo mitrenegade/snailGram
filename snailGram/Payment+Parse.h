@@ -7,7 +7,7 @@
 //
 
 #import "Payment.h"
-#import "PFObjectFactory.h"
+#import "ParseBase+Parse.h"
 
 @interface Payment (Parse) <PFObjectFactory>
 

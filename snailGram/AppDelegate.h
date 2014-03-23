@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "ShellViewController.h"
 
+@class PFUser;
+@class PostCard;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    PostCard *postCard;
+}
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
--(PostCard *)postCard;
+@property (nonatomic, strong) PostCard *postCard;
+
+-(void)resetPostcard;
+-(PFUser *)currentUser;
 @end

@@ -7,8 +7,6 @@
 //
 
 #import "Address+Parse.h"
-#import <Parse/Parse.h>
-#import <objc/runtime.h>
 
 @implementation Address (Parse)
 
@@ -32,6 +30,8 @@
 }
 
 -(void)updateFromParse {
+    [super updateFromParse];
+
     self.name = self.pfObject[@"name"];
     self.street = self.pfObject[@"street"];
     self.street2 = self.pfObject[@"street2"];
@@ -39,18 +39,32 @@
     self.state = self.pfObject[@"state"];
     self.zip = self.pfObject[@"zip"];
     self.parseID = self.pfObject.objectId;
+
+    // user will be already included in self.pfObject[@"user"]
 }
 
 -(void)saveOrUpdateToParseWithCompletion:(void (^)(BOOL))completion {
     if (!self.pfObject)
         self.pfObject = [PFObject objectWithClassName:self.className];
 
-    self.pfObject[@"name"] = self.name;
-    self.pfObject[@"street"] = self.street;
-    self.pfObject[@"street2"] = self.street2;
-    self.pfObject[@"city"] = self.city;
-    self.pfObject[@"state"] = self.state;
-    self.pfObject[@"zip"] = self.zip;
+    if (self.name)
+        self.pfObject[@"name"] = self.name;
+    if (self.street)
+        self.pfObject[@"street"] = self.street;
+    if (self.street2)
+        self.pfObject[@"street2"] = self.street2;
+    if (self.city)
+        self.pfObject[@"city"] = self.city;
+    if (self.state)
+        self.pfObject[@"state"] = self.state;
+    if (self.zip)
+        self.pfObject[@"zip"] = self.zip;
+
+    // add user to pfObject
+    if (_currentUser) {
+        self.pfObject[@"user"] = _currentUser;
+        self.pfObject[@"pfUserID"] = _currentUser.objectId;
+    }
 
     [self.pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
@@ -60,15 +74,4 @@
     }];
 }
 
-#pragma mark Instance variable for category
-// http://oleb.net/blog/2011/05/faking-ivars-in-objc-categories-with-associative-references/
-// use associative reference in order to add a new instance variable in a category
-
--(PFObject *)pfObject {
-    return objc_getAssociatedObject(self, PFObjectTagKey);
-}
-
--(void)setPfObject:(PFObject *)pfObject {
-    objc_setAssociatedObject(self, PFObjectTagKey, pfObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
 @end

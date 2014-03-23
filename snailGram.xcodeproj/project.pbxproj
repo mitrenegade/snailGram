@@ -80,8 +80,9 @@
 		9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAA647218DA7D0D006264FC /* FacebookSDK.framework */; };
 		9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA647818DACDD5006264FC /* Payment+Parse.m */; };
 		9EAA64A018DAD3D8006264FC /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649F18DAD3D8006264FC /* Address.m */; };
-		9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA64A518DAD3D8006264FC /* ParseBase.m */; };
 		9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5899618DBF9460004A7B2 /* PayPalHelper.m */; };
+		9ED6F7DB18DE8DDA00C13770 /* ParseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */; };
+		9ED6F7DF18DE8E6600C13770 /* ParseBase+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6F7DE18DE8E6600C13770 /* ParseBase+Parse.m */; };
 		9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A8818D984CE000FA41A /* libPayPalMobile.a */; };
 		9EF04A9318D98950000FA41A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9418D98BC1000FA41A /* AVFoundation.framework */; };
@@ -211,10 +212,12 @@
 		9EAA647818DACDD5006264FC /* Payment+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Payment+Parse.m"; sourceTree = "<group>"; };
 		9EAA649E18DAD3D8006264FC /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		9EAA649F18DAD3D8006264FC /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		9EAA64A418DAD3D8006264FC /* ParseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBase.h; sourceTree = "<group>"; };
-		9EAA64A518DAD3D8006264FC /* ParseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBase.m; sourceTree = "<group>"; };
 		9EB5899518DBF9460004A7B2 /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
 		9EB5899618DBF9460004A7B2 /* PayPalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalHelper.m; sourceTree = "<group>"; };
+		9ED6F7D918DE8DDA00C13770 /* ParseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBase.h; sourceTree = "<group>"; };
+		9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBase.m; sourceTree = "<group>"; };
+		9ED6F7DD18DE8E6600C13770 /* ParseBase+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseBase+Parse.h"; sourceTree = "<group>"; };
+		9ED6F7DE18DE8E6600C13770 /* ParseBase+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParseBase+Parse.m"; sourceTree = "<group>"; };
 		9EF04A8818D984CE000FA41A /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
 		9EF04A8918D984CE000FA41A /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
 		9EF04A8A18D984CE000FA41A /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
@@ -421,13 +424,15 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				9EAA64A418DAD3D8006264FC /* ParseBase.h */,
-				9EAA64A518DAD3D8006264FC /* ParseBase.m */,
 				9EAA649E18DAD3D8006264FC /* Address.h */,
 				9EAA649F18DAD3D8006264FC /* Address.m */,
 				9E1FE03E18DE72D200C8A8EC /* Payment.h */,
 				9E1FE03F18DE72D200C8A8EC /* Payment.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
+				9ED6F7D918DE8DDA00C13770 /* ParseBase.h */,
+				9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */,
+				9ED6F7DD18DE8E6600C13770 /* ParseBase+Parse.h */,
+				9ED6F7DE18DE8E6600C13770 /* ParseBase+Parse.m */,
 				9E1FE04518DE7AB800C8A8EC /* PostCard.h */,
 				9E1FE04618DE7AB800C8A8EC /* PostCard.m */,
 				9E9B645318C4E8CA0048142D /* PostCard+Parse.h */,
@@ -673,7 +678,7 @@
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
 				9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */,
-				9EAA64A618DAD3D8006264FC /* ParseBase.m in Sources */,
+				9ED6F7DF18DE8E6600C13770 /* ParseBase+Parse.m in Sources */,
 				9EAA64A018DAD3D8006264FC /* Address.m in Sources */,
 				9EF04A9318D98950000FA41A /* (null) in Sources */,
 				9E2515A318C2768900F542F5 /* main.m in Sources */,
@@ -685,6 +690,7 @@
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
 				9E9B646E18C4F82C0048142D /* AsyncImageUploader.m in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
+				9ED6F7DB18DE8DDA00C13770 /* ParseBase.m in Sources */,
 				9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */,
 				9E1FE04018DE72D200C8A8EC /* Payment.m in Sources */,
 				9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */,

@@ -23,6 +23,8 @@
                   clientKey:@"MyRaB1A2neqSRCGVq71qamBAsdtRS9PMjS2YuYs3"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+    [self setupUserForCurrentDevice];
+
     return YES;
 }
 							
@@ -54,9 +56,19 @@
 }
 
 -(PostCard *)postCard {
-    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    ShellViewController *shellViewController = (ShellViewController *)[[nav viewControllers] objectAtIndex:0];
-    return [shellViewController postCard];
+    if (!postCard)
+        [self resetPostcard];
+    return postCard;
+}
+
+-(void)resetPostcard {
+    postCard = (PostCard *)[PostCard createEntityInContext:_appDelegate.managedObjectContext];
+
+    postCard.message = @"";
+    postCard.to = nil;
+    postCard.text = @"";
+    postCard.image_url = @"";
+    postCard.image_url_back = @"";
 }
 
 #pragma mark CoreData
@@ -106,4 +118,48 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+#pragma mark parse user
+-(void)setupUserForCurrentDevice {
+    // set up user
+    //[UIPasteboard removePasteboardWithName:PASTEBOARD_NAME];
+    UIPasteboard *appPasteBoard = [UIPasteboard pasteboardWithName:PASTEBOARD_NAME create:YES];
+    appPasteBoard.persistent = YES;
+
+    NSData* userData = [appPasteBoard valueForPasteboardType:PASTEBOARD_KEY_USERID];
+    if (userData) {
+        NSString *userID = [NSString stringWithUTF8String:[userData bytes]];
+        NSLog(@"UserID Saved: %@", userID);
+
+        [PFUser logInWithUsernameInBackground:userID password:userID block:^(PFUser *user, NSError *error) {
+            if (error) {
+                NSLog(@"Error: %@", error);
+            }
+            else {
+                NSLog(@"Current user: %@", _currentUser);
+            }
+        }];
+    }
+    else {
+        // generate an anonmymous user and store the id in the pasteboard
+        [PFUser enableAutomaticUser];
+        PFUser *user = _currentUser;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"User saved: %@", user.objectId);
+                NSData *data = [user.objectId dataUsingEncoding:NSUTF8StringEncoding];
+                [appPasteBoard setData:data forPasteboardType:PASTEBOARD_KEY_USERID];
+
+                [user setUsername:user.objectId];
+                [user setPassword:user.objectId];
+                [user saveEventually];
+            }
+            else {
+                NSLog(@"Error saving anonymous user: %@", error);
+            }
+        }];
+    }
+}
+-(PFUser *)currentUser {
+    return [PFUser currentUser];
+}
 @end
