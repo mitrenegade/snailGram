@@ -234,7 +234,7 @@
 
     NSMutableDictionary *cachedMeta = [meta mutableCopy];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[ALAssetsLibrary sharedALAssetsLibrary] saveImage:image meta:cachedMeta toAlbum:@"Pact" withCompletionBlock:^(NSError *error) {
+        [[ALAssetsLibrary sharedALAssetsLibrary] saveImage:image meta:cachedMeta toAlbum:@"snailGram" withCompletionBlock:^(NSError *error) {
             if (error!=nil) {
                 DebugLog(@"Image could not be saved!");
             }

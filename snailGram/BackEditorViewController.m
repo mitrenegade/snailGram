@@ -208,7 +208,7 @@
         NSLog(@"Updated payment!");
     }];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Thank you for paying with PayPal. Your postcard is now being processed and will be on its way soon."];
+        [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
         [_appDelegate resetPostcard];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
