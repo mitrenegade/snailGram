@@ -200,6 +200,10 @@ static NSArray *states;
         [UIAlertView alertViewWithTitle:@"Please enter a zip code" message:nil];
         return;
     }
+    if ([self.inputZip.text length] != 5) {
+        [UIAlertView alertViewWithTitle:@"Please enter a 5 digit zip code" message:nil];
+        return;
+    }
 
     if (!self.address)
         self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
