@@ -69,6 +69,7 @@
     [self.buttonTextColor setHidden:YES];
     textColorState = LightTextDarkBG;
     [self updateTextColors];
+    [self.textCanvas setClipsToBounds:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -216,7 +217,21 @@
     }
 
     edited = YES;
+
     return YES;
+}
+
+-(void)textViewDidChange:(UITextView *)textView {
+    CGPoint center = self.textCanvas.center;
+    CGSize size = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(self.canvas.frame.size.width - 2*IMAGE_BORDER, 35)];
+    CGRect frame = self.textCanvas.frame;
+    frame.size.width = MIN(self.canvas.frame.size.width - 2*IMAGE_BORDER, size.width+2*IMAGE_BORDER);
+    self.textCanvas.frame = frame;
+    self.textCanvas.center = center;
+    if (self.textCanvas.frame.origin.x < IMAGE_BORDER)
+        self.textCanvas.frame = CGRectMake(IMAGE_BORDER, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);
+    if (self.textCanvas.frame.origin.x + self.textCanvas.frame.size.width >= self.canvas.frame.size.width - IMAGE_BORDER)
+        self.textCanvas.frame = CGRectMake(310 - self.textCanvas.frame.size.width, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);;
 }
 
 #pragma mark Gesture recognizers
@@ -249,14 +264,22 @@
             if (dragging) {
                 // update frame of viewDragging
                 if (viewDragging == self.textCanvas) {
-                    // only change Y position
+                    // change both x and y position
                     CGPoint point = [gesture locationInView:self.canvas];
+                    int dx = point.x - initialTouch.x;
                     int dy = point.y - initialTouch.y;
                     CGRect frame = initialFrame;
+                    frame.origin.x += dx;
                     frame.origin.y += dy;
-                    if (frame.origin.y >= IMAGE_BORDER && frame.origin.y <= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER) {
-                        viewDragging.frame = frame;
-                    }
+                    if (frame.origin.x <= IMAGE_BORDER)
+                        frame.origin.x = IMAGE_BORDER;
+                    if (frame.origin.x >= self.canvas.frame.size.width - self.textCanvas.frame.size.width - IMAGE_BORDER)
+                        frame.origin.x = self.canvas.frame.size.width - self.textCanvas.frame.size.width - IMAGE_BORDER;
+                    if (frame.origin.y <= IMAGE_BORDER)
+                        frame.origin.y = IMAGE_BORDER;
+                    if (frame.origin.y >= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER)
+                        frame.origin.y = self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER;
+                    viewDragging.frame = frame;
                 }
                 else if (viewDragging == self.imageView) {
                     CGPoint point = [gesture locationInView:self.viewBounds];
