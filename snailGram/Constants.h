@@ -14,7 +14,7 @@
 #define _currentUser [_appDelegate currentUser]
 
 #define MESSAGE_PLACEHOLDER_TEXT @"Please enter a message"
-#define MESSAGE_LENGTH_LIMIT 500
+#define MESSAGE_LENGTH_LIMIT 40
 
 #define DebugLog(...) NSLog(__VA_ARGS__)
 #define AIRPLANE_MODE 0

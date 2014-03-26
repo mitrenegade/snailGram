@@ -8,6 +8,8 @@
 
 #import "AddressEditorViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import <AddressBook/AddressBook.h>
+#import "Address+Info.h"
 
 @interface AddressEditorViewController ()
 
@@ -76,7 +78,12 @@ static NSArray *states;
     }
 
     // load existing addresses
-    existingAddresses = [[[[Address where:@{}] not:@{@"name":@""}] descending:@"name"] all];
+    if ([existingAddresses count] == 0) {
+        ABAuthorizationStatus authStatus =  ABAddressBookGetAuthorizationStatus ();
+        if (authStatus == kABAuthorizationStatusAuthorized){
+            [self loadContacts:NO];
+        }
+    }
 
     [self.buttonExistingRecipient setEnabled:NO];
 }
@@ -94,6 +101,15 @@ static NSArray *states;
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.inputExistingRecipient) {
+        if (requestedContacts) {
+            existingAddresses = [[[[Address where:@{}] not:@{@"name":@""}] ascending:@"name"] all];
+        }
+        else {
+            [self requestContactsPermission];
+            [textField resignFirstResponder];
+            return;
+        }
+
         if ([existingAddresses count] == 0) {
             [UIAlertView alertViewWithTitle:@"No saved addresses" message:@"There are no saved recipients. Please create a new address."];
             [textField resignFirstResponder];
@@ -200,15 +216,26 @@ static NSArray *states;
         [UIAlertView alertViewWithTitle:@"Please enter a zip code" message:nil];
         return;
     }
+    if ([self.inputZip.text length] != 5) {
+        [UIAlertView alertViewWithTitle:@"Please enter a 5 digit zip code" message:nil];
+        return;
+    }
 
-    if (!self.address)
-        self.address = (Address *)[Address createEntityInContext:_appDelegate.managedObjectContext];
-    self.address.name = self.inputName.text;
-    self.address.street = self.inputStreet1.text;
-    self.address.street2 = self.inputStreet2.text;
-    self.address.city = self.inputCity.text;
-    self.address.state = self.inputState.text;
-    self.address.zip = self.inputZip.text;
+    if (!self.address) {
+        Address *newAddress = [Address createInContext:_appDelegate.managedObjectContext withName:self.inputName.text street:self.inputStreet1.text street2:self.inputStreet2.text city:self.inputCity.text state:self.inputState.text zip:self.inputZip.text];
+        self.address = newAddress;
+    }
+    else {
+        self.address.name = self.inputName.text;
+        self.address.street = self.inputStreet1.text;
+        self.address.street2 = self.inputStreet2.text;
+        self.address.city = self.inputCity.text;
+        self.address.state = self.inputState.text;
+        self.address.zip = self.inputZip.text;
+
+        NSError *error;
+        [_appDelegate.managedObjectContext save:&error];
+    }
 
     [self.delegate didSaveAddress:self.address];
 }
@@ -224,4 +251,110 @@ static NSArray *states;
 -(void)cancel {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark Contact list
+-(void)requestContactsPermission {
+    ABAuthorizationStatus authStatus =  ABAddressBookGetAuthorizationStatus ();
+    if (authStatus == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRef addressBook = ABAddressBookCreate( );
+        ABAddressBookRequestAccessWithCompletion(addressBook , ^(bool granted, CFErrorRef error){
+            if (granted){
+                alert = [UIAlertView alertViewWithTitle:@"Loading contacts" message:@"Please be patient"];
+                [self loadContacts:YES];
+            }
+            else {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [UIAlertView alertViewWithTitle:@"Contact access denied" message:@"snailGram will not be able to access your contacts list. You can still manually add addresses. To change this, please go to Settings->Privacy->Contacts to enable access." cancelButtonTitle:@"Close" otherButtonTitles:nil onDismiss:nil onCancel:^{
+                    }];
+                });
+            }
+        });
+    }
+    else if (authStatus == kABAuthorizationStatusAuthorized){
+        [self loadContacts:YES];
+    }
+    else {
+        // already denied, cannot request it
+        // don't do anything
+    }
+}
+
+-(void)loadContacts:(BOOL)shouldDisplayContacts {
+    isLoadingContacts = YES;
+
+    // address book functionality is done on an async queue to prevent UI locking
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        ABAddressBookRef addressBook = ABAddressBookCreate();
+        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
+
+        NSArray * peopleArray = [(__bridge NSArray*) allPeople mutableCopy];
+
+        CFRelease(allPeople);
+
+        NSMutableArray *allContacts = [NSMutableArray array
+                                       ];
+
+        for (id person in peopleArray){
+            // Get the address properties.
+            NSString *street, *city, *state, *zip;
+            BOOL hasAddress = NO;
+            ABMultiValueRef addresses = ABRecordCopyValue((__bridge ABRecordRef)(person), kABPersonAddressProperty);
+            for (CFIndex j = 0; j<ABMultiValueGetCount(addresses);j++){
+                CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, j);
+                street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
+                city = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCityKey) copy];
+                state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
+                zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
+
+                if (street && city && state) {
+                    NSLog(@"Found address: %@", dict);
+                    hasAddress = YES;
+                    CFRelease(dict);
+                    break;
+                }
+                CFRelease(dict);
+            }
+            CFRelease(addresses);
+
+            if (!hasAddress)
+                continue;
+
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:(NSString*)CFBridgingRelease(ABRecordCopyValue((__bridge ABRecordRef)person, kABPersonFirstNameProperty)), @"firstName", (NSString*)CFBridgingRelease(ABRecordCopyValue((__bridge ABRecordRef)person, kABPersonLastNameProperty)), @"lastName", nil];
+
+            dict[@"name"] = [NSString stringWithFormat:@"%@ %@", (dict[@"firstName"]?dict[@"firstName"]:@""), (dict[@"lastName"]?dict[@"lastName"]:@"")];
+
+            if (street)
+                dict[@"street"] = street;
+            if (city)
+                dict[@"city"] = city;
+            if (state)
+                dict[@"state"] = state;
+            if (zip)
+                dict[@"zip"] = zip;
+
+            [allContacts addObject:dict];
+        }
+        CFRelease(addressBook);
+
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            // create addresses
+            for (NSDictionary *dict in allContacts) {
+                NSArray *oldAddresses = [[Address where:@{@"name": dict[@"name"]}] all];
+                if ([oldAddresses count] == 0) {
+                    Address *newAddress = [Address createWithInfo:dict inContext:_appDelegate.managedObjectContext];
+                }
+            }
+
+            // create models
+            [alert dismissWithClickedButtonIndex:0 animated:NO];
+            isLoadingContacts = NO;
+            requestedContacts = YES;
+
+            if (shouldDisplayContacts)
+                [self.inputExistingRecipient becomeFirstResponder];
+        });
+    });
+}
+
 @end

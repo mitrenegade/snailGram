@@ -166,7 +166,14 @@
     NSString *oldComments;
     oldComments = _currentPostCard.message;
     _currentPostCard.message = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    if ([_currentPostCard.message length] > MESSAGE_LENGTH_LIMIT) {
+
+    // pretend there's more vertical space to get that extra line to check on
+    CGSize tallerSize = CGSizeMake(textView.frame.size.width-15, textView.frame.size.height*2);
+
+    CGSize newSize = [_currentPostCard.message sizeWithFont:textView.font constrainedToSize:tallerSize lineBreakMode:NSLineBreakByWordWrapping];
+
+    if (newSize.height > textView.frame.size.height - 20)
+    {
         _currentPostCard.message = oldComments;
         textView.text = oldComments;
         return NO;
@@ -208,7 +215,7 @@
         NSLog(@"Updated payment!");
     }];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Thank you for paying with PayPal. Your postcard is now being processed and will be on its way soon."];
+        [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
         [_appDelegate resetPostcard];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];

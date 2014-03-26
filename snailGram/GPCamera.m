@@ -174,7 +174,7 @@
         DebugLog(@"Need authorization for camera roll");
         [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"camera:albumAccess:requested"];
         // request by loading a default asset
-        [UIAlertView alertViewWithTitle:@"Access to album" message:@"Allow Pact to save and load photos from your camera roll?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
+        [UIAlertView alertViewWithTitle:@"Access to album" message:@"Allow snailGram to save and load photos from your camera roll?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] onDismiss:^(int buttonIndex) {
             //ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
             //[lib assetForURL:[NSURL URLWithString:@"assets-library://asset/asset.JPG?id=test&ext=JPG"] resultBlock:nil failureBlock:nil];
             [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"camera:saveToAlbum"];
@@ -223,7 +223,7 @@
     if (![self canSaveToAlbum])
         return NO;
     if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied) {
-        [UIAlertView alertViewWithTitle:@"Cannot save to album" message:@"Pact could not access your camera roll. Please go to your phone Settings->Privacy to change this." cancelButtonTitle:@"Skip" otherButtonTitles:@[@"Never save"] onDismiss:^(int buttonIndex) {
+        [UIAlertView alertViewWithTitle:@"Cannot save to album" message:@"snailGram could not access your camera roll. Please go to your phone Settings->Privacy to change this." cancelButtonTitle:@"Skip" otherButtonTitles:@[@"Never save"] onDismiss:^(int buttonIndex) {
             if (buttonIndex == 0) {
                 [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"camera:albumAccess:requested"];
                 [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"camera:saveToAlbum"];
@@ -234,7 +234,7 @@
 
     NSMutableDictionary *cachedMeta = [meta mutableCopy];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[ALAssetsLibrary sharedALAssetsLibrary] saveImage:image meta:cachedMeta toAlbum:@"Pact" withCompletionBlock:^(NSError *error) {
+        [[ALAssetsLibrary sharedALAssetsLibrary] saveImage:image meta:cachedMeta toAlbum:@"snailGram" withCompletionBlock:^(NSError *error) {
             if (error!=nil) {
                 DebugLog(@"Image could not be saved!");
             }

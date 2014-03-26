@@ -11,4 +11,8 @@
 @interface Address (Info)
 -(NSString *)toString;
 
+
++(Address *)createWithInfo:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context;
++(Address *)createInContext:(NSManagedObjectContext *)context withName:(NSString *)name street:(NSString *)street street2:(NSString *)street2 city:(NSString *)city state:(NSString *)state zip:(NSString *)zip;
+
 @end

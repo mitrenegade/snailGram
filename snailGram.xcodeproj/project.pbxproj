@@ -81,6 +81,7 @@
 		9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA647818DACDD5006264FC /* Payment+Parse.m */; };
 		9EAA64A018DAD3D8006264FC /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649F18DAD3D8006264FC /* Address.m */; };
 		9EB5899718DBF9460004A7B2 /* PayPalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5899618DBF9460004A7B2 /* PayPalHelper.m */; };
+		9EC9330D18E11FEA0035200B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC9330C18E11FEA0035200B /* Accounts.framework */; };
 		9ED6F7DB18DE8DDA00C13770 /* ParseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */; };
 		9ED6F7DF18DE8E6600C13770 /* ParseBase+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6F7DE18DE8E6600C13770 /* ParseBase+Parse.m */; };
 		9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A8818D984CE000FA41A /* libPayPalMobile.a */; };
@@ -214,6 +215,7 @@
 		9EAA649F18DAD3D8006264FC /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		9EB5899518DBF9460004A7B2 /* PayPalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalHelper.h; sourceTree = "<group>"; };
 		9EB5899618DBF9460004A7B2 /* PayPalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalHelper.m; sourceTree = "<group>"; };
+		9EC9330C18E11FEA0035200B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9ED6F7D918DE8DDA00C13770 /* ParseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBase.h; sourceTree = "<group>"; };
 		9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBase.m; sourceTree = "<group>"; };
 		9ED6F7DD18DE8E6600C13770 /* ParseBase+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseBase+Parse.h"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC9330D18E11FEA0035200B /* Accounts.framework in Frameworks */,
 				9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */,
 				9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */,
 				9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */,
@@ -314,6 +317,7 @@
 		9E25159518C2768900F542F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EC9330C18E11FEA0035200B /* Accounts.framework */,
 				9EAA647218DA7D0D006264FC /* FacebookSDK.framework */,
 				9E13E01618D98C3B00D2E906 /* AdSupport.framework */,
 				9EF04A9618D98BD1000FA41A /* MessageUI.framework */,
@@ -822,10 +826,14 @@
 		9E2515C618C2768900F542F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
@@ -844,6 +852,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -853,7 +862,10 @@
 		9E2515C718C2768900F542F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bobby Ren (H799H8B8DD)";
@@ -876,7 +888,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ACFAF550-7B12-44D6-BE78-B50C5C1A15D1";
+				PROVISIONING_PROFILE = "4CF4836F-D9DE-41B8-B756-23FB182F1B22";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
