@@ -166,7 +166,14 @@
     NSString *oldComments;
     oldComments = _currentPostCard.message;
     _currentPostCard.message = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    if ([_currentPostCard.message length] > MESSAGE_LENGTH_LIMIT) {
+
+    // pretend there's more vertical space to get that extra line to check on
+    CGSize tallerSize = CGSizeMake(textView.frame.size.width-15, textView.frame.size.height*2);
+
+    CGSize newSize = [_currentPostCard.message sizeWithFont:textView.font constrainedToSize:tallerSize lineBreakMode:NSLineBreakByWordWrapping];
+
+    if (newSize.height > textView.frame.size.height - 20)
+    {
         _currentPostCard.message = oldComments;
         textView.text = oldComments;
         return NO;
