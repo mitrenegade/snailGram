@@ -81,7 +81,7 @@ static NSArray *states;
     if ([existingAddresses count] == 0) {
         ABAuthorizationStatus authStatus =  ABAddressBookGetAuthorizationStatus ();
         if (authStatus == kABAuthorizationStatusAuthorized){
-            [self loadContacts];
+            [self loadContacts:NO];
         }
     }
 
@@ -102,7 +102,7 @@ static NSArray *states;
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.inputExistingRecipient) {
         if (requestedContacts) {
-            existingAddresses = [[[[Address where:@{}] not:@{@"name":@""}] descending:@"name"] all];
+            existingAddresses = [[[[Address where:@{}] not:@{@"name":@""}] ascending:@"name"] all];
         }
         else {
             [self requestContactsPermission];
@@ -260,7 +260,7 @@ static NSArray *states;
         ABAddressBookRequestAccessWithCompletion(addressBook , ^(bool granted, CFErrorRef error){
             if (granted){
                 alert = [UIAlertView alertViewWithTitle:@"Loading contacts" message:@"Please be patient"];
-                [self loadContacts];
+                [self loadContacts:YES];
             }
             else {
                 dispatch_sync(dispatch_get_main_queue(), ^{
@@ -271,7 +271,7 @@ static NSArray *states;
         });
     }
     else if (authStatus == kABAuthorizationStatusAuthorized){
-        [self loadContacts];
+        [self loadContacts:YES];
     }
     else {
         // already denied, cannot request it
@@ -279,7 +279,7 @@ static NSArray *states;
     }
 }
 
--(void)loadContacts {
+-(void)loadContacts:(BOOL)shouldDisplayContacts {
     isLoadingContacts = YES;
 
     // address book functionality is done on an async queue to prevent UI locking
@@ -302,23 +302,18 @@ static NSArray *states;
             ABMultiValueRef addresses = ABRecordCopyValue((__bridge ABRecordRef)(person), kABPersonAddressProperty);
             for (CFIndex j = 0; j<ABMultiValueGetCount(addresses);j++){
                 CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, j);
-                CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, j);
-                CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
                 street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
                 city = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCityKey) copy];
                 state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
                 zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
-                NSString *country = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCountryKey) copy];
 
                 if (street && city && state) {
                     NSLog(@"Found address: %@", dict);
                     hasAddress = YES;
+                    CFRelease(dict);
                     break;
                 }
-
                 CFRelease(dict);
-                CFRelease(typeTmp);
-
             }
             CFRelease(addresses);
 
@@ -355,6 +350,9 @@ static NSArray *states;
             [alert dismissWithClickedButtonIndex:0 animated:NO];
             isLoadingContacts = NO;
             requestedContacts = YES;
+
+            if (shouldDisplayContacts)
+                [self.inputExistingRecipient becomeFirstResponder];
         });
     });
 }

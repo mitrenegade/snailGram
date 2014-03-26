@@ -67,8 +67,9 @@
 
     edited = YES;
     [self.buttonTextColor setHidden:YES];
-    textColorState = LightTextDarkBG;
+    textColorState = LightText;
     [self updateTextColors];
+
     [self.textCanvas setClipsToBounds:YES];
 }
 
@@ -194,6 +195,7 @@
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
+    textView.contentSize = textView.frame.size; // on phone, contentSize gets changed so textView becomes scrollable.
     if (_currentPostCard.text.length == 0) {
         textView.text = MESSAGE_PLACEHOLDER_TEXT;
     }
