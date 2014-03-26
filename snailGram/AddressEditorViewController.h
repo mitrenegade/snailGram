@@ -17,9 +17,14 @@
 
 @interface AddressEditorViewController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
+    UIAlertView *alert;
+    
     UIPickerView *pickerViewState;
     UIPickerView *pickerViewAddress;
     NSArray *existingAddresses;
+
+    BOOL requestedContacts;
+    BOOL isLoadingContacts;
 }
 
 @property (nonatomic, weak) id delegate;

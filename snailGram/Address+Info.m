@@ -39,4 +39,32 @@
     return string;
 }
 
++(Address *)createWithInfo:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context {
+    return [self createInContext:context withName:userInfo[@"name"] street:userInfo[@"street"] street2:userInfo[@"street2"] city:userInfo[@"city"] state:userInfo[@"state"] zip:userInfo[@"zip"]];
+}
+
++(Address *)createInContext:(NSManagedObjectContext *)context withName:(NSString *)name street:(NSString *)street street2:(NSString *)street2 city:(NSString *)city state:(NSString *)state zip:(NSString *)zip {
+
+    if (!name)
+        return nil;
+
+    Address *addr = (Address *)[Address createEntityInContext:context];
+    addr.name = name;
+    if (street)
+        addr.street = street;
+    if (street2)
+        addr.street2 = street2;
+    if (city)
+        addr.city = city;
+    if (state)
+        addr.state = state;
+    if (zip)
+        addr.zip = zip;
+    NSError *error;
+    if ([context save:&error])
+        return addr;
+
+    return nil;
+}
+
 @end
