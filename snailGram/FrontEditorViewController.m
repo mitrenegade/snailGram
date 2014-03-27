@@ -170,11 +170,11 @@
 
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
-    NSString *name = [NSString stringWithFormat:@"%@-f", _currentPostCard.parseID];
-    [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
-        // todo: must handle internet connectivity errors
+    NSData *data = UIImageJPEGRepresentation(image, .8);
+    PFFile *imageFile = [PFFile fileWithData:data];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // update postcard with the url
-        _currentPostCard.image_url = [AWSHelper urlForPhotoWithKey:name];
+        _currentPostCard.pfObject[@"front_image"] = imageFile;
         _currentPostCard.front_loaded = @YES;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
@@ -187,6 +187,8 @@
                 } onCancel:nil];
             }
         }];
+    } progressBlock:^(int percentDone) {
+        NSLog(@"Percent: %d", percentDone);
     }];
 }
 #pragma mark TextView Delegate
