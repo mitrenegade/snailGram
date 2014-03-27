@@ -10,7 +10,6 @@
 #import "FrontEditorViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "PostCard+Parse.h"
-#import "AWSHelper.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GPCamera.h"
 

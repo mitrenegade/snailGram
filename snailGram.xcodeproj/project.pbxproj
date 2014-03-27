@@ -71,12 +71,6 @@
 		9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640518C403EF0048142D /* StoreKit.framework */; };
 		9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B640718C403F50048142D /* SystemConfiguration.framework */; };
 		9E9B645518C4E8CA0048142D /* PostCard+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B645418C4E8CA0048142D /* PostCard+Parse.m */; };
-		9E9B646E18C4F82C0048142D /* AsyncImageUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646618C4F82C0048142D /* AsyncImageUploader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E9B646F18C4F82C0048142D /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646818C4F82C0048142D /* AsyncImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E9B647018C4F82C0048142D /* AWSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B646A18C4F82C0048142D /* AWSHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E9B647518C4F8A50048142D /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B647418C4F8A50048142D /* LoadingAnimationView.m */; };
-		9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647918C4FC9C0048142D /* AWSRuntime.framework */; };
-		9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B647A18C4FC9C0048142D /* AWSS3.framework */; };
 		9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAA647218DA7D0D006264FC /* FacebookSDK.framework */; };
 		9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA647818DACDD5006264FC /* Payment+Parse.m */; };
 		9EAA64A018DAD3D8006264FC /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA649F18DAD3D8006264FC /* Address.m */; };
@@ -198,16 +192,6 @@
 		9E9B640718C403F50048142D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9E9B645318C4E8CA0048142D /* PostCard+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostCard+Parse.h"; sourceTree = "<group>"; };
 		9E9B645418C4E8CA0048142D /* PostCard+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostCard+Parse.m"; sourceTree = "<group>"; };
-		9E9B646518C4F82C0048142D /* AsyncImageUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageUploader.h; path = AWS/AsyncImageUploader.h; sourceTree = "<group>"; };
-		9E9B646618C4F82C0048142D /* AsyncImageUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageUploader.m; path = AWS/AsyncImageUploader.m; sourceTree = "<group>"; };
-		9E9B646718C4F82C0048142D /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = AWS/AsyncImageView.h; sourceTree = "<group>"; };
-		9E9B646818C4F82C0048142D /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = AWS/AsyncImageView.m; sourceTree = "<group>"; };
-		9E9B646918C4F82C0048142D /* AWSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWSHelper.h; path = AWS/AWSHelper.h; sourceTree = "<group>"; };
-		9E9B646A18C4F82C0048142D /* AWSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWSHelper.m; path = AWS/AWSHelper.m; sourceTree = "<group>"; };
-		9E9B647318C4F8A50048142D /* LoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingAnimationView.h; path = AWS/LoadingAnimationView.h; sourceTree = "<group>"; };
-		9E9B647418C4F8A50048142D /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingAnimationView.m; path = AWS/LoadingAnimationView.m; sourceTree = "<group>"; };
-		9E9B647918C4FC9C0048142D /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = AWS/AWSRuntime.framework; sourceTree = "<group>"; };
-		9E9B647A18C4FC9C0048142D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AWS/AWSS3.framework; sourceTree = "<group>"; };
 		9EAA647218DA7D0D006264FC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9EAA647718DACDD5006264FC /* Payment+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Payment+Parse.h"; sourceTree = "<group>"; };
 		9EAA647818DACDD5006264FC /* Payment+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Payment+Parse.m"; sourceTree = "<group>"; };
@@ -243,7 +227,6 @@
 				9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */,
 				9E9B640618C403EF0048142D /* StoreKit.framework in Frameworks */,
 				9E9B640418C403E90048142D /* Security.framework in Frameworks */,
-				9E9B647B18C4FC9C0048142D /* AWSRuntime.framework in Frameworks */,
 				9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */,
 				9E9B640218C403E40048142D /* QuartzCore.framework in Frameworks */,
 				9E9B640018C403DF0048142D /* MobileCoreServices.framework in Frameworks */,
@@ -253,7 +236,6 @@
 				9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */,
 				9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */,
 				9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */,
-				9E9B647C18C4FC9C0048142D /* AWSS3.framework in Frameworks */,
 				9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */,
 				9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */,
 				9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */,
@@ -345,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				9EF04A9018D9893E000FA41A /* PayPal */,
-				9E9B641E18C4E5760048142D /* AWS */,
 				9E9B63E118C3B9630048142D /* Parse */,
 				9E2515E018C2A87D00F542F5 /* Core Data */,
 				9E22DFDE18CFE0A400F8B4A8 /* Camera */,
@@ -512,23 +493,6 @@
 			name = Parse;
 			sourceTree = "<group>";
 		};
-		9E9B641E18C4E5760048142D /* AWS */ = {
-			isa = PBXGroup;
-			children = (
-				9E9B647918C4FC9C0048142D /* AWSRuntime.framework */,
-				9E9B647A18C4FC9C0048142D /* AWSS3.framework */,
-				9E9B646518C4F82C0048142D /* AsyncImageUploader.h */,
-				9E9B646618C4F82C0048142D /* AsyncImageUploader.m */,
-				9E9B646718C4F82C0048142D /* AsyncImageView.h */,
-				9E9B646818C4F82C0048142D /* AsyncImageView.m */,
-				9E9B646918C4F82C0048142D /* AWSHelper.h */,
-				9E9B646A18C4F82C0048142D /* AWSHelper.m */,
-				9E9B647318C4F8A50048142D /* LoadingAnimationView.h */,
-				9E9B647418C4F8A50048142D /* LoadingAnimationView.m */,
-			);
-			name = AWS;
-			sourceTree = "<group>";
-		};
 		9EF04A8718D984CE000FA41A /* PayPalMobile */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,7 +630,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2515A718C2768900F542F5 /* AppDelegate.m in Sources */,
-				9E9B646F18C4F82C0048142D /* AsyncImageView.m in Sources */,
 				9EAA647918DACDD5006264FC /* Payment+Parse.m in Sources */,
 				9E2515D618C2793C00F542F5 /* FrontEditorViewController.m in Sources */,
 				9E2515D918C2888100F542F5 /* BackEditorViewController.m in Sources */,
@@ -676,8 +639,6 @@
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */,
 				9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */,
-				9E9B647018C4F82C0048142D /* AWSHelper.m in Sources */,
-				9E9B647518C4F8A50048142D /* LoadingAnimationView.m in Sources */,
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
 				9E25160018C2AC0000F542F5 /* GPLocationHelper.m in Sources */,
@@ -692,7 +653,6 @@
 				9E25162518C30A3100F542F5 /* Address+Info.m in Sources */,
 				9E9B645518C4E8CA0048142D /* PostCard+Parse.m in Sources */,
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
-				9E9B646E18C4F82C0048142D /* AsyncImageUploader.m in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
 				9ED6F7DB18DE8DDA00C13770 /* ParseBase.m in Sources */,
 				9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */,

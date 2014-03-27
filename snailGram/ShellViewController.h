@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PostCard.h"
-#import "AWSHelper.h"
 #import "GPCameraDelegate.h"
 
 @class GPCamera;

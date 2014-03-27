@@ -115,10 +115,12 @@
 
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
-    NSString *name = [NSString stringWithFormat:@"%@-b", _currentPostCard.parseID];
-    [AWSHelper uploadImage:image withName:name toBucket:AWS_BUCKET withCallback:^(NSString *url) {
+    NSData *data = UIImageJPEGRepresentation(image, .8);
+    PFFile *imageFile = [PFFile fileWithData:data];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // update postcard with the url
-        _currentPostCard.image_url_back = [AWSHelper urlForPhotoWithKey:name];
+        _currentPostCard.pfObject[@"imageFile"] = imageFile;
+        // update postcard with the url
         _currentPostCard.back_loaded = @YES;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
