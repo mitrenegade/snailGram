@@ -26,7 +26,7 @@ static PayPalHelper *sharedPayPalHelper;
 
 #pragma mark Paypal SDK 2.0.0 used for user auth when withdrawing
 +(void)initializePayPal {
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_SANDBOX, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_PRODUCTION, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
 
     PayPalHelper *helper = [PayPalHelper sharedPayPalHelper];
     helper.payPalConfiguration = [[PayPalConfiguration alloc] init];
@@ -36,8 +36,8 @@ static PayPalHelper *sharedPayPalHelper;
     // Minimally, you will need to set three merchant information properties.
     // These should be the same values that you provided to PayPal when you registered your app.
     helper.payPalConfiguration.merchantName = @"snailGram";
-    helper.payPalConfiguration.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.omega.supreme.example/privacy"];
-    helper.payPalConfiguration.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.omega.supreme.example/user_agreement"];
+    helper.payPalConfiguration.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.facebook.com/snailgrams"];
+    helper.payPalConfiguration.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.facebook.com/snailgrams"];
 }
 
 +(UIViewController *)showPayPalLoginWithDelegate:(id)_delegate {
