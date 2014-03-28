@@ -19,6 +19,9 @@
 @property (nonatomic, retain) NSString * message;
 @property (nonatomic, retain) NSString * payment_id;
 @property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * image_url;
+@property (nonatomic, retain) NSString * image_url_back;
+@property (nonatomic, retain) NSString * image_url_full;
 @property (nonatomic, retain) Payment *payment;
 @property (nonatomic, retain) Address *to;
 

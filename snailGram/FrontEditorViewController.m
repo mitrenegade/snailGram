@@ -45,8 +45,6 @@
     CGRect frame = CGRectMake(0, -((self.image.size.height * scale)/2 - self.viewBounds.frame.size.height/2) + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
     [self.imageView setFrame:frame];
 
-    [self.canvas.layer setBorderWidth:2];
-
     NSLog(@"Initial image size: %f %f", self.image.size.width, self.image.size.height);
 
     // gestures
@@ -178,6 +176,7 @@
         // update postcard with the url
         _currentPostCard.pfObject[@"front_image"] = imageFile;
         _currentPostCard.front_loaded = @YES;
+        _currentPostCard.image_url = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {

@@ -37,8 +37,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    [self.canvas.layer setBorderWidth:2];
-
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
     if (_currentPostCard.to)
@@ -124,6 +122,7 @@
         _currentPostCard.pfObject[@"back_image"] = imageFile;
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
+        _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
@@ -236,11 +235,12 @@
     UIImage *front = _currentPostCard.imageFront;
     UIImage *back = _currentPostCard.imageBack;
     int border = 80;
-    UIView *canvas = [[UIView alloc] initWithFrame:CGRectMake(0, 0, front.size.width, front.size.height+border)];
+    UIView *canvas = [[UIView alloc] initWithFrame:CGRectMake(0, 0, front.size.width, front.size.height*2+border)];
     UIImageView *frontView = [[UIImageView alloc] initWithImage:front];
     UIImageView *backView = [[UIImageView alloc] initWithImage:back];
     [frontView setFrame:CGRectMake(0, 0, front.size.width, front.size.height)];
     [backView setFrame:CGRectMake(0, front.size.height+border, back.size.width, back.size.height)];
+    canvas.backgroundColor = [UIColor lightGrayColor];
     [canvas addSubview:frontView];
     [canvas addSubview:backView];
 
@@ -258,6 +258,7 @@
         _currentPostCard.pfObject[@"full_image"] = imageFile;
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
+        _currentPostCard.image_url_full = imageFile.url;
         [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {

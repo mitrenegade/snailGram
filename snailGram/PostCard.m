@@ -18,6 +18,9 @@
 @dynamic message;
 @dynamic payment_id;
 @dynamic text;
+@dynamic image_url;
+@dynamic image_url_back;
+@dynamic image_url_full;
 @dynamic payment;
 @dynamic to;
 
