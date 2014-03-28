@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "PostCard+Image.h"
 
 @implementation AppDelegate
 
@@ -67,8 +68,8 @@
     postCard.message = @"";
     postCard.to = nil;
     postCard.text = @"";
-    postCard.image_url = @"";
-    postCard.image_url_back = @"";
+    postCard.imageFront = nil;
+    postCard.imageBack = nil;
 }
 
 #pragma mark CoreData

@@ -12,6 +12,7 @@
 #import "AddressEditorViewController.h"
 #import "PostCard+Parse.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "PostCard+Image.h"
 
 @interface FrontEditorViewController ()
 
@@ -170,6 +171,7 @@
 
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
+    _currentPostCard.imageFront = image;
     NSData *data = UIImageJPEGRepresentation(image, .8);
     PFFile *imageFile = [PFFile fileWithData:data];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
