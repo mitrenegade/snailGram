@@ -56,13 +56,11 @@
 
     [self.textCanvas setHidden:YES];
     [self.labelHintText setAlpha:0];
-    [self.labelHintDrag setAlpha:0];
     [self.labelHintText setFont:FONT_ITALIC(12)];
-    [self.labelHintDrag setFont:FONT_ITALIC(12)];
 
     [self.viewBounds setClipsToBounds:YES];
 
-    [self performSelector:@selector(showHintDrag) withObject:nil afterDelay:3];
+    [self performSelector:@selector(showHint) withObject:nil afterDelay:1];
 
     edited = YES;
     [self.buttonTextColor setHidden:YES];
@@ -93,13 +91,13 @@
         [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
         [self.buttonTextColor setHidden:NO];
-        [self showHintText];
+        [self showHint];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
         [self.buttonTextColor setHidden:YES];
-        [self hideHintText];
+        [self hideOrCancelHint];
     }
 }
 
@@ -245,7 +243,7 @@
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             if (!dragging) {
                 [self.textViewMessage resignFirstResponder];
-                [self hideOrCancelHintDrag];
+                [self hideOrCancelHint];
                 dragging = YES;
                 CGPoint point = [gesture locationInView:self.canvas];
                 initialTouch = point;
@@ -322,7 +320,7 @@
         UIPinchGestureRecognizer *pinch = (UIPinchGestureRecognizer *)gesture;
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             [self.textViewMessage resignFirstResponder];
-            [self hideOrCancelHintDrag];
+            [self hideOrCancelHint];
             initialFrame = self.imageView.frame;
             NSLog(@"Initial: %f %f %f %f", initialFrame.origin.x, initialFrame.origin.y, initialFrame.size.width, initialFrame.size.height);
         }
@@ -360,34 +358,19 @@
 }
 
 #pragma mark hint
--(void)showHintDrag {
-    if (self.labelHintText.alpha == 1)
-        [self hideHintText];
-    [UIView animateWithDuration:.5 animations:^{
-        [self.labelHintDrag setAlpha:1];
-    } completion:^(BOOL finished) {
-        [self performSelector:@selector(hideOrCancelHintDrag) withObject:nil afterDelay:5];
-    }];
-}
-
--(void)hideOrCancelHintDrag {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showHintDrag) object:nil];
-    [UIView animateWithDuration:.5 animations:^{
-        [self.labelHintDrag setAlpha:0];
-    }];
-}
-
--(void)showHintText {
-    if (self.labelHintDrag.alpha == 1)
-        [self hideOrCancelHintDrag];
+-(void)showHint {
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintText setAlpha:1];
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(hideOrCancelHint) withObject:nil afterDelay:5];
     }];
 }
 
--(void)hideHintText {
+-(void)hideOrCancelHint {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showHint) object:nil];
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintText setAlpha:0];
     }];
 }
+
 @end

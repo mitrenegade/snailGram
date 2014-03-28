@@ -135,7 +135,7 @@
                                 <rect key="frame" x="0.0" y="338" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Add Text">
+                                <state key="normal" title="Click to add text">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -143,15 +143,8 @@
                                     <action selector="didClickButtonText:" destination="2w3-QL-dDk" eventType="touchUpInside" id="Aig-gQ-nep"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: drag the message box to change its position" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UtC-cL-cw4">
-                                <rect key="frame" x="20" y="71" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: drag or pinch the image to reposition it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="26P-2E-Obp">
-                                <rect key="frame" x="20" y="71" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: picture can be expanded and message box can be moved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UtC-cL-cw4">
+                                <rect key="frame" x="20" y="64" width="280" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,7 +185,6 @@
                         <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="buttonTextColor" destination="K7H-WU-fub" id="rrq-9Y-ti5"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
-                        <outlet property="labelHintDrag" destination="26P-2E-Obp" id="MNB-dU-zpL"/>
                         <outlet property="labelHintText" destination="UtC-cL-cw4" id="Dx0-Tt-7UW"/>
                         <outlet property="textBG" destination="qJ9-q9-luj" id="4pb-Bv-oxN"/>
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
