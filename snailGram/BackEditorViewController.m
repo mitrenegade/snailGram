@@ -56,7 +56,9 @@
 
     [self.textViewMessage setFont:FONT_REGULAR(14)];
     [self.labelTo setFont:FONT_REGULAR(14)];
+
     [self.labelFrom setFont:FONT_REGULAR(6)];
+    [self.labelFrom setHidden:YES];
 }
 
 -(void)closeKeyboardInput:(id)sender {
@@ -110,8 +112,10 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
     CGContextConcatCTM(ctx, t);
+    [self.labelFrom setHidden:NO];
     [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
     CGContextRestoreGState(ctx);
+    [self.labelFrom setHidden:YES];
     // Save the current image context info into a UIImage
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
