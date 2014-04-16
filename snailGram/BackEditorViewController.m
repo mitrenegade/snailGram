@@ -13,6 +13,7 @@
 #import "PostCard+Parse.h"
 #import "PayPalHelper.h"
 #import "Payment+Parse.h"
+#import "PostCard+Image.h"
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -35,8 +36,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-    [self.canvas.layer setBorderWidth:2];
 
     if ([_currentPostCard.message length])
         self.textViewMessage.text = _currentPostCard.message;
@@ -115,13 +114,15 @@
 
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
+    _currentPostCard.imageBack = image;
     NSData *data = UIImageJPEGRepresentation(image, .8);
     PFFile *imageFile = [PFFile fileWithData:data];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // update postcard with the url
-        _currentPostCard.pfObject[@"imageFile"] = imageFile;
+        _currentPostCard.pfObject[@"back_image"] = imageFile;
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
+        _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
@@ -213,13 +214,10 @@
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
-    [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-        NSLog(@"Updated payment!");
-    }];
+
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
-        [_appDelegate resetPostcard];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..."];
+        [self renderCompositeImage];
     }];
 }
 
@@ -227,6 +225,59 @@
     NSLog(@"Paypal cancelled");
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
+    }];
+}
+
+#pragma mark final
+
+-(void)renderCompositeImage {
+    // render composite image
+    UIImage *front = _currentPostCard.imageFront;
+    UIImage *back = _currentPostCard.imageBack;
+    int border = 80;
+    UIView *canvas = [[UIView alloc] initWithFrame:CGRectMake(0, 0, front.size.width, front.size.height*2+border)];
+    UIImageView *frontView = [[UIImageView alloc] initWithImage:front];
+    UIImageView *backView = [[UIImageView alloc] initWithImage:back];
+    [frontView setFrame:CGRectMake(0, 0, front.size.width, front.size.height)];
+    [backView setFrame:CGRectMake(0, front.size.height+border, back.size.width, back.size.height)];
+    canvas.backgroundColor = [UIColor lightGrayColor];
+    [canvas addSubview:frontView];
+    [canvas addSubview:backView];
+
+    // save as UIImage
+    UIGraphicsBeginImageContextWithOptions(canvas.frame.size, YES, 0.0);
+    [canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * composite = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    _currentPostCard.imageFull = composite;
+    NSData *data = UIImageJPEGRepresentation(composite, .8);
+    PFFile *imageFile = [PFFile fileWithData:data];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // update postcard with the url
+        _currentPostCard.pfObject[@"full_image"] = imageFile;
+        // update postcard with the url
+        _currentPostCard.back_loaded = @YES;
+        _currentPostCard.image_url_full = imageFile.url;
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        
+        [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+            if (success) {
+                    [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
+                    [_appDelegate resetPostcard];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+            else {
+                [UIAlertView alertViewWithTitle:@"Could not save postcard" message:@"We couldn't complete your Postcard. Please click to upload again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
+
+                    [self renderCompositeImage];
+
+                } onCancel:nil];
+            }
+        }];
+    } progressBlock:^(int percentDone) {
+        alertView.message = [NSString stringWithFormat:@"Progress: %d%%", percentDone];
     }];
 }
 

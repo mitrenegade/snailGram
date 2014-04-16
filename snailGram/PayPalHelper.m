@@ -36,8 +36,8 @@ static PayPalHelper *sharedPayPalHelper;
     // Minimally, you will need to set three merchant information properties.
     // These should be the same values that you provided to PayPal when you registered your app.
     helper.payPalConfiguration.merchantName = @"snailGram";
-    helper.payPalConfiguration.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.facebook.com/snailgrams"];
-    helper.payPalConfiguration.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.facebook.com/snailgrams"];
+    helper.payPalConfiguration.merchantPrivacyPolicyURL = [NSURL URLWithString:@"http://snailgrams.com"];
+    helper.payPalConfiguration.merchantUserAgreementURL = [NSURL URLWithString:@"https://snailgrams.com"];
 }
 
 +(UIViewController *)showPayPalLoginWithDelegate:(id)_delegate {

@@ -16,7 +16,7 @@
         string = [NSString stringWithFormat:@"%@\n", self.name];
     if (self.street)
         string = [NSString stringWithFormat:@"%@%@\n", string, self.street];
-    if (self.street2)
+    if ([self.street2 length])
         string = [NSString stringWithFormat:@"%@%@\n", string, self.street2];
 
     NSString *citystate = @"";

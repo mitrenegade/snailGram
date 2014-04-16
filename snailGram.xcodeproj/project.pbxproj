@@ -19,7 +19,6 @@
 		9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */; };
 		9E1FE03618DE646800C8A8EC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */; };
 		9E1FE04018DE72D200C8A8EC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FE03F18DE72D200C8A8EC /* Payment.m */; };
-		9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FE04618DE7AB800C8A8EC /* PostCard.m */; };
 		9E22DFF218CFE17100F8B4A8 /* GPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E22DFF018CFE17100F8B4A8 /* GPCamera.m */; };
 		9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */; };
 		9E22DFFA18CFE70900F8B4A8 /* rotateCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */; };
@@ -59,6 +58,8 @@
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
 		9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338318D5B67F00A7EA50 /* FlipSegue.m */; };
 		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
+		9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7277DD18E62EA800AD4015 /* PostCard.m */; };
+		9E753E9918E61BD900ED4128 /* PostCard+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E753E9818E61BD900ED4128 /* PostCard+Image.m */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
@@ -108,8 +109,6 @@
 		9E1FE03218DE646800C8A8EC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		9E1FE03E18DE72D200C8A8EC /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
 		9E1FE03F18DE72D200C8A8EC /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
-		9E1FE04518DE7AB800C8A8EC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9E1FE04618DE7AB800C8A8EC /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E22DFEF18CFE17100F8B4A8 /* GPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCamera.h; sourceTree = "<group>"; };
 		9E22DFF018CFE17100F8B4A8 /* GPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCamera.m; sourceTree = "<group>"; };
 		9E22DFF118CFE17100F8B4A8 /* GPCameraDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCameraDelegate.h; sourceTree = "<group>"; };
@@ -177,6 +176,10 @@
 		9E50338218D5B67F00A7EA50 /* FlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSegue.h; sourceTree = "<group>"; };
 		9E50338318D5B67F00A7EA50 /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
 		9E50338818D6DB5B00A7EA50 /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
+		9E7277DC18E62EA800AD4015 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		9E7277DD18E62EA800AD4015 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		9E753E9718E61BD900ED4128 /* PostCard+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostCard+Image.h"; sourceTree = "<group>"; };
+		9E753E9818E61BD900ED4128 /* PostCard+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostCard+Image.m"; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
@@ -413,17 +416,19 @@
 				9EAA649F18DAD3D8006264FC /* Address.m */,
 				9E1FE03E18DE72D200C8A8EC /* Payment.h */,
 				9E1FE03F18DE72D200C8A8EC /* Payment.m */,
+				9E7277DC18E62EA800AD4015 /* PostCard.h */,
+				9E7277DD18E62EA800AD4015 /* PostCard.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
 				9ED6F7D918DE8DDA00C13770 /* ParseBase.h */,
 				9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */,
 				9ED6F7DD18DE8E6600C13770 /* ParseBase+Parse.h */,
 				9ED6F7DE18DE8E6600C13770 /* ParseBase+Parse.m */,
-				9E1FE04518DE7AB800C8A8EC /* PostCard.h */,
-				9E1FE04618DE7AB800C8A8EC /* PostCard.m */,
 				9E9B645318C4E8CA0048142D /* PostCard+Parse.h */,
 				9E9B645418C4E8CA0048142D /* PostCard+Parse.m */,
 				9EAA647718DACDD5006264FC /* Payment+Parse.h */,
 				9EAA647818DACDD5006264FC /* Payment+Parse.m */,
+				9E753E9718E61BD900ED4128 /* PostCard+Image.h */,
+				9E753E9818E61BD900ED4128 /* PostCard+Image.m */,
 				9E25162318C30A3100F542F5 /* Address+Info.h */,
 				9E25162418C30A3100F542F5 /* Address+Info.m */,
 				9E9B63E418C3C3680048142D /* Address+Parse.h */,
@@ -638,6 +643,7 @@
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */,
+				9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */,
 				9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */,
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
@@ -655,13 +661,13 @@
 				9E2515DC18C292D500F542F5 /* Model.xcdatamodeld in Sources */,
 				9E25160B18C2AC0000F542F5 /* Util.m in Sources */,
 				9ED6F7DB18DE8DDA00C13770 /* ParseBase.m in Sources */,
-				9E1FE04718DE7AB800C8A8EC /* PostCard.m in Sources */,
 				9E1FE04018DE72D200C8A8EC /* Payment.m in Sources */,
 				9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */,
 				9E25160218C2AC0000F542F5 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E2515FF18C2AC0000F542F5 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				9E25160318C2AC0000F542F5 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E25160618C2AC0000F542F5 /* NSObject+Notify.m in Sources */,
+				9E753E9918E61BD900ED4128 /* PostCard+Image.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

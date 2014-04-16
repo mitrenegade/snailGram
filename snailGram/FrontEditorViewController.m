@@ -12,6 +12,7 @@
 #import "AddressEditorViewController.h"
 #import "PostCard+Parse.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "PostCard+Image.h"
 
 @interface FrontEditorViewController ()
 
@@ -44,8 +45,6 @@
     CGRect frame = CGRectMake(0, -((self.image.size.height * scale)/2 - self.viewBounds.frame.size.height/2) + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
     [self.imageView setFrame:frame];
 
-    [self.canvas.layer setBorderWidth:2];
-
     NSLog(@"Initial image size: %f %f", self.image.size.width, self.image.size.height);
 
     // gestures
@@ -57,13 +56,11 @@
 
     [self.textCanvas setHidden:YES];
     [self.labelHintText setAlpha:0];
-    [self.labelHintDrag setAlpha:0];
     [self.labelHintText setFont:FONT_ITALIC(12)];
-    [self.labelHintDrag setFont:FONT_ITALIC(12)];
 
     [self.viewBounds setClipsToBounds:YES];
 
-    [self performSelector:@selector(showHintDrag) withObject:nil afterDelay:3];
+    [self performSelector:@selector(showHint) withObject:nil afterDelay:1];
 
     edited = YES;
     [self.buttonTextColor setHidden:YES];
@@ -94,13 +91,13 @@
         [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
         [self.buttonTextColor setHidden:NO];
-        [self showHintText];
+        [self showHint];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
         [self.buttonTextColor setHidden:YES];
-        [self hideHintText];
+        [self hideOrCancelHint];
     }
 }
 
@@ -170,12 +167,14 @@
 
 #pragma mark AWS
 -(void)uploadImage:(UIImage *)image {
+    _currentPostCard.imageFront = image;
     NSData *data = UIImageJPEGRepresentation(image, .8);
     PFFile *imageFile = [PFFile fileWithData:data];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // update postcard with the url
         _currentPostCard.pfObject[@"front_image"] = imageFile;
         _currentPostCard.front_loaded = @YES;
+        _currentPostCard.image_url = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
@@ -244,7 +243,7 @@
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             if (!dragging) {
                 [self.textViewMessage resignFirstResponder];
-                [self hideOrCancelHintDrag];
+                [self hideOrCancelHint];
                 dragging = YES;
                 CGPoint point = [gesture locationInView:self.canvas];
                 initialTouch = point;
@@ -321,7 +320,7 @@
         UIPinchGestureRecognizer *pinch = (UIPinchGestureRecognizer *)gesture;
         if ([gesture state] == UIGestureRecognizerStateBegan) {
             [self.textViewMessage resignFirstResponder];
-            [self hideOrCancelHintDrag];
+            [self hideOrCancelHint];
             initialFrame = self.imageView.frame;
             NSLog(@"Initial: %f %f %f %f", initialFrame.origin.x, initialFrame.origin.y, initialFrame.size.width, initialFrame.size.height);
         }
@@ -359,34 +358,19 @@
 }
 
 #pragma mark hint
--(void)showHintDrag {
-    if (self.labelHintText.alpha == 1)
-        [self hideHintText];
-    [UIView animateWithDuration:.5 animations:^{
-        [self.labelHintDrag setAlpha:1];
-    } completion:^(BOOL finished) {
-        [self performSelector:@selector(hideOrCancelHintDrag) withObject:nil afterDelay:5];
-    }];
-}
-
--(void)hideOrCancelHintDrag {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showHintDrag) object:nil];
-    [UIView animateWithDuration:.5 animations:^{
-        [self.labelHintDrag setAlpha:0];
-    }];
-}
-
--(void)showHintText {
-    if (self.labelHintDrag.alpha == 1)
-        [self hideOrCancelHintDrag];
+-(void)showHint {
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintText setAlpha:1];
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(hideOrCancelHint) withObject:nil afterDelay:5];
     }];
 }
 
--(void)hideHintText {
+-(void)hideOrCancelHint {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showHint) object:nil];
     [UIView animateWithDuration:.5 animations:^{
         [self.labelHintText setAlpha:0];
     }];
 }
+
 @end

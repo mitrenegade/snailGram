@@ -41,7 +41,6 @@ typedef enum {
 
 // hints
 @property (nonatomic, weak) IBOutlet UILabel *labelHintText;
-@property (nonatomic, weak) IBOutlet UILabel *labelHintDrag;
 
 -(IBAction)didClickNext:(id)sender;
 -(IBAction)didClickButtonText:(id)sender;

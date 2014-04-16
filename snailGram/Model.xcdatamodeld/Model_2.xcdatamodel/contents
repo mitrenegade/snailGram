@@ -28,6 +28,7 @@
         <attribute name="front_loaded" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_url_back" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_url_full" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="payment_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,6 +39,6 @@
         <element name="Address" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ParseBase" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Payment" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="PostCard" positionX="0" positionY="0" width="128" height="178"/>
+        <element name="PostCard" positionX="0" positionY="0" width="128" height="195"/>
     </elements>
 </model>
