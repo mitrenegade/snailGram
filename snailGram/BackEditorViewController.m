@@ -56,6 +56,7 @@
 
     [self.textViewMessage setFont:FONT_REGULAR(14)];
     [self.labelTo setFont:FONT_REGULAR(14)];
+    [self.labelFrom setFont:FONT_REGULAR(6)];
 }
 
 -(void)closeKeyboardInput:(id)sender {

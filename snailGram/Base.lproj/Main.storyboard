@@ -221,7 +221,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Enter a message" id="7Bv-GM-uSX">
-                                        <rect key="frame" x="11" y="10" width="156" height="193"/>
+                                        <rect key="frame" x="8" y="37" width="167" height="166"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -241,6 +241,16 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pl6-A7-zcK">
+                                        <rect key="frame" x="13" y="8" width="144" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">www.snailgrams.com
+Soldiers Field 203 Batten Hall
+Boston, MA 02163</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -264,6 +274,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="canvas" destination="zeC-x4-71d" id="ckh-1Q-YOR"/>
+                        <outlet property="labelFrom" destination="Pl6-A7-zcK" id="Rt8-h5-Wua"/>
                         <outlet property="labelTo" destination="Gef-fx-5a2" id="2zy-fq-X4U"/>
                         <outlet property="textViewMessage" destination="7Bv-GM-uSX" id="gJ9-fr-yVa"/>
                     </connections>

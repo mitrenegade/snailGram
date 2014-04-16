@@ -1,19 +1,9 @@
-//
-//  GPSHelper.m
-//  GymPact
-//
-//  Created by Bobby Ren on 3/4/13.
-//  Copyright (c) 2013 GymPact Inc. All rights reserved.
-//
-
 #import "GPLocationHelper.h"
 #import "UIAlertView+MKBlockAdditions.h"
 
 @implementation GPLocationHelper
 
 #define DebugLog NSLog
-
-//static Gym_PactAppDelegate * appDelegate;
 
 static GPLocationHelper * sharedLocationHelper; // used for delegate
 static CLLocationManager * locationManager;
@@ -29,8 +19,6 @@ static CLLocationManager * locationManager;
 
 static BOOL initialized;
 +(void)initLocationManager {
-//    appDelegate = (Gym_PactAppDelegate*)[UIApplication sharedApplication].delegate;
-
     if (!sharedLocationHelper) {
         sharedLocationHelper = [[GPLocationHelper alloc] init];
     }

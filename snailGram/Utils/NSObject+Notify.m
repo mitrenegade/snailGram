@@ -1,11 +1,3 @@
-//
-//  NSObject+Notify.m
-//  GymPact
-//
-//  Created by Bobby Ren on 12/17/13.
-//  Copyright (c) 2013 Harvard University. All rights reserved.
-//
-
 #import "NSObject+Notify.h"
 
 @implementation NSObject (Notify)

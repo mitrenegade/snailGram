@@ -1,11 +1,3 @@
-//
-//  Query.m
-//  GymPact
-//
-//  Created by Bobby Ren on 10/17/13.
-//  Copyright (c) 2013 Harvard University. All rights reserved.
-//
-
 #import "Query.h"
 
 @interface Query ()

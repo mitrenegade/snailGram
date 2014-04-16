@@ -1,11 +1,3 @@
-//
-//  NSManagedObject+Entity.m
-//  hellobear_ios
-//
-//  Created by Bobby Ren on 12/29/13.
-//  Copyright (c) 2013 Bobby Ren. All rights reserved.
-//
-
 #import "NSManagedObject+Entity.h"
 
 @implementation NSManagedObject (Entity)
