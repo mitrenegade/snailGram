@@ -143,15 +143,15 @@
 }
 
 -(void)saveScreenshot {
-    //alertView = [UIAlertView alertViewWithTitle:@"Uploading image..." message:nil];
-    // Create the screenshot
-    float scale = 5;
+    // Create the screenshot. draw image in viewBounds    
+    float scaleX = POSTCARD_WIDTH_PIXELS / self.canvas.frame.size.width;
+    float scaleY = POSTCARD_HEIGHT_PIXELS / self.canvas.frame.size.height;
 
     if ([_currentPostCard.text length] == 0)
         [self.textCanvas setHidden:YES];
 
-    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
-    CGSize size = CGSizeMake(self.canvas.frame.size.width * scale, self.canvas.frame.size.height * scale);
+    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY);
+    CGSize size = CGSizeMake(POSTCARD_WIDTH_PIXELS, POSTCARD_HEIGHT_PIXELS);
     UIGraphicsBeginImageContext(size);
     // Put everything in the current view into the screenshot
     CGContextRef ctx = UIGraphicsGetCurrentContext();
