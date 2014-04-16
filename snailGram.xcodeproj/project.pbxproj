@@ -60,6 +60,7 @@
 		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
 		9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7277DD18E62EA800AD4015 /* PostCard.m */; };
 		9E753E9918E61BD900ED4128 /* PostCard+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E753E9818E61BD900ED4128 /* PostCard+Image.m */; };
+		9E98410618FE48A9008A6A94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E98410518FE48A9008A6A94 /* Crashlytics.framework */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
@@ -180,6 +181,7 @@
 		9E7277DD18E62EA800AD4015 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E753E9718E61BD900ED4128 /* PostCard+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostCard+Image.h"; sourceTree = "<group>"; };
 		9E753E9818E61BD900ED4128 /* PostCard+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostCard+Image.m"; sourceTree = "<group>"; };
+		9E98410518FE48A9008A6A94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				9E9B63FE18C403D80048142D /* libz.dylib in Frameworks */,
 				9E9B63FC18C403D10048142D /* CoreLocation.framework in Frameworks */,
 				9E9B63FA18C403C50048142D /* CFNetwork.framework in Frameworks */,
+				9E98410618FE48A9008A6A94 /* Crashlytics.framework in Frameworks */,
 				9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */,
 				9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */,
 				9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */,
@@ -302,6 +305,7 @@
 		9E25159518C2768900F542F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E98410518FE48A9008A6A94 /* Crashlytics.framework */,
 				9EC9330C18E11FEA0035200B /* Accounts.framework */,
 				9EAA647218DA7D0D006264FC /* FacebookSDK.framework */,
 				9E13E01618D98C3B00D2E906 /* AdSupport.framework */,
@@ -530,6 +534,7 @@
 				9E25158F18C2768900F542F5 /* Sources */,
 				9E25159018C2768900F542F5 /* Frameworks */,
 				9E25159118C2768900F542F5 /* Resources */,
+				9E98410418FE4873008A6A94 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -628,6 +633,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9E98410418FE4873008A6A94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 70160b7dec925a91c6fe09e38bf1f8659c1eda41 0fa711cea5cca0c6a4b57c1a8955f0518514bfdd7a9e6f28b3eca2c60d905a9c";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9E25158F18C2768900F542F5 /* Sources */ = {
@@ -805,6 +826,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -841,6 +863,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram,
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";

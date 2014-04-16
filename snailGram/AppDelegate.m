@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "PostCard+Image.h"
 #import "ParseBase+Parse.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -24,6 +25,7 @@
     [Parse setApplicationId:@"054wtpQbuRXuzIVeY2ajbApfzZcqB5L7YJKPSNYQ"
                   clientKey:@"MyRaB1A2neqSRCGVq71qamBAsdtRS9PMjS2YuYs3"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [Crashlytics startWithAPIKey:@"70160b7dec925a91c6fe09e38bf1f8659c1eda41"];
 
     [self setupUserForCurrentDevice];
 
