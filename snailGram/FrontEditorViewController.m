@@ -68,6 +68,9 @@
     [self updateTextColors];
 
     [self.textCanvas setClipsToBounds:YES];
+
+    [self.buttonText.titleLabel setFont:FONT_REGULAR(18)];
+    [self.buttonTextColor.titleLabel setFont:FONT_REGULAR(18)];
 }
 
 - (void)didReceiveMemoryWarning

@@ -79,6 +79,12 @@
     [self.textViewMessage setHidden:NO];
 
     [self goToPayment];
+
+#if CAN_LOAD_POSTCARD
+    // save coredata
+    NSError *error;
+    [_appDelegate.managedObjectContext save:&error];
+#endif
 }
 
 -(IBAction)didClickFront:(id)sender {

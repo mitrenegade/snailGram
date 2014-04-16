@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "PostCard+Image.h"
+#import "ParseBase+Parse.h"
 
 @implementation AppDelegate
 
@@ -70,6 +71,31 @@
     postCard.text = @"";
     postCard.imageFront = nil;
     postCard.imageBack = nil;
+}
+
+-(void)loadPostcardWithCompletion:(void (^)(BOOL success))completion {
+    NSArray *postcards = [[PostCard where:@{}] all];
+    if ([postcards count] == 0)
+        completion(NO);
+    postCard = (PostCard *)[postcards firstObject];
+
+    if (_currentPostCard.parseID) {
+        PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"PostCard" objectId:_currentPostCard.parseID];
+        [pfObject refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!error) {
+                postCard.pfObject = pfObject;
+                completion(YES);
+            }
+            else {
+                [self resetPostcard];
+                completion(NO);
+            }
+        }];
+    }
+    else {
+        [self resetPostcard];
+        completion(NO);
+    }
 }
 
 #pragma mark CoreData
