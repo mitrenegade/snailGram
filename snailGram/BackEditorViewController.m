@@ -54,8 +54,8 @@
     [keyboardDoneButtonView setItems:@[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done")                                                                       style:UIBarButtonItemStyleBordered target:self action:@selector(closeKeyboardInput:)]]];
     self.textViewMessage.inputAccessoryView = keyboardDoneButtonView;
 
-    [self.textViewMessage setFont:FONT_REGULAR(14)];
-    [self.labelTo setFont:FONT_REGULAR(14)];
+    [self.textViewMessage setFont:FONT_REGULAR(12)];
+    [self.labelTo setFont:FONT_REGULAR(13)];
 
     [self.labelFrom setFont:FONT_REGULAR(6)];
     [self.labelFrom setHidden:YES];
@@ -152,9 +152,6 @@
     if (textView == self.textViewMessage) {
         textView.text = _currentPostCard.message;
     }
-
-    textView.font = [UIFont systemFontOfSize:15];
-    textView.textColor = [UIColor darkGrayColor];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
