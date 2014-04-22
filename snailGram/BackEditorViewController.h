@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UILabel *labelTo;
+@property (weak, nonatomic) IBOutlet UILabel *labelFrom;
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 
 -(IBAction)didClickSave:(id)sender;

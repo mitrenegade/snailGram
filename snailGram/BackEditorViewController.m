@@ -56,6 +56,9 @@
 
     [self.textViewMessage setFont:FONT_REGULAR(14)];
     [self.labelTo setFont:FONT_REGULAR(14)];
+
+    [self.labelFrom setFont:FONT_REGULAR(6)];
+    [self.labelFrom setHidden:YES];
 }
 
 -(void)closeKeyboardInput:(id)sender {
@@ -78,6 +81,12 @@
     [self.textViewMessage setHidden:NO];
 
     [self goToPayment];
+
+#if CAN_LOAD_POSTCARD
+    // save coredata
+    NSError *error;
+    [_appDelegate.managedObjectContext save:&error];
+#endif
 }
 
 -(IBAction)didClickFront:(id)sender {
@@ -92,20 +101,21 @@
 }
 
 -(void)saveScreenshot {
-    //alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:nil];
+    // Create the screenshot. draw everything in canvas
+    float scaleX = POSTCARD_WIDTH_PIXELS / self.canvas.frame.size.width;
+    float scaleY = POSTCARD_HEIGHT_PIXELS / self.canvas.frame.size.height;
 
-    // Create the screenshot
-    float scale = 5;
-
-    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
-    CGSize size = CGSizeMake(self.canvas.frame.size.width * scale, self.canvas.frame.size.height * scale);
+    CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY);
+    CGSize size = CGSizeMake(POSTCARD_WIDTH_PIXELS, POSTCARD_HEIGHT_PIXELS);
     UIGraphicsBeginImageContext(size);
     // Put everything in the current view into the screenshot
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
     CGContextConcatCTM(ctx, t);
+    [self.labelFrom setHidden:NO];
     [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
     CGContextRestoreGState(ctx);
+    [self.labelFrom setHidden:YES];
     // Save the current image context info into a UIImage
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -234,7 +244,7 @@
     // render composite image
     UIImage *front = _currentPostCard.imageFront;
     UIImage *back = _currentPostCard.imageBack;
-    int border = 80;
+    int border = 0;
     UIView *canvas = [[UIView alloc] initWithFrame:CGRectMake(0, 0, front.size.width, front.size.height*2+border)];
     UIImageView *frontView = [[UIImageView alloc] initWithImage:front];
     UIImageView *backView = [[UIImageView alloc] initWithImage:back];

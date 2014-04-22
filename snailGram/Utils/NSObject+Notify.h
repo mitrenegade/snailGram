@@ -1,11 +1,3 @@
-//
-//  NSObject+Notify.h
-//  GymPact
-//
-//  Created by Bobby Ren on 12/17/13.
-//  Copyright (c) 2013 Harvard University. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @interface NSObject (Notify)

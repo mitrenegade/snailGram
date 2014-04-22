@@ -36,6 +36,17 @@
     [self.imageView setClipsToBounds:YES];
 
     [self.labelInstructions setFont:FONT_ITALIC(17)];
+
+    [self.buttonLoad setHidden:YES];
+#if CAN_LOAD_POSTCARD
+    NSArray *postcards = [[PostCard where:@{}] all];
+    if ([postcards count])
+        [self.buttonLoad setHidden:NO];
+#endif
+    
+    [self.buttonCamera.titleLabel setFont:FONT_REGULAR(18)];
+    [self.buttonLibrary.titleLabel setFont:FONT_REGULAR(18)];
+    [self.buttonLoad.titleLabel setFont:FONT_REGULAR(18)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +75,20 @@
 
         [self presentViewController:library animated:YES completion:nil];
     }
+#if CAN_LOAD_POSTCARD
+    // todo: add load functionality. That means we will have to store all elements of the postcard and allow the user to edit them as well.
+    else if (button == self.buttonLoad) {
+        [_appDelegate loadPostcardWithCompletion:^(BOOL success) {
+            if (!success) {
+                [UIAlertView alertViewWithTitle:@"Could not load postcard" message:@"The saved postcard could not be loaded. Please create a new one."];
+            }
+            else {
+                [self imageSaved];
+                selectedImage = nil;
+            }
+        }];
+    }
+#endif
 }
 
 -(void)imageSaved {

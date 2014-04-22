@@ -16,8 +16,14 @@
 #define MESSAGE_PLACEHOLDER_TEXT @"Please enter a message"
 #define MESSAGE_LENGTH_LIMIT 40
 
+#define POSTCARD_WIDTH_PIXELS 1800
+#define POSTCARD_HEIGHT_PIXELS 1200
+#define POSTCARD_IMAGE_WIDTH_PIXELS 1720
+#define POSTCARD_IMAGE_HEIGHT_PIXLS 1120
+
 #define DebugLog(...) NSLog(__VA_ARGS__)
 #define AIRPLANE_MODE 0
+#define CAN_LOAD_POSTCARD 0
 
 #define FONT_ITALIC(x) [UIFont fontWithName:@"OpenSansLight-Italic" size:x]
 #define FONT_BOLD(x) [UIFont fontWithName:@"OpenSans-Bold" size:x]

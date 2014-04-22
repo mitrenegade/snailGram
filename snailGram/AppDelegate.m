@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "PostCard+Image.h"
+#import "ParseBase+Parse.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -23,6 +25,7 @@
     [Parse setApplicationId:@"054wtpQbuRXuzIVeY2ajbApfzZcqB5L7YJKPSNYQ"
                   clientKey:@"MyRaB1A2neqSRCGVq71qamBAsdtRS9PMjS2YuYs3"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [Crashlytics startWithAPIKey:@"70160b7dec925a91c6fe09e38bf1f8659c1eda41"];
 
     [self setupUserForCurrentDevice];
 
@@ -72,6 +75,31 @@
     postCard.imageBack = nil;
 }
 
+-(void)loadPostcardWithCompletion:(void (^)(BOOL success))completion {
+    NSArray *postcards = [[PostCard where:@{}] all];
+    if ([postcards count] == 0)
+        completion(NO);
+    postCard = (PostCard *)[postcards firstObject];
+
+    if (_currentPostCard.parseID) {
+        PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"PostCard" objectId:_currentPostCard.parseID];
+        [pfObject refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!error) {
+                postCard.pfObject = pfObject;
+                completion(YES);
+            }
+            else {
+                [self resetPostcard];
+                completion(NO);
+            }
+        }];
+    }
+    else {
+        [self resetPostcard];
+        completion(NO);
+    }
+}
+
 #pragma mark CoreData
 - (NSManagedObjectContext *) managedObjectContext {
     if (_managedObjectContext != nil) {
@@ -103,7 +131,7 @@
         return _persistentStoreCoordinator;
     }
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-                                               stringByAppendingPathComponent: @"helloBear.sqlite"]];
+                                               stringByAppendingPathComponent: @"snailGram.sqlite"]];
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];

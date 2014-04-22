@@ -23,5 +23,6 @@
 @property (nonatomic, strong) PostCard *postCard;
 
 -(void)resetPostcard;
+-(void)loadPostcardWithCompletion:(void(^)(BOOL success))completion;
 -(PFUser *)currentUser;
 @end

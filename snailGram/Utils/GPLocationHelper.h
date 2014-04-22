@@ -1,11 +1,3 @@
-//
-//  GPLocationHelper
-//  GymPact
-//
-//  Created by Bobby Ren on 5/11/13.
-//  Copyright (c) 2013 Harvard University. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
