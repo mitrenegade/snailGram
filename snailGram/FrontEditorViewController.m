@@ -246,8 +246,6 @@
         [self.textCanvas setHidden:YES];
 
     CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY);
-    CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_2);
-    CGAffineTransform dx = CGAffineTransformMakeTranslation(0, -320);
     CGSize size = CGSizeMake(POSTCARD_WIDTH_PIXELS, POSTCARD_HEIGHT_PIXELS);
     UIGraphicsBeginImageContext(size);
     // Put everything in the current view into the screenshot
@@ -255,6 +253,8 @@
     CGContextSaveGState(ctx);
     CGContextConcatCTM(ctx, t);
     if (isPortrait) {
+        CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_2);
+        CGAffineTransform dx = CGAffineTransformMakeTranslation(0, -320);
         CGContextConcatCTM(ctx, r);
         CGContextConcatCTM(ctx, dx);
     }

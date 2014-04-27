@@ -80,8 +80,11 @@
     [self saveScreenshot];
     [self.textViewMessage setHidden:NO];
 
+#if TESTING
+    [self renderCompositeImage];
+#endif
     [self goToPayment];
-
+    
 #if CAN_LOAD_POSTCARD
     // save coredata
     NSError *error;
