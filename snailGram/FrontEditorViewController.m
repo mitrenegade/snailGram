@@ -231,20 +231,33 @@
 }
 
 -(void)saveScreenshot {
-    // Create the screenshot. draw image in viewBounds    
+    // Create the screenshot. draw image in viewBounds
+//    if (isPortrait) {
+//        [self.canvas setTransform:CGAffineTransformMakeRotation(M_PI_2)];
+//    }
     float scaleX = POSTCARD_WIDTH_PIXELS / self.canvas.frame.size.width;
     float scaleY = POSTCARD_HEIGHT_PIXELS / self.canvas.frame.size.height;
+    if (isPortrait) {
+        scaleY = POSTCARD_HEIGHT_PIXELS / self.canvas.frame.size.width;
+        scaleX = POSTCARD_WIDTH_PIXELS / self.canvas.frame.size.height;
+    }
 
     if ([_currentPostCard.text length] == 0)
         [self.textCanvas setHidden:YES];
 
     CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY);
+    CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_2);
+    CGAffineTransform dx = CGAffineTransformMakeTranslation(0, -320);
     CGSize size = CGSizeMake(POSTCARD_WIDTH_PIXELS, POSTCARD_HEIGHT_PIXELS);
     UIGraphicsBeginImageContext(size);
     // Put everything in the current view into the screenshot
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
     CGContextConcatCTM(ctx, t);
+    if (isPortrait) {
+        CGContextConcatCTM(ctx, r);
+        CGContextConcatCTM(ctx, dx);
+    }
     [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
     CGContextRestoreGState(ctx);
     // Save the current image context info into a UIImage
