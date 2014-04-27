@@ -42,7 +42,11 @@ static PayPalHelper *sharedPayPalHelper;
 
 +(UIViewController *)showPayPalLoginWithDelegate:(id)_delegate {
     PayPalHelper *helper = [PayPalHelper sharedPayPalHelper];
-    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentNoNetwork];
+#if TESTING
+    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
+#else
+    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
+#endif
     helper.delegate = _delegate;
 
     // obtain consent
