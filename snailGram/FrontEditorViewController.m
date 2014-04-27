@@ -140,6 +140,8 @@
 }
 
 -(IBAction)didClickNext:(id)sender {
+    [self.textViewMessage resignFirstResponder];
+
     if (edited) {
         [self saveScreenshot];
     }

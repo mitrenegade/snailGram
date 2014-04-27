@@ -73,6 +73,13 @@
 
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
+#if !TESTING
+    if (!_currentPostCard.to) {
+        [UIAlertView alertViewWithTitle:@"Please enter a recipient" message:@"You must enter all necessary fields before sending the postcard!"];
+        return;
+    }
+#endif
+
     [self.textViewMessage resignFirstResponder];
 
     if ([_currentPostCard.message length] == 0)
