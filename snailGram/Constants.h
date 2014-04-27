@@ -13,13 +13,13 @@
 #define _currentPostCard [_appDelegate postCard]
 #define _currentUser [_appDelegate currentUser]
 
-#define MESSAGE_PLACEHOLDER_TEXT @"Please enter a message"
+#define MESSAGE_PLACEHOLDER_TEXT @"Enter a message"
 #define MESSAGE_LENGTH_LIMIT 40
 
 #define POSTCARD_WIDTH_PIXELS 1800
 #define POSTCARD_HEIGHT_PIXELS 1200
 #define POSTCARD_IMAGE_WIDTH_PIXELS 1720
-#define POSTCARD_IMAGE_HEIGHT_PIXLS 1120
+#define POSTCARD_IMAGE_HEIGHT_PIXELS 1120
 
 #define DebugLog(...) NSLog(__VA_ARGS__)
 #define AIRPLANE_MODE 0

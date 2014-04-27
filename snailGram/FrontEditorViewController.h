@@ -27,6 +27,14 @@ typedef enum {
 
     UIAlertView *alertView;
     TextColorState textColorState;
+
+    IBOutlet UIView *styleSelector;
+    IBOutlet UIButton *buttonLightDark;
+    IBOutlet UIButton *buttonDarkLight;
+    IBOutlet UIButton *buttonLight;
+    IBOutlet UIButton *buttonDark;
+
+    BOOL isPortrait;
 }
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIView *viewBounds;
@@ -46,4 +54,5 @@ typedef enum {
 -(IBAction)didClickButtonText:(id)sender;
 -(IBAction)didClickBack:(id)sender;
 -(IBAction)didToggleTextColor:(id)sender;
+-(IBAction)didClickSelector:(id)sender;
 @end

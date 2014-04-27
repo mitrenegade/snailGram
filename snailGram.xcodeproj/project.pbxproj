@@ -56,6 +56,7 @@
 		9E25161E18C3033D00F542F5 /* AddressEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25161C18C3033D00F542F5 /* AddressEditorViewController.m */; };
 		9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E25161D18C3033D00F542F5 /* AddressEditorViewController.xib */; };
 		9E25162518C30A3100F542F5 /* Address+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25162418C30A3100F542F5 /* Address+Info.m */; };
+		9E2F48A8190D8A4A00BF5709 /* rotateImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2F48A7190D8A4A00BF5709 /* rotateImage@2x.png */; };
 		9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338318D5B67F00A7EA50 /* FlipSegue.m */; };
 		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
 		9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7277DD18E62EA800AD4015 /* PostCard.m */; };
@@ -173,6 +174,7 @@
 		9E25161D18C3033D00F542F5 /* AddressEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressEditorViewController.xib; sourceTree = "<group>"; };
 		9E25162318C30A3100F542F5 /* Address+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Info.h"; sourceTree = "<group>"; };
 		9E25162418C30A3100F542F5 /* Address+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Info.m"; sourceTree = "<group>"; };
+		9E2F48A7190D8A4A00BF5709 /* rotateImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotateImage@2x.png"; sourceTree = "<group>"; };
 		9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_2.xcdatamodel; sourceTree = "<group>"; };
 		9E50338218D5B67F00A7EA50 /* FlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSegue.h; sourceTree = "<group>"; };
 		9E50338318D5B67F00A7EA50 /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		9E2515D018C2780F00F542F5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9E2F48A7190D8A4A00BF5709 /* rotateImage@2x.png */,
 				9E22DFF718CFE70900F8B4A8 /* rotateCamera.png */,
 				9E22DFF818CFE70900F8B4A8 /* rotateCamera@2x.png */,
 				9E103E1A18CE184B003E3021 /* bora-bora.jpg */,
@@ -607,6 +610,7 @@
 				9E103E1318CBDB4F003E3021 /* polaroid@2x.png in Resources */,
 				9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */,
 				9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */,
+				9E2F48A8190D8A4A00BF5709 /* rotateImage@2x.png in Resources */,
 				9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */,
 				9E103E1918CE136A003E3021 /* snailGram100.png in Resources */,
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,

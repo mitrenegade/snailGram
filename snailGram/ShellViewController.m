@@ -47,6 +47,9 @@
     [self.buttonCamera.titleLabel setFont:FONT_REGULAR(18)];
     [self.buttonLibrary.titleLabel setFont:FONT_REGULAR(18)];
     [self.buttonLoad.titleLabel setFont:FONT_REGULAR(18)];
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.canvas addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +92,10 @@
         }];
     }
 #endif
+}
+
+-(void)handleGesture:(UITapGestureRecognizer *)gesture {
+    [self didClickButton:self.buttonCamera];
 }
 
 -(void)imageSaved {

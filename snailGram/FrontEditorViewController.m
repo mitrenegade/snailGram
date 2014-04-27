@@ -37,15 +37,15 @@
     if ([_currentPostCard.text length])
         self.textViewMessage.text = _currentPostCard.text;
 
+    // programmatically added because imageView must be moved/resized/transformed
     self.imageView = [[UIImageView alloc] init];
-    [self.viewBounds addSubview:self.imageView];
+    [self.viewBounds insertSubview:self.imageView belowSubview:self.textCanvas];
     [self.imageView setImage:self.image];
-    float targetWidth = self.viewBounds.frame.size.width;
-    float scale = targetWidth / self.image.size.width;
-    CGRect frame = CGRectMake(0, -((self.image.size.height * scale)/2 - self.viewBounds.frame.size.height/2) + IMAGE_BORDER, self.image.size.width * scale, self.image.size.height * scale);
-    [self.imageView setFrame:frame];
+    // UIImageOrientation is Up and Down when the phone is in portrait mode. even for mirrored.
+    isPortrait = !(self.image.imageOrientation == UIImageOrientationUp || self.image.imageOrientation == UIImageOrientationDown);
+    [self reorientImage:isPortrait];
 
-    NSLog(@"Initial image size: %f %f", self.image.size.width, self.image.size.height);
+    NSLog(@"Initial image size: %f %f orientation %d", self.image.size.width, self.image.size.height, self.image.imageOrientation);
 
     // gestures
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
@@ -73,10 +73,70 @@
     [self.buttonTextColor.titleLabel setFont:FONT_REGULAR(18)];
 }
 
+-(void)reorientImage:(BOOL)portrait {
+    // reorient
+    if (!portrait) {
+        // landscape
+
+        // reorient canvas
+        float targetWidth = self.view.bounds.size.width;
+        float scale = targetWidth / POSTCARD_WIDTH_PIXELS;
+        float targetHeight = POSTCARD_HEIGHT_PIXELS * scale;
+        CGRect canvasFrame = self.canvas.frame;
+        canvasFrame.size.width = targetWidth;
+        canvasFrame.size.height = targetHeight;
+        self.canvas.frame = canvasFrame;
+
+        [self.buttonText setFrame:CGRectMake(0, 338, 320, 50)];
+        [self.buttonTextColor setFrame:CGRectMake(0, 396, 320, 50)];
+
+        if ([_currentPostCard.text length] == 0) {
+            self.textCanvas.frame = CGRectMake(0, 0, 300, 35);
+        }
+    }
+    else {
+        // portrait
+
+        // reorient canvas
+        float targetHeight = self.view.bounds.size.width; // rotate 90 degrees
+        float scale = targetHeight / POSTCARD_WIDTH_PIXELS;
+        float targetWidth = POSTCARD_HEIGHT_PIXELS * scale;
+        CGRect canvasFrame = self.canvas.frame;
+        canvasFrame.size.width = targetWidth;
+        canvasFrame.size.height = targetHeight;
+        self.canvas.frame = canvasFrame;
+
+        [self.buttonText setFrame:CGRectMake(0, 430, 320, 50)];
+
+        if ([_currentPostCard.text length] == 0) {
+            self.textCanvas.frame = CGRectMake(0, 0, 200, 35);
+        }
+    }
+
+    float targetWidth = self.viewBounds.frame.size.width;
+    float scale = targetWidth / self.image.size.width;
+    float targetHeight = self.image.size.height * scale;
+
+    if (targetHeight < self.viewBounds.frame.size.height) {
+        targetHeight = self.viewBounds.frame.size.height;
+        scale = targetHeight / self.image.size.height;
+        targetWidth = self.image.size.width * scale;
+    }
+    CGRect frame = CGRectMake(0, 0, targetWidth, targetHeight);
+    self.imageView.frame = frame;
+
+    [self updateTextSelector];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)didClickReorient:(id)sender {
+    isPortrait = !isPortrait;
+    [self reorientImage:isPortrait];
 }
 
 -(IBAction)didClickNext:(id)sender {
@@ -93,14 +153,26 @@
     if (self.textCanvas.hidden == NO) {
         [self performSelector:@selector(beginEdit) withObject:nil afterDelay:2];
         [self.buttonText setTitle:@"Remove text" forState:UIControlStateNormal];
-        [self.buttonTextColor setHidden:NO];
+        [self updateTextSelector];
         [self showHint];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self.buttonText setTitle:@"Add text" forState:UIControlStateNormal];
         [self.buttonTextColor setHidden:YES];
+        [self updateTextSelector];
         [self hideOrCancelHint];
+    }
+}
+
+-(void)updateTextSelector {
+    if (isPortrait) {
+        [self.buttonTextColor setHidden:YES];
+        [styleSelector setHidden:NO];
+    }
+    else {
+        [self.buttonTextColor setHidden:NO];
+        [styleSelector setHidden:YES];
     }
 }
 
@@ -108,6 +180,19 @@
     textColorState += 1;
     if (textColorState == TextColorMax)
         textColorState = 0;
+
+    [self updateTextColors];
+}
+
+-(IBAction)didClickSelector:(id)sender {
+    if (sender == buttonLightDark)
+        textColorState = LightTextDarkBG;
+    else if (sender == buttonDarkLight)
+        textColorState = DarkTextLightBG;
+    else if (sender == buttonLight)
+        textColorState = LightText;
+    else if (sender == buttonDark)
+        textColorState = DarkText;
 
     [self updateTextColors];
 }
@@ -202,6 +287,7 @@
     textView.contentSize = textView.frame.size; // on phone, contentSize gets changed so textView becomes scrollable.
     if (_currentPostCard.text.length == 0) {
         textView.text = MESSAGE_PLACEHOLDER_TEXT;
+        [self textViewDidChange:textView];
     }
 }
 
@@ -231,13 +317,13 @@
     CGPoint center = self.textCanvas.center;
     CGSize size = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(self.canvas.frame.size.width - 2*IMAGE_BORDER, 35)];
     CGRect frame = self.textCanvas.frame;
-    frame.size.width = MIN(self.canvas.frame.size.width - 2*IMAGE_BORDER, size.width+2*IMAGE_BORDER);
+    frame.size.width = MIN(self.viewBounds.frame.size.width, size.width+2*IMAGE_BORDER);
     self.textCanvas.frame = frame;
     self.textCanvas.center = center;
-    if (self.textCanvas.frame.origin.x < IMAGE_BORDER)
-        self.textCanvas.frame = CGRectMake(IMAGE_BORDER, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);
-    if (self.textCanvas.frame.origin.x + self.textCanvas.frame.size.width >= self.canvas.frame.size.width - IMAGE_BORDER)
-        self.textCanvas.frame = CGRectMake(310 - self.textCanvas.frame.size.width, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);;
+    if (self.textCanvas.frame.origin.x + self.textCanvas.frame.size.width >= self.viewBounds.frame.size.width)
+        self.textCanvas.frame = CGRectMake(self.viewBounds.frame.size.width - self.textCanvas.frame.size.width, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);;
+    if (self.textCanvas.frame.origin.x < 0)
+        self.textCanvas.frame = CGRectMake(0, self.textCanvas.frame.origin.y, self.textCanvas.frame.size.width, self.textCanvas.frame.size.height);
 }
 
 #pragma mark Gesture recognizers
@@ -277,14 +363,14 @@
                     CGRect frame = initialFrame;
                     frame.origin.x += dx;
                     frame.origin.y += dy;
-                    if (frame.origin.x <= IMAGE_BORDER)
-                        frame.origin.x = IMAGE_BORDER;
-                    if (frame.origin.x >= self.canvas.frame.size.width - self.textCanvas.frame.size.width - IMAGE_BORDER)
-                        frame.origin.x = self.canvas.frame.size.width - self.textCanvas.frame.size.width - IMAGE_BORDER;
-                    if (frame.origin.y <= IMAGE_BORDER)
-                        frame.origin.y = IMAGE_BORDER;
-                    if (frame.origin.y >= self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER)
-                        frame.origin.y = self.canvas.frame.size.height - self.textCanvas.frame.size.height - IMAGE_BORDER;
+                    if (frame.origin.x >= self.viewBounds.frame.size.width - self.textCanvas.frame.size.width)
+                        frame.origin.x = self.viewBounds.frame.size.width - self.textCanvas.frame.size.width;
+                    if (frame.origin.x <= 0)
+                        frame.origin.x = 0;
+                    if (frame.origin.y >= self.viewBounds.frame.size.height - self.textCanvas.frame.size.height)
+                        frame.origin.y = self.viewBounds.frame.size.height - self.textCanvas.frame.size.height;
+                    if (frame.origin.y <= 0)
+                        frame.origin.y = 0;
                     viewDragging.frame = frame;
                 }
                 else if (viewDragging == self.imageView) {
