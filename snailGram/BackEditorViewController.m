@@ -14,6 +14,8 @@
 #import "PayPalHelper.h"
 #import "Payment+Parse.h"
 #import "PostCard+Image.h"
+#import "LocalyticsSession.h"
+#import <FiksuSDK/FiksuSDK.h>
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -59,6 +61,10 @@
 
     [self.labelFrom setFont:FONT_REGULAR(6)];
     [self.labelFrom setHidden:YES];
+
+#if !TESTING
+    [[LocalyticsSession shared] tagScreen:@"Back Editor"];
+#endif
 }
 
 -(void)closeKeyboardInput:(id)sender {
@@ -73,6 +79,11 @@
 
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
+
+#if TESTING
+    [self renderCompositeImage];
+#endif
+
 #if !TESTING
     if (!_currentPostCard.to) {
         [UIAlertView alertViewWithTitle:@"Please enter a recipient" message:@"You must enter all necessary fields before sending the postcard!"];
@@ -101,11 +112,6 @@
         [self goToPayment];
     }
 
-#if TESTING
-    [self renderCompositeImage];
-#endif
-    [self goToPayment];
-    
 #if CAN_LOAD_POSTCARD
     // save coredata
     NSError *error;
@@ -240,6 +246,10 @@
     UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
     // Present the PayPalFuturePaymentViewController
     [self.navigationController presentViewController:controller animated:YES completion:nil];
+
+#if TESTING
+    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
+#endif
 }
 
 #pragma mark PayPalHelperDelegate
@@ -250,6 +260,10 @@
         alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..."];
         [self renderCompositeImage];
     }];
+#if !TESTING
+    [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
+    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
+#endif
 }
 
 -(void)didCancelPayPalLogin {
@@ -257,6 +271,9 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
+#if !TESTING
+        [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
+#endif
 }
 
 #pragma mark final

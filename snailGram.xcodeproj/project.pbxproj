@@ -13,7 +13,7 @@
 		9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1518CE0D07003E3021 /* camera@2x.png */; };
 		9E103E1918CE136A003E3021 /* snailGram100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1818CE136A003E3021 /* snailGram100.png */; };
 		9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1A18CE184B003E3021 /* bora-bora.jpg */; };
-		9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E13E01618D98C3B00D2E906 /* AdSupport.framework */; };
+		9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E13E01618D98C3B00D2E906 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9E1FE03318DE646800C8A8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE02F18DE646800C8A8EC /* OpenSans-Bold.ttf */; };
 		9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03018DE646800C8A8EC /* OpenSans-Light.ttf */; };
 		9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FE03118DE646800C8A8EC /* OpenSans-LightItalic.ttf */; };
@@ -61,6 +61,24 @@
 		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
 		9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7277DD18E62EA800AD4015 /* PostCard.m */; };
 		9E753E9918E61BD900ED4128 /* PostCard+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E753E9818E61BD900ED4128 /* PostCard+Image.m */; };
+		9E86FAC7190D9867001A2335 /* iOSa_2.23.0.version in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAC1190D9867001A2335 /* iOSa_2.23.0.version */; };
+		9E86FAC8190D9867001A2335 /* libLocalyticsAMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86FAC2190D9867001A2335 /* libLocalyticsAMP.a */; };
+		9E86FACA190D9867001A2335 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAC4190D9867001A2335 /* LICENSE */; };
+		9E86FACC190D989D001A2335 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86FACB190D989D001A2335 /* libsqlite3.dylib */; };
+		9E86FADC190D9D97001A2335 /* FiksuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86FACE190D9D97001A2335 /* FiksuSDK.framework */; };
+		9E86FADD190D9D97001A2335 /* fiksu-bar-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD0190D9D97001A2335 /* fiksu-bar-1.png */; };
+		9E86FADE190D9D97001A2335 /* fiksu-close-debug.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD1190D9D97001A2335 /* fiksu-close-debug.png */; };
+		9E86FADF190D9D97001A2335 /* fiksu-config.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD2190D9D97001A2335 /* fiksu-config.png */; };
+		9E86FAE0190D9D97001A2335 /* fiksu-event-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD3190D9D97001A2335 /* fiksu-event-failed.png */; };
+		9E86FAE1190D9D97001A2335 /* fiksu-event-succeeded.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD4190D9D97001A2335 /* fiksu-event-succeeded.png */; };
+		9E86FAE2190D9D97001A2335 /* fiksu-event.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD5190D9D97001A2335 /* fiksu-event.png */; };
+		9E86FAE3190D9D97001A2335 /* fiksu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD6190D9D97001A2335 /* fiksu-icon.png */; };
+		9E86FAE4190D9D97001A2335 /* fiksu-verify.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD7190D9D97001A2335 /* fiksu-verify.png */; };
+		9E86FAE5190D9D97001A2335 /* FMConfigViewController.nib in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD8190D9D97001A2335 /* FMConfigViewController.nib */; };
+		9E86FAE6190D9D97001A2335 /* FMEventsViewController.nib in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAD9190D9D97001A2335 /* FMEventsViewController.nib */; };
+		9E86FAE7190D9D97001A2335 /* FMTrackingViewController.nib in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FADA190D9D97001A2335 /* FMTrackingViewController.nib */; };
+		9E86FAE8190D9D97001A2335 /* FMVerifyViewController.nib in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FADB190D9D97001A2335 /* FMVerifyViewController.nib */; };
+		9E86FAEA190D9DAA001A2335 /* FiksuConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAE9190D9DAA001A2335 /* FiksuConfiguration.plist */; };
 		9E98410618FE48A9008A6A94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E98410518FE48A9008A6A94 /* Crashlytics.framework */; };
 		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
@@ -183,6 +201,26 @@
 		9E7277DD18E62EA800AD4015 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E753E9718E61BD900ED4128 /* PostCard+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostCard+Image.h"; sourceTree = "<group>"; };
 		9E753E9818E61BD900ED4128 /* PostCard+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostCard+Image.m"; sourceTree = "<group>"; };
+		9E86FAC1190D9867001A2335 /* iOSa_2.23.0.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSa_2.23.0.version; sourceTree = "<group>"; };
+		9E86FAC2190D9867001A2335 /* libLocalyticsAMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLocalyticsAMP.a; sourceTree = "<group>"; };
+		9E86FAC4190D9867001A2335 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		9E86FAC5190D9867001A2335 /* LocalyticsAmpSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalyticsAmpSession.h; sourceTree = "<group>"; };
+		9E86FAC6190D9867001A2335 /* LocalyticsSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalyticsSession.h; sourceTree = "<group>"; };
+		9E86FACB190D989D001A2335 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		9E86FACE190D9D97001A2335 /* FiksuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FiksuSDK.framework; sourceTree = "<group>"; };
+		9E86FAD0190D9D97001A2335 /* fiksu-bar-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-bar-1.png"; sourceTree = "<group>"; };
+		9E86FAD1190D9D97001A2335 /* fiksu-close-debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-close-debug.png"; sourceTree = "<group>"; };
+		9E86FAD2190D9D97001A2335 /* fiksu-config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-config.png"; sourceTree = "<group>"; };
+		9E86FAD3190D9D97001A2335 /* fiksu-event-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-event-failed.png"; sourceTree = "<group>"; };
+		9E86FAD4190D9D97001A2335 /* fiksu-event-succeeded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-event-succeeded.png"; sourceTree = "<group>"; };
+		9E86FAD5190D9D97001A2335 /* fiksu-event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-event.png"; sourceTree = "<group>"; };
+		9E86FAD6190D9D97001A2335 /* fiksu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-icon.png"; sourceTree = "<group>"; };
+		9E86FAD7190D9D97001A2335 /* fiksu-verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fiksu-verify.png"; sourceTree = "<group>"; };
+		9E86FAD8190D9D97001A2335 /* FMConfigViewController.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FMConfigViewController.nib; sourceTree = "<group>"; };
+		9E86FAD9190D9D97001A2335 /* FMEventsViewController.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FMEventsViewController.nib; sourceTree = "<group>"; };
+		9E86FADA190D9D97001A2335 /* FMTrackingViewController.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FMTrackingViewController.nib; sourceTree = "<group>"; };
+		9E86FADB190D9D97001A2335 /* FMVerifyViewController.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FMVerifyViewController.nib; sourceTree = "<group>"; };
+		9E86FAE9190D9DAA001A2335 /* FiksuConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FiksuConfiguration.plist; sourceTree = "<group>"; };
 		9E98410518FE48A9008A6A94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
@@ -227,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E86FACC190D989D001A2335 /* libsqlite3.dylib in Frameworks */,
 				9EC9330D18E11FEA0035200B /* Accounts.framework in Frameworks */,
 				9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */,
 				9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */,
@@ -236,6 +275,7 @@
 				9E9B640418C403E90048142D /* Security.framework in Frameworks */,
 				9EF04A8E18D984CE000FA41A /* libPayPalMobile.a in Frameworks */,
 				9E9B640218C403E40048142D /* QuartzCore.framework in Frameworks */,
+				9E86FADC190D9D97001A2335 /* FiksuSDK.framework in Frameworks */,
 				9E9B640018C403DF0048142D /* MobileCoreServices.framework in Frameworks */,
 				9E9B63FE18C403D80048142D /* libz.dylib in Frameworks */,
 				9E9B63FC18C403D10048142D /* CoreLocation.framework in Frameworks */,
@@ -246,6 +286,7 @@
 				9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */,
 				9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */,
 				9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */,
+				9E86FAC8190D9867001A2335 /* libLocalyticsAMP.a in Frameworks */,
 				9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */,
 				9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */,
 			);
@@ -307,6 +348,9 @@
 		9E25159518C2768900F542F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E86FACD190D9D97001A2335 /* FiksuSDK.embeddedframework */,
+				9E86FACB190D989D001A2335 /* libsqlite3.dylib */,
+				9E86FAC0190D9867001A2335 /* LocalyticsSDK */,
 				9E98410518FE48A9008A6A94 /* Crashlytics.framework */,
 				9EC9330C18E11FEA0035200B /* Accounts.framework */,
 				9EAA647218DA7D0D006264FC /* FacebookSDK.framework */,
@@ -359,6 +403,7 @@
 		9E25159D18C2768900F542F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E86FAE9190D9DAA001A2335 /* FiksuConfiguration.plist */,
 				9E1FE02E18DE646800C8A8EC /* Fonts */,
 				9EF04A8F18D98625000FA41A /* ConstantsLocal.h */,
 				9E2515D018C2780F00F542F5 /* Images */,
@@ -496,6 +541,46 @@
 			name = "Other Controllers";
 			sourceTree = "<group>";
 		};
+		9E86FAC0190D9867001A2335 /* LocalyticsSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9E86FAC1190D9867001A2335 /* iOSa_2.23.0.version */,
+				9E86FAC2190D9867001A2335 /* libLocalyticsAMP.a */,
+				9E86FAC4190D9867001A2335 /* LICENSE */,
+				9E86FAC5190D9867001A2335 /* LocalyticsAmpSession.h */,
+				9E86FAC6190D9867001A2335 /* LocalyticsSession.h */,
+			);
+			path = LocalyticsSDK;
+			sourceTree = "<group>";
+		};
+		9E86FACD190D9D97001A2335 /* FiksuSDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				9E86FACE190D9D97001A2335 /* FiksuSDK.framework */,
+				9E86FACF190D9D97001A2335 /* Resources */,
+			);
+			path = FiksuSDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		9E86FACF190D9D97001A2335 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9E86FAD0190D9D97001A2335 /* fiksu-bar-1.png */,
+				9E86FAD1190D9D97001A2335 /* fiksu-close-debug.png */,
+				9E86FAD2190D9D97001A2335 /* fiksu-config.png */,
+				9E86FAD3190D9D97001A2335 /* fiksu-event-failed.png */,
+				9E86FAD4190D9D97001A2335 /* fiksu-event-succeeded.png */,
+				9E86FAD5190D9D97001A2335 /* fiksu-event.png */,
+				9E86FAD6190D9D97001A2335 /* fiksu-icon.png */,
+				9E86FAD7190D9D97001A2335 /* fiksu-verify.png */,
+				9E86FAD8190D9D97001A2335 /* FMConfigViewController.nib */,
+				9E86FAD9190D9D97001A2335 /* FMEventsViewController.nib */,
+				9E86FADA190D9D97001A2335 /* FMTrackingViewController.nib */,
+				9E86FADB190D9D97001A2335 /* FMVerifyViewController.nib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		9E9B63E118C3B9630048142D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,18 +693,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E103E1318CBDB4F003E3021 /* polaroid@2x.png in Resources */,
+				9E86FADE190D9D97001A2335 /* fiksu-close-debug.png in Resources */,
 				9E22DFF918CFE70900F8B4A8 /* rotateCamera.png in Resources */,
+				9E86FAE7190D9D97001A2335 /* FMTrackingViewController.nib in Resources */,
 				9E25161F18C3033D00F542F5 /* AddressEditorViewController.xib in Resources */,
+				9E86FAE0190D9D97001A2335 /* fiksu-event-failed.png in Resources */,
 				9E2F48A8190D8A4A00BF5709 /* rotateImage@2x.png in Resources */,
+				9E86FAE1190D9D97001A2335 /* fiksu-event-succeeded.png in Resources */,
+				9E86FAE8190D9D97001A2335 /* FMVerifyViewController.nib in Resources */,
+				9E86FAE2190D9D97001A2335 /* fiksu-event.png in Resources */,
 				9E1FE03418DE646800C8A8EC /* OpenSans-Light.ttf in Resources */,
+				9E86FAE3190D9D97001A2335 /* fiksu-icon.png in Resources */,
 				9E103E1918CE136A003E3021 /* snailGram100.png in Resources */,
+				9E86FAC7190D9867001A2335 /* iOSa_2.23.0.version in Resources */,
+				9E86FAE6190D9D97001A2335 /* FMEventsViewController.nib in Resources */,
 				9E103E1718CE0D07003E3021 /* camera@2x.png in Resources */,
+				9E86FADD190D9D97001A2335 /* fiksu-bar-1.png in Resources */,
 				9E1FE03518DE646800C8A8EC /* OpenSans-LightItalic.ttf in Resources */,
+				9E86FAE4190D9D97001A2335 /* fiksu-verify.png in Resources */,
 				9E103E1218CBDB4F003E3021 /* polaroid.png in Resources */,
 				9E2515AF18C2768900F542F5 /* Images.xcassets in Resources */,
 				9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */,
 				9E1FE03318DE646800C8A8EC /* OpenSans-Bold.ttf in Resources */,
+				9E86FAEA190D9DAA001A2335 /* FiksuConfiguration.plist in Resources */,
+				9E86FAE5190D9D97001A2335 /* FMConfigViewController.nib in Resources */,
 				9E2515A118C2768900F542F5 /* InfoPlist.strings in Resources */,
+				9E86FACA190D9867001A2335 /* LICENSE in Resources */,
+				9E86FADF190D9D97001A2335 /* fiksu-config.png in Resources */,
 				9E103E1B18CE184B003E3021 /* bora-bora.jpg in Resources */,
 				9E103E1618CE0D07003E3021 /* camera.png in Resources */,
 				9E1FE03618DE646800C8A8EC /* OpenSans-Regular.ttf in Resources */,
@@ -831,6 +931,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FiksuSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -838,6 +939,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/PayPalMobile,
+					"$(PROJECT_DIR)/LocalyticsSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -868,6 +970,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram/snailGram/AWS,
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FiksuSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -875,6 +978,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mitrenegade12/Desktop/Projects/snailGram/PayPalMobile,
+					"$(PROJECT_DIR)/LocalyticsSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

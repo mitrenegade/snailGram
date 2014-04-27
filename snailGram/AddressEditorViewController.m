@@ -10,6 +10,7 @@
 #import "UIAlertView+MKBlockAdditions.h"
 #import <AddressBook/AddressBook.h>
 #import "Address+Info.h"
+#import "LocalyticsSession.h"
 
 @interface AddressEditorViewController ()
 
@@ -86,6 +87,10 @@ static NSArray *states;
     }
 
     [self.buttonExistingRecipient setEnabled:NO];
+
+#if !TESTING
+    [[LocalyticsSession shared] tagScreen:@"Address Editor"];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -237,6 +242,10 @@ static NSArray *states;
         [_appDelegate.managedObjectContext save:&error];
     }
 
+#if !TESTING
+    [[LocalyticsSession shared] tagEvent:@"New address created"];
+#endif
+
     [self.delegate didSaveAddress:self.address];
 }
 
@@ -245,6 +254,10 @@ static NSArray *states;
         [UIAlertView alertViewWithTitle:@"Please select an existing recipient" message:nil];
         return;
     }
+#if !TESTING
+    [[LocalyticsSession shared] tagEvent:@"Address loaded"];
+#endif
+
     [self.delegate didSaveAddress:self.selectedAddress];
 }
 
