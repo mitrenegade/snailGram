@@ -15,6 +15,7 @@
 #import "Payment+Parse.h"
 #import "PostCard+Image.h"
 #import "LocalyticsSession.h"
+#import <FiksuSDK/FiksuSDK.h>
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -78,6 +79,11 @@
 
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
+
+#if TESTING
+    [self renderCompositeImage];
+#endif
+
 #if !TESTING
     if (!_currentPostCard.to) {
         [UIAlertView alertViewWithTitle:@"Please enter a recipient" message:@"You must enter all necessary fields before sending the postcard!"];
@@ -106,11 +112,6 @@
         [self goToPayment];
     }
 
-#if TESTING
-    [self renderCompositeImage];
-#endif
-    [self goToPayment];
-    
 #if CAN_LOAD_POSTCARD
     // save coredata
     NSError *error;
@@ -245,6 +246,10 @@
     UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
     // Present the PayPalFuturePaymentViewController
     [self.navigationController presentViewController:controller animated:YES completion:nil];
+
+#if TESTING
+    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
+#endif
 }
 
 #pragma mark PayPalHelperDelegate
@@ -257,6 +262,7 @@
     }];
 #if !TESTING
     [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
+    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
 #endif
 }
 
