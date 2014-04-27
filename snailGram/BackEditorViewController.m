@@ -82,10 +82,24 @@
 
     [self.textViewMessage resignFirstResponder];
 
-    if ([_currentPostCard.message length] == 0)
+    if ([_currentPostCard.message length] == 0) {
         [self.textViewMessage setHidden:YES];
-    [self saveScreenshot];
-    [self.textViewMessage setHidden:NO];
+        [UIAlertView alertViewWithTitle:@"Enter a message?" message:@"Do you want to enter a message before sending the postcard?" cancelButtonTitle:@"Add message" otherButtonTitles:@[@"Go to payment"] onDismiss:^(int buttonIndex) {
+            // dismiss means go ahead and pay
+            [self saveScreenshot];
+            [self.textViewMessage setHidden:NO];
+            [self goToPayment];
+        } onCancel:^{
+            // cancel means go back and edit postcard
+            [self.textViewMessage setHidden:NO];
+            return;
+        }];
+    }
+    else {
+        [self saveScreenshot];
+        [self.textViewMessage setHidden:NO];
+        [self goToPayment];
+    }
 
 #if TESTING
     [self renderCompositeImage];
