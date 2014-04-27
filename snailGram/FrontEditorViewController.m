@@ -13,6 +13,7 @@
 #import "PostCard+Parse.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "PostCard+Image.h"
+#import "LocalyticsSession.h"
 
 @interface FrontEditorViewController ()
 
@@ -71,6 +72,10 @@
 
     [self.buttonText.titleLabel setFont:FONT_REGULAR(18)];
     [self.buttonTextColor.titleLabel setFont:FONT_REGULAR(18)];
+
+#if !TESTING
+    [[LocalyticsSession shared] tagScreen:@"Front Editor"];
+#endif
 }
 
 -(void)reorientImage:(BOOL)portrait {
@@ -137,6 +142,9 @@
 -(IBAction)didClickReorient:(id)sender {
     isPortrait = !isPortrait;
     [self reorientImage:isPortrait];
+#if !TESTING
+    [[LocalyticsSession shared] tagEvent:@"Reorient image" attributes:@{@"New orientation":isPortrait?@"portrait":@"landscape"}];
+#endif
 }
 
 -(IBAction)didClickNext:(id)sender {
@@ -184,6 +192,29 @@
         textColorState = 0;
 
     [self updateTextColors];
+    
+#if !TESTING
+    NSString *textColorString;
+    switch (textColorState) {
+        case LightTextDarkBG:
+            textColorString = @"LightTextDarkBG";
+            break;
+        case DarkTextLightBG:
+            textColorString = @"DarkTextLightBG";
+            break;
+        case LightText:
+            textColorString = @"LightText";
+            break;
+        case DarkText:
+            textColorString = @"DarkText";
+            break;
+
+        default:
+            textColorString = @"None(error)";
+            break;
+    }
+    [[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
+#endif
 }
 
 -(IBAction)didClickSelector:(id)sender {
@@ -195,6 +226,29 @@
         textColorState = LightText;
     else if (sender == buttonDark)
         textColorState = DarkText;
+
+#if !TESTING
+    NSString *textColorString;
+    switch (textColorState) {
+        case LightTextDarkBG:
+            textColorString = @"LightTextDarkBG";
+            break;
+        case DarkTextLightBG:
+            textColorString = @"DarkTextLightBG";
+            break;
+        case LightText:
+            textColorString = @"LightText";
+            break;
+        case DarkText:
+            textColorString = @"DarkText";
+            break;
+
+        default:
+            textColorString = @"None(error)";
+            break;
+    }
+    [[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
+#endif
 
     [self updateTextColors];
 }

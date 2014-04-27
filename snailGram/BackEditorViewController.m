@@ -14,6 +14,7 @@
 #import "PayPalHelper.h"
 #import "Payment+Parse.h"
 #import "PostCard+Image.h"
+#import "LocalyticsSession.h"
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -59,6 +60,10 @@
 
     [self.labelFrom setFont:FONT_REGULAR(6)];
     [self.labelFrom setHidden:YES];
+
+#if !TESTING
+    [[LocalyticsSession shared] tagScreen:@"Back Editor"];
+#endif
 }
 
 -(void)closeKeyboardInput:(id)sender {
@@ -250,6 +255,9 @@
         alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..."];
         [self renderCompositeImage];
     }];
+#if !TESTING
+    [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
+#endif
 }
 
 -(void)didCancelPayPalLogin {
@@ -257,6 +265,9 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
+#if !TESTING
+        [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
+#endif
 }
 
 #pragma mark final
