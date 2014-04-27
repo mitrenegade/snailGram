@@ -115,31 +115,33 @@
                                 <subviews>
                                     <view contentMode="redraw" id="Luj-kj-gT0" userLabel="View - bounding">
                                         <rect key="frame" x="8" y="8" width="304" height="197"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="cbG-DV-Oeg">
-                                        <rect key="frame" x="10" y="170" width="300" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <view alpha="0.40000000000000002" contentMode="scaleToFill" id="qJ9-q9-luj" userLabel="View - bg">
+                                            <view contentMode="scaleToFill" id="cbG-DV-Oeg">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Edit your message here" textAlignment="center" id="cKO-Wo-YDj">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <view alpha="0.40000000000000002" contentMode="scaleToFill" id="qJ9-q9-luj" userLabel="View - bg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Edit your message here" textAlignment="center" id="cKO-Wo-YDj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="2w3-QL-dDk" id="VLi-6t-JkJ"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="2w3-QL-dDk" id="VLi-6t-JkJ"/>
-                                                </connections>
-                                            </textView>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -157,7 +159,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: picture can be expanded and message box can be moved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UtC-cL-cw4">
-                                <rect key="frame" x="20" y="64" width="280" height="35"/>
+                                <rect key="frame" x="45" y="65" width="230" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,6 +177,78 @@
                                     <action selector="didToggleTextColor:" destination="2w3-QL-dDk" eventType="touchUpInside" id="iDu-zh-ilq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lw1-Z1-vfO">
+                                <rect key="frame" x="5" y="68" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="rotateImage.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickReorient:" destination="2w3-QL-dDk" eventType="touchUpInside" id="WSI-0r-3CA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="bZf-h1-kqP" userLabel="View - textColors">
+                                <rect key="frame" x="220" y="100" width="100" height="213"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="53S-KE-HJv">
+                                        <rect key="frame" x="0.0" y="10" width="100" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IrF-mY-aLB">
+                                        <rect key="frame" x="7" y="49" width="86" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Light">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickSelector:" destination="2w3-QL-dDk" eventType="touchUpInside" id="zzT-Kp-ThL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9NO-3o-ivL">
+                                        <rect key="frame" x="7" y="93" width="86" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Dark">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickSelector:" destination="2w3-QL-dDk" eventType="touchUpInside" id="FfV-gd-7BO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xp3-Ii-4SZ">
+                                        <rect key="frame" x="7" y="137" width="86" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Light">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickSelector:" destination="2w3-QL-dDk" eventType="touchUpInside" id="C4l-d5-ONW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l54-os-vgr">
+                                        <rect key="frame" x="7" y="172" width="86" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Dark">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickSelector:" destination="2w3-QL-dDk" eventType="touchUpInside" id="JNg-zk-G9U"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -195,10 +269,15 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="buttonDark" destination="l54-os-vgr" id="DFA-16-TC2"/>
+                        <outlet property="buttonDarkLight" destination="9NO-3o-ivL" id="zwj-c3-COe"/>
+                        <outlet property="buttonLight" destination="Xp3-Ii-4SZ" id="H7F-0K-Dwj"/>
+                        <outlet property="buttonLightDark" destination="IrF-mY-aLB" id="7Ri-ln-3hv"/>
                         <outlet property="buttonText" destination="xgp-XL-xun" id="MJc-Hd-Kgb"/>
                         <outlet property="buttonTextColor" destination="K7H-WU-fub" id="rrq-9Y-ti5"/>
                         <outlet property="canvas" destination="zVT-mv-Fr5" id="Rul-P0-6xH"/>
                         <outlet property="labelHintText" destination="UtC-cL-cw4" id="Dx0-Tt-7UW"/>
+                        <outlet property="styleSelector" destination="bZf-h1-kqP" id="G9d-dr-Y9E"/>
                         <outlet property="textBG" destination="qJ9-q9-luj" id="4pb-Bv-oxN"/>
                         <outlet property="textCanvas" destination="cbG-DV-Oeg" id="K9G-LN-xcz"/>
                         <outlet property="textViewMessage" destination="cKO-Wo-YDj" id="kgX-J7-a2f"/>
@@ -297,6 +376,7 @@ Boston, MA 02163</string>
     </scenes>
     <resources>
         <image name="bora-bora.jpg" width="550" height="383"/>
+        <image name="rotateImage.png" width="64" height="64"/>
         <image name="snailGram100.png" width="98" height="99"/>
         <image name="stamp.png" width="225" height="297"/>
     </resources>
