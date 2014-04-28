@@ -200,6 +200,9 @@
 
 - (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
 
+    static float MAX_FONT_SIZE = 12;
+    static float MIN_FONT_SIZE = 8;
+
     if (textView != self.textViewMessage)
         return YES;
 
@@ -214,9 +217,13 @@
 
     if (newSize.height > textView.frame.size.height - 20)
     {
-        _currentPostCard.message = oldComments;
-        textView.text = oldComments;
-        return NO;
+        if (textView.font.pointSize > MIN_FONT_SIZE)
+            [textView setFont:FONT_REGULAR(textView.font.pointSize-1)];
+        else {
+            _currentPostCard.message = oldComments;
+            textView.text = oldComments;
+            return NO;
+        }
     }
 
     return YES;
