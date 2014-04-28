@@ -81,7 +81,8 @@
 -(IBAction)didClickSave:(id)sender {
 
 #if TESTING
-    [self renderCompositeImage];
+    [self didFinishPayPalLogin];
+    return;
 #endif
 
 #if !TESTING
@@ -262,11 +263,22 @@
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
-
+#if !TESTING
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
+#endif
         alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..."];
+        NSString *email = [[PFUser currentUser] email];
+        if (!email) {
+            UIAlertView *alertViewPassword = [[UIAlertView alloc] initWithTitle:@"Add an email?" message:@"Would you like to enter an email address for confirmation and tracking?" delegate:self cancelButtonTitle:@"No thanks" otherButtonTitles:@"Save email", nil];
+            alertViewPassword.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [alertViewPassword show];
+        }
+
         [self renderCompositeImage];
+#if !TESTING
     }];
+#endif
+
 #if !TESTING
     [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
     [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
@@ -319,9 +331,14 @@
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
-                    [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
-                    [_appDelegate resetPostcard];
-                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    NSString *email = [[PFUser currentUser] email];
+                NSString *message = @"Your postcard order has been received and will be delivered in 5-7 days.";
+                if (email) {
+                    message = [NSString stringWithFormat:@"%@ A confirmation will be sent to %@", message, email];
+                }
+                [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:message];
+                [_appDelegate resetPostcard];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }
             else {
                 [UIAlertView alertViewWithTitle:@"Could not save postcard" message:@"We couldn't complete your Postcard. Please click to upload again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
@@ -332,8 +349,26 @@
             }
         }];
     } progressBlock:^(int percentDone) {
+        if (!alertView.visible)
+            [alertView show];
         alertView.message = [NSString stringWithFormat:@"Progress: %d%%", percentDone];
     }];
 }
 
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    NSLog(@"Index: %d", buttonIndex);
+    if (index == 0)
+        return; // cancel, do not save email
+
+    if (textField.text.length != 0) {
+        NSLog(@"Email: %@", textField.text);
+        [[PFUser currentUser] setEmail:textField.text];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!succeeded) {
+                NSLog(@"Error: %@", error);
+            }
+        }];
+    }
+}
 @end

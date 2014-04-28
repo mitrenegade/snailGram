@@ -10,7 +10,7 @@
 #import "AddressEditorViewController.h"
 #import "PayPalHelper.h"
 
-@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate, PayPalHelperDelegate>
+@interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate, PayPalHelperDelegate, UIAlertViewDelegate>
 {
     UIAlertView *alertView;
 }
