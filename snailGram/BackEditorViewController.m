@@ -80,11 +80,6 @@
 #pragma mark navigation
 -(IBAction)didClickSave:(id)sender {
 
-#if TESTING
-    [self didFinishPayPalLogin];
-    return;
-#endif
-
 #if !TESTING
     if (!_currentPostCard.to) {
         [UIAlertView alertViewWithTitle:@"Please enter a recipient" message:@"You must enter all necessary fields before sending the postcard!"];
@@ -254,39 +249,25 @@
     UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
     // Present the PayPalFuturePaymentViewController
     [self.navigationController presentViewController:controller animated:YES completion:nil];
-
-#if TESTING
-    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
-#endif
 }
 
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
-    NSLog(@"Paypal finished");
-#if !TESTING
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-#endif
         alertViewProgress = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..." cancelButtonTitle:nil];
 
         [self renderCompositeImage];
-#if !TESTING
     }];
-#endif
 
-#if !TESTING
     [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
-    [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
-#endif
+    [FiksuTrackingManager uploadPurchaseEvent:@"" price:2.50 currency:@"USD"];
 }
 
 -(void)didCancelPayPalLogin {
-    NSLog(@"Paypal cancelled");
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
-#if !TESTING
-        [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
-#endif
+    [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
 }
 
 #pragma mark final
