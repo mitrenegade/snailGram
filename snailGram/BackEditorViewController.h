@@ -12,7 +12,7 @@
 
 @interface BackEditorViewController : UIViewController <UITextViewDelegate, AddressEditorDelegate, PayPalHelperDelegate>
 {
-    UIAlertView *alertView;
+    UIAlertView *alertViewProgress;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;

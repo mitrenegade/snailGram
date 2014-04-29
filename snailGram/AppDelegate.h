@@ -11,7 +11,7 @@
 
 @class PFUser;
 @class PostCard;
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 {
     PostCard *postCard;
 }
@@ -25,4 +25,6 @@
 -(void)resetPostcard;
 -(void)loadPostcardWithCompletion:(void(^)(BOOL success))completion;
 -(PFUser *)currentUser;
+-(void)promptForEmail:(NSString *)title message:(NSString *)message;
+
 @end

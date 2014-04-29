@@ -81,7 +81,8 @@
 -(IBAction)didClickSave:(id)sender {
 
 #if TESTING
-    [self renderCompositeImage];
+    [self didFinishPayPalLogin];
+    return;
 #endif
 
 #if !TESTING
@@ -164,7 +165,7 @@
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+            [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 NSLog(@"upload finished");
             }
@@ -200,6 +201,9 @@
 
 - (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
 
+    static float MAX_FONT_SIZE = 12;
+    static float MIN_FONT_SIZE = 8;
+
     if (textView != self.textViewMessage)
         return YES;
 
@@ -214,9 +218,13 @@
 
     if (newSize.height > textView.frame.size.height - 20)
     {
-        _currentPostCard.message = oldComments;
-        textView.text = oldComments;
-        return NO;
+        if (textView.font.pointSize > MIN_FONT_SIZE)
+            [textView setFont:FONT_REGULAR(textView.font.pointSize-1)];
+        else {
+            _currentPostCard.message = oldComments;
+            textView.text = oldComments;
+            return NO;
+        }
     }
 
     return YES;
@@ -255,11 +263,16 @@
 #pragma mark PayPalHelperDelegate
 -(void)didFinishPayPalLogin {
     NSLog(@"Paypal finished");
-
+#if !TESTING
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        alertView = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..."];
+#endif
+        alertViewProgress = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..." cancelButtonTitle:nil];
+
         [self renderCompositeImage];
+#if !TESTING
     }];
+#endif
+
 #if !TESTING
     [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
     [FiksuTrackingManager uploadPurchaseEvent:@"" price:0.00 currency:@"USD"];
@@ -307,14 +320,24 @@
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_full = imageFile.url;
-        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
         
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+            [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
-                    [UIAlertView alertViewWithTitle:@"Thanks for using snailGram!" message:@"Your postcard order has been received and will be delivered in 5-7 days."];
-                    [_appDelegate resetPostcard];
-                    [self.navigationController popToRootViewControllerAnimated:YES];
+                NSString *email = [[PFUser currentUser] email];
+                NSString *title = @"Thanks for using snailGram!";
+                NSString *message = @"Your postcard order has been received and will be delivered in 5-7 days.";
+                if (!TESTING && email) {
+                    message = [NSString stringWithFormat:@"%@ A confirmation will be sent to %@.", message, email];
+                    [UIAlertView alertViewWithTitle:title message:message];
+                }
+                else {
+                    message = [NSString stringWithFormat:@"%@ Please enter an email address for confirmation and tracking.", message];
+                    [_appDelegate promptForEmail:title message:message];
+                }
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                [_appDelegate resetPostcard];
             }
             else {
                 [UIAlertView alertViewWithTitle:@"Could not save postcard" message:@"We couldn't complete your Postcard. Please click to upload again." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Retry"] onDismiss:^(int buttonIndex) {
@@ -325,7 +348,7 @@
             }
         }];
     } progressBlock:^(int percentDone) {
-        alertView.message = [NSString stringWithFormat:@"Progress: %d%%", percentDone];
+        alertViewProgress.message = [NSString stringWithFormat:@"Progress: %d%%", percentDone];
     }];
 }
 

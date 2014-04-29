@@ -215,4 +215,34 @@
     return [PFUser currentUser];
 }
 
+#pragma mark email
+-(void)promptForEmail:(NSString *)title message:(NSString *)message {
+    if (!message)
+        message = @"Please enter an email address for confirmation and tracking";
+    UIAlertView *alertViewPassword = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"Save email", nil];
+    alertViewPassword.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertViewPassword show];
+}
+
+-(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    if ([textField.text length] == 0)
+        return NO;
+    return YES;
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    if (textField.text.length != 0) {
+        NSLog(@"Email: %@", textField.text);
+        [[PFUser currentUser] setEmail:textField.text];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!succeeded && error.code == 125) {
+                NSLog(@"Error: %@", error);
+                [self promptForEmail:@"Invalid email" message:nil];
+            }
+        }];
+    }
+}
+
 @end

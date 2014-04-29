@@ -320,7 +320,7 @@ static NSArray *states;
                 state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
                 zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
 
-                if (street && city && state) {
+                if (street && city && state && zip) {
                     NSLog(@"Found address: %@", dict);
                     hasAddress = YES;
                     CFRelease(dict);
