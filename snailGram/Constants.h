@@ -25,6 +25,7 @@
 #define AIRPLANE_MODE 0
 #define CAN_LOAD_POSTCARD 0
 #define TESTING 0
+#define USE_PAYPAL 0
 
 #define FONT_ITALIC(x) [UIFont fontWithName:@"OpenSansLight-Italic" size:x]
 #define FONT_BOLD(x) [UIFont fontWithName:@"OpenSans-Bold" size:x]
