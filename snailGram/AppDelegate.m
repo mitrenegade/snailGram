@@ -23,8 +23,8 @@
 {
     // Override point for customization after application launch.
 
-    [Parse setApplicationId:@"054wtpQbuRXuzIVeY2ajbApfzZcqB5L7YJKPSNYQ"
-                  clientKey:@"MyRaB1A2neqSRCGVq71qamBAsdtRS9PMjS2YuYs3"];
+    [Parse setApplicationId:@"IbJVXtPZmQMyk5r16q4ef8R0FT1gpQLw196hek3q"
+                  clientKey:@"IJd9WhAvt6QQVogpfSOBuGSFmqkZArWgblLwNA5L"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     [[LocalyticsSession shared] LocalyticsSession:@"e62c88341c14564f04c2b88-4ddbe59a-ce41-11e3-9c7b-009c5fda0a25"];
