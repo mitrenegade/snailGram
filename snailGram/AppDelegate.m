@@ -12,7 +12,6 @@
 #import "ParseBase+Parse.h"
 #import <Crashlytics/Crashlytics.h>
 #import "LocalyticsSession.h"
-#import <FiksuSDK/FiksuSDK.h>
 
 @implementation AppDelegate
 
@@ -31,8 +30,6 @@
     [[LocalyticsSession shared] LocalyticsSession:@"e62c88341c14564f04c2b88-4ddbe59a-ce41-11e3-9c7b-009c5fda0a25"];
     [[LocalyticsSession shared] resume];
     [[LocalyticsSession shared] upload];
-
-    [FiksuTrackingManager applicationDidFinishLaunching:launchOptions];
 
     [Crashlytics startWithAPIKey:@"70160b7dec925a91c6fe09e38bf1f8659c1eda41"];
 
@@ -76,10 +73,12 @@
     [[LocalyticsSession shared] upload];
 }
 
+/*
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     //if ([[url scheme] hasPrefix:@"aso"])
     return [FiksuTrackingManager handleURL:url sourceApplication:sourceApplication];
 }
+ */
 
 -(PostCard *)postCard {
     if (!postCard)

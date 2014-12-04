@@ -15,7 +15,6 @@
 #import "Payment+Parse.h"
 #import "PostCard+Image.h"
 #import "LocalyticsSession.h"
-#import <FiksuSDK/FiksuSDK.h>
 
 #define PLACEHOLDER_TEXT_TO @"To:"
 #define ADDRESS_LIMIT 300
@@ -260,7 +259,6 @@
     }];
 
     [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
-    [FiksuTrackingManager uploadPurchaseEvent:@"" price:2.50 currency:@"USD"];
 }
 
 -(void)didCancelPayPalLogin {
