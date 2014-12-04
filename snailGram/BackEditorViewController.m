@@ -88,9 +88,14 @@
 
     [self.textViewMessage resignFirstResponder];
 
+#if USE_PAYPAL
+    NSString *continueButton = @"Go to payment";
+#else
+    NSString *continueButton = @"Save without message";
+#endif
     if ([_currentPostCard.message length] == 0) {
         [self.textViewMessage setHidden:YES];
-        [UIAlertView alertViewWithTitle:@"Enter a message?" message:@"Do you want to enter a message before sending the postcard?" cancelButtonTitle:@"Add message" otherButtonTitles:@[@"Go to payment"] onDismiss:^(int buttonIndex) {
+        [UIAlertView alertViewWithTitle:@"Enter a message?" message:@"Do you want to enter a message before sending the postcard?" cancelButtonTitle:@"Add message" otherButtonTitles:@[continueButton] onDismiss:^(int buttonIndex) {
             // dismiss means go ahead and pay
             [self saveScreenshot];
             [self.textViewMessage setHidden:NO];
@@ -159,7 +164,6 @@
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
-            [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 NSLog(@"upload finished");
             }
@@ -245,9 +249,14 @@
 
 #pragma mark Payment
 -(void)goToPayment {
+#if USE_PAYPAL
     UIViewController *controller = [PayPalHelper showPayPalLoginWithDelegate:self];
     // Present the PayPalFuturePaymentViewController
     [self.navigationController presentViewController:controller animated:YES completion:nil];
+#else
+    alertViewProgress = [UIAlertView alertViewWithTitle:@"Finalizing postcard..." message:@"Please do not close until this is completed..." cancelButtonTitle:nil];
+    [self renderCompositeImage];
+#endif
 }
 
 #pragma mark PayPalHelperDelegate
@@ -299,14 +308,17 @@
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_full = imageFile.url;
-        [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
-        
+
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 NSString *email = [[PFUser currentUser] email];
                 NSString *title = @"Thanks for using snailGram!";
+#if USE_PAYPAL
                 NSString *message = @"Your postcard order has been received and will be delivered in 5-7 days.";
+#else
+                NSString *message = @"Your postcard order has saved. Version 2 of snailGram will allow you to pay to send a physical postcard.";
+#endif
                 if (!TESTING && email) {
                     message = [NSString stringWithFormat:@"%@ A confirmation will be sent to %@.", message, email];
                     [UIAlertView alertViewWithTitle:title message:message];
