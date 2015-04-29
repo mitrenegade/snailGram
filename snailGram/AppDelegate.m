@@ -232,9 +232,25 @@
         NSLog(@"Email: %@", textField.text);
         [[PFUser currentUser] setEmail:textField.text];
         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!succeeded && error.code == 125) {
-                NSLog(@"Error: %@", error);
-                [self promptForEmail:@"Invalid email" message:nil];
+            if (!succeeded) {
+                if (error.code == 125) {
+                    NSLog(@"Error: %@", error);
+                    [self promptForEmail:@"Invalid email" message:nil];
+                }
+                else if (error.code == 203) {
+                    // email is already taken - store it anyway
+                    [[PFUser currentUser] setObject:textField.text forKey:@"alternateEmail"];
+                    [[PFUser currentUser] setEmail:nil];
+                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!succeeded) {
+                            // fail silently for now
+                        }
+                        else {
+                            // success!
+                            NSLog(@"Email saved");
+                        }
+                    }];
+                }
             }
         }];
     }

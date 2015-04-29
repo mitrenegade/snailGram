@@ -313,14 +313,17 @@
             [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 NSString *email = [[PFUser currentUser] email];
+                if (!email) {
+                    email = [[PFUser currentUser] objectForKey:@"alternateEmail"];
+                }
                 NSString *title = @"Thanks for using snailGram!";
 #if USE_PAYPAL
                 NSString *message = @"Your postcard order has been received and will be delivered in 5-7 days.";
 #else
                 NSString *message = @"Your postcard order has saved. Version 2 of snailGram will allow you to pay to send a physical postcard.";
 #endif
-                if (!TESTING && email) {
-                    message = [NSString stringWithFormat:@"%@ A confirmation will be sent to %@.", message, email];
+                if (email) {
+                    message = [NSString stringWithFormat:@"%@ If any issues arise, we will contact %@.", message, email];
                     [UIAlertView alertViewWithTitle:title message:message];
                 }
                 else {

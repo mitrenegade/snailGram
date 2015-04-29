@@ -16,6 +16,9 @@
 
 @end
 
+#define PAYPAL_APP_ID_PRODUCTION nil
+#define PAYPAL_APP_ID_SANDBOX @"AbtbRudqs0ulY5p95cPSRQNHnPlWYA1hRNN0uddzKVNiD3ytuCJtRy4ic4vFL1XQyNBQ3IuQra8VxyuF"
+
 @interface PayPalHelper : NSObject <PayPalPaymentDelegate, PayPalFuturePaymentDelegate>
 
 @property (nonatomic, strong, readwrite) PayPalConfiguration *payPalConfiguration;
