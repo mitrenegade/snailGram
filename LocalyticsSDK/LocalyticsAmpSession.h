@@ -40,7 +40,7 @@
  a single session throughout your application.  It is possible to manage your own
  session, but this is the easiest way to access the Localytics object throughout your code.
  The class is accessed within the code using the following syntax:
- [[LocalyticsSession shared] functionHere]
+ //[[LocalyticsSession shared] functionHere]
  This is a AMP specific function designed to return the localytics session object as an AMP
  session object, rather than as its super class, the base LocalyticsSession
  */

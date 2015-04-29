@@ -26,7 +26,7 @@ static PayPalHelper *sharedPayPalHelper;
 
 #pragma mark Paypal SDK 2.0.0 used for user auth when withdrawing
 +(void)initializePayPal {
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_PRODUCTION, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
+//    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_PRODUCTION, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
 
     PayPalHelper *helper = [PayPalHelper sharedPayPalHelper];
     helper.payPalConfiguration = [[PayPalConfiguration alloc] init];

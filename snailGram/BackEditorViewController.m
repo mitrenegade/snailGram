@@ -62,7 +62,7 @@
     [self.labelFrom setHidden:YES];
 
 #if !TESTING
-    [[LocalyticsSession shared] tagScreen:@"Back Editor"];
+    //[[LocalyticsSession shared] tagScreen:@"Back Editor"];
 #endif
 }
 
@@ -267,14 +267,14 @@
         [self renderCompositeImage];
     }];
 
-    [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
+    //[[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
 }
 
 -(void)didCancelPayPalLogin {
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
-    [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
+    //[[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
 }
 
 #pragma mark final

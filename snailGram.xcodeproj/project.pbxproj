@@ -66,8 +66,6 @@
 		9E86FACA190D9867001A2335 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAC4190D9867001A2335 /* LICENSE */; };
 		9E86FACC190D989D001A2335 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86FACB190D989D001A2335 /* libsqlite3.dylib */; };
 		9E86FAEA190D9DAA001A2335 /* FiksuConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAE9190D9DAA001A2335 /* FiksuConfiguration.plist */; };
-		9E98410618FE48A9008A6A94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E98410518FE48A9008A6A94 /* Crashlytics.framework */; };
-		9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63E218C3B96E0048142D /* Parse.framework */; };
 		9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B63E518C3C3680048142D /* Address+Parse.m */; };
 		9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F718C403C00048142D /* AudioToolbox.framework */; };
 		9E9B63FA18C403C50048142D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B63F918C403C50048142D /* CFNetwork.framework */; };
@@ -90,6 +88,11 @@
 		9EF04A9318D98950000FA41A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9418D98BC1000FA41A /* AVFoundation.framework */; };
 		9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF04A9618D98BD1000FA41A /* MessageUI.framework */; };
+		AC664E571AF15820009A27FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC664E551AF15820009A27FA /* Bolts.framework */; };
+		AC664E581AF15820009A27FA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC664E561AF15820009A27FA /* Parse.framework */; };
+		AC664E5A1AF158A4009A27FA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC664E591AF158A4009A27FA /* Social.framework */; };
+		ACEF59EC1AF15B8000EB19BC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEF59EB1AF15B8000EB19BC /* Crashlytics.framework */; };
+		ACEF59EE1AF15BDA00EB19BC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEF59ED1AF15BDA00EB19BC /* Fabric.framework */; };
 		D7983B27266B79340CF31BD3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8A8BD35C416983425988F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -198,7 +201,6 @@
 		9E86FACB190D989D001A2335 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9E86FAE9190D9DAA001A2335 /* FiksuConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FiksuConfiguration.plist; sourceTree = "<group>"; };
 		9E98410518FE48A9008A6A94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		9E9B63E218C3B96E0048142D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9E9B63E418C3C3680048142D /* Address+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+Parse.h"; sourceTree = "<group>"; };
 		9E9B63E518C3C3680048142D /* Address+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+Parse.m"; sourceTree = "<group>"; };
 		9E9B63EC18C3F2060048142D /* PFObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFObjectFactory.h; sourceTree = "<group>"; };
@@ -235,6 +237,11 @@
 		9EF04A9418D98BC1000FA41A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9EF04A9618D98BD1000FA41A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AC664E541AF157D2009A27FA /* Model_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_3.xcdatamodel; sourceTree = "<group>"; };
+		AC664E551AF15820009A27FA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.7.1/Bolts.framework"; sourceTree = "<group>"; };
+		AC664E561AF15820009A27FA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.7.1/Parse.framework"; sourceTree = "<group>"; };
+		AC664E591AF158A4009A27FA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		ACEF59EB1AF15B8000EB19BC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		ACEF59ED1AF15BDA00EB19BC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		CD45E09D579D2F59A68AF540 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8A8BD35C416983425988F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -244,9 +251,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC664E5A1AF158A4009A27FA /* Social.framework in Frameworks */,
 				9E86FACC190D989D001A2335 /* libsqlite3.dylib in Frameworks */,
+				ACEF59EC1AF15B8000EB19BC /* Crashlytics.framework in Frameworks */,
 				9EC9330D18E11FEA0035200B /* Accounts.framework in Frameworks */,
 				9E13E01718D98C3B00D2E906 /* AdSupport.framework in Frameworks */,
+				ACEF59EE1AF15BDA00EB19BC /* Fabric.framework in Frameworks */,
 				9EF04A9718D98BD1000FA41A /* MessageUI.framework in Frameworks */,
 				9EF04A9518D98BC1000FA41A /* AVFoundation.framework in Frameworks */,
 				9E9B640818C403F50048142D /* SystemConfiguration.framework in Frameworks */,
@@ -258,14 +268,14 @@
 				9E9B63FE18C403D80048142D /* libz.dylib in Frameworks */,
 				9E9B63FC18C403D10048142D /* CoreLocation.framework in Frameworks */,
 				9E9B63FA18C403C50048142D /* CFNetwork.framework in Frameworks */,
-				9E98410618FE48A9008A6A94 /* Crashlytics.framework in Frameworks */,
+				AC664E571AF15820009A27FA /* Bolts.framework in Frameworks */,
 				9E9B63F818C403C00048142D /* AudioToolbox.framework in Frameworks */,
 				9E25161018C2B77600F542F5 /* CoreData.framework in Frameworks */,
 				9E25159918C2768900F542F5 /* CoreGraphics.framework in Frameworks */,
+				AC664E581AF15820009A27FA /* Parse.framework in Frameworks */,
 				9E25159B18C2768900F542F5 /* UIKit.framework in Frameworks */,
 				9E25159718C2768900F542F5 /* Foundation.framework in Frameworks */,
 				9E86FAC8190D9867001A2335 /* libLocalyticsAMP.a in Frameworks */,
-				9E9B63E318C3B96E0048142D /* Parse.framework in Frameworks */,
 				9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */,
 				D7983B27266B79340CF31BD3 /* libPods.a in Frameworks */,
 			);
@@ -337,6 +347,7 @@
 		9E25159518C2768900F542F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC664E591AF158A4009A27FA /* Social.framework */,
 				9E86FACB190D989D001A2335 /* libsqlite3.dylib */,
 				9E86FAC0190D9867001A2335 /* LocalyticsSDK */,
 				9E98410518FE48A9008A6A94 /* Crashlytics.framework */,
@@ -545,8 +556,11 @@
 		9E9B63E118C3B9630048142D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				ACEF59EB1AF15B8000EB19BC /* Crashlytics.framework */,
+				ACEF59ED1AF15BDA00EB19BC /* Fabric.framework */,
 				9E9B63EC18C3F2060048142D /* PFObjectFactory.h */,
-				9E9B63E218C3B96E0048142D /* Parse.framework */,
+				AC664E551AF15820009A27FA /* Bolts.framework */,
+				AC664E561AF15820009A27FA /* Parse.framework */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -716,7 +730,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 70160b7dec925a91c6fe09e38bf1f8659c1eda41 0fa711cea5cca0c6a4b57c1a8955f0518514bfdd7a9e6f28b3eca2c60d905a9c";
+			shellScript = "./Fabric.framework/run 70160b7dec925a91c6fe09e38bf1f8659c1eda41 0fa711cea5cca0c6a4b57c1a8955f0518514bfdd7a9e6f28b3eca2c60d905a9c";
 		};
 		E4FD61DAC8F8282A5E2651CE /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -908,6 +922,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FiksuSDK.embeddedframework",
+					"/Users/BobboMac/Downloads/parse-library-1.7.1",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";
@@ -945,6 +960,7 @@
 					/Users/mitrenegade12/Desktop/Projects/snailGram,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FiksuSDK.embeddedframework",
+					"/Users/BobboMac/Downloads/parse-library-1.7.1",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snailGram/snailGram-Prefix.pch";

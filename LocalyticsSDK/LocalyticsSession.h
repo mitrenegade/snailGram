@@ -88,9 +88,9 @@
  a single session throughout your application.  It is possible to manage your own
  session, but this is the easiest way to access the Localytics object throughout your code.
  The class is accessed within the code using the following syntax:
- [[LocalyticsSession shared] functionHere]
+ //[[LocalyticsSession shared] functionHere]
  So, to tag an event, all that is necessary, anywhere in the code is:
- [[LocalyticsSession shared] tagEvent:@"MY_EVENT"];
+ //[[LocalyticsSession shared] tagEvent:@"MY_EVENT"];
  */
 + (LocalyticsSession *)sharedLocalyticsSession;
 + (LocalyticsSession *)shared;
