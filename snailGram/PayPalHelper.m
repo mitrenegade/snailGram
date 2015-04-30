@@ -26,8 +26,7 @@ static PayPalHelper *sharedPayPalHelper;
 
 #pragma mark Paypal SDK 2.0.0 used for user auth when withdrawing
 +(void)initializePayPal {
-    //[PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_PRODUCTION, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PAYPAL_APP_ID_PRODUCTION, PayPalEnvironmentSandbox : PAYPAL_APP_ID_SANDBOX}];
 
     PayPalHelper *helper = [PayPalHelper sharedPayPalHelper];
     helper.payPalConfiguration = [[PayPalConfiguration alloc] init];
@@ -54,7 +53,11 @@ static PayPalHelper *sharedPayPalHelper;
     PayPalPayment *payment = [[PayPalPayment alloc] init];
 
     // Amount, currency, and description
-    payment.amount = [[NSDecimalNumber alloc] initWithString:@"2.50"];
+#if TESTING
+    payment.amount = [[NSDecimalNumber alloc] initWithString:@"0.50"];
+#else
+    payment.amount = [[NSDecimalNumber alloc] initWithString:@"0.50"];
+#endif
     payment.currencyCode = @"USD";
     payment.shortDescription = @"Postage for one postcard";
 
@@ -109,6 +112,9 @@ static PayPalHelper *sharedPayPalHelper;
     Payment *payment = (Payment *)[Payment createEntityInContext:_appDelegate.managedObjectContext];
     NSDictionary *response = completedPayment.confirmation[@"response"];
     payment.state = response[@"state"];
+#if TESTING
+    payment.state = @"sandbox";
+#endif
     payment.intent = response[@"intent"];
     payment.paypal_id = response[@"id"];
     payment.create_time = response[@"create_time"];
