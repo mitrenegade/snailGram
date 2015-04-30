@@ -53,11 +53,11 @@ static PayPalHelper *sharedPayPalHelper;
     PayPalPayment *payment = [[PayPalPayment alloc] init];
 
     // Amount, currency, and description
-#if TESTING
-    payment.amount = [[NSDecimalNumber alloc] initWithString:@"0.50"];
-#else
-    payment.amount = [[NSDecimalNumber alloc] initWithString:@"0.50"];
-#endif
+    NSNumber *price = [[NSUserDefaults standardUserDefaults] objectForKey:@"price"];
+    if (!price) {
+        price = @(5); // default price
+    }
+    payment.amount = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@", price]];
     payment.currencyCode = @"USD";
     payment.shortDescription = @"Postage for one postcard";
 

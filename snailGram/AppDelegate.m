@@ -31,6 +31,8 @@
 
     [self setupUserForCurrentDevice];
 
+    [self getSettingsFromParse];
+    
     return YES;
 }
 							
@@ -162,6 +164,25 @@
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+#pragma mark settings
+-(void)getSettingsFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"Settings"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count]) {
+            PFObject *object = [objects firstObject];
+            NSNumber *price = object[@"price"];
+            NSLog(@"Settings shows price: %@ of class %@", price, price.class);
+            [[NSUserDefaults standardUserDefaults] setObject:price forKey:@"price"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else {
+            NSLog(@"No settings found");
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"price"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }];
 }
 
 #pragma mark parse user

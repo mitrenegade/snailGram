@@ -24,7 +24,7 @@
 #define DebugLog(...) NSLog(__VA_ARGS__)
 #define AIRPLANE_MODE 0
 #define CAN_LOAD_POSTCARD 0
-#define TESTING 1
+#define TESTING 0
 #define USE_PAYPAL 1
 
 #define FONT_ITALIC(x) [UIFont fontWithName:@"OpenSansLight-Italic" size:x]
