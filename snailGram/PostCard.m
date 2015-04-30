@@ -2,8 +2,8 @@
 //  PostCard.m
 //  snailGram
 //
-//  Created by Bobby Ren on 3/28/14.
-//  Copyright (c) 2014 SnailGram. All rights reserved.
+//  Created by Bobby Ren on 4/30/15.
+//  Copyright (c) 2015 SnailGram. All rights reserved.
 //
 
 #import "PostCard.h"
@@ -15,12 +15,13 @@
 
 @dynamic back_loaded;
 @dynamic front_loaded;
-@dynamic message;
-@dynamic payment_id;
-@dynamic text;
 @dynamic image_url;
 @dynamic image_url_back;
 @dynamic image_url_full;
+@dynamic message;
+@dynamic payment_id;
+@dynamic text;
+@dynamic is_testing;
 @dynamic payment;
 @dynamic to;
 

@@ -162,6 +162,9 @@
         _currentPostCard.pfObject[@"back_image"] = imageFile;
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
+#if TESTING
+        _currentPostCard.is_testing = @YES;
+#endif
         _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             if (success) {
@@ -308,6 +311,9 @@
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_full = imageFile.url;
+#if TESTING
+        _currentPostCard.is_testing = @YES;
+#endif
 
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];

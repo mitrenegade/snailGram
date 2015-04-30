@@ -41,6 +41,7 @@
     self.parseID = self.pfObject.objectId;
     self.front_loaded = self.pfObject[@"front_loaded"];
     self.back_loaded = self.pfObject[@"back_loaded"];
+    self.is_testing = self.pfObject[@"is_testing"];
     self.payment_id = self.pfObject[@"payment_id"];
 
     self.payment = self.pfObject[@"payment"];
@@ -64,6 +65,8 @@
         self.pfObject[@"front_loaded"] = self.front_loaded;
     if (self.back_loaded)
         self.pfObject[@"back_loaded"] = self.back_loaded;
+    if (self.is_testing)
+        self.pfObject[@"is_testing"] = self.is_testing;
     if (self.payment_id)
         self.pfObject[@"payment_id"] = self.payment_id;
     if (_currentUser) {

@@ -59,7 +59,6 @@
 		9E2F48A8190D8A4A00BF5709 /* rotateImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2F48A7190D8A4A00BF5709 /* rotateImage@2x.png */; };
 		9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50338318D5B67F00A7EA50 /* FlipSegue.m */; };
 		9E50338918D6DB5B00A7EA50 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E50338818D6DB5B00A7EA50 /* stamp@2x.png */; };
-		9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7277DD18E62EA800AD4015 /* PostCard.m */; };
 		9E753E9918E61BD900ED4128 /* PostCard+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E753E9818E61BD900ED4128 /* PostCard+Image.m */; };
 		9E86FAC7190D9867001A2335 /* iOSa_2.23.0.version in Resources */ = {isa = PBXBuildFile; fileRef = 9E86FAC1190D9867001A2335 /* iOSa_2.23.0.version */; };
 		9E86FAC8190D9867001A2335 /* libLocalyticsAMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86FAC2190D9867001A2335 /* libLocalyticsAMP.a */; };
@@ -93,6 +92,7 @@
 		AC664E5A1AF158A4009A27FA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC664E591AF158A4009A27FA /* Social.framework */; };
 		ACEF59EC1AF15B8000EB19BC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEF59EB1AF15B8000EB19BC /* Crashlytics.framework */; };
 		ACEF59EE1AF15BDA00EB19BC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEF59ED1AF15BDA00EB19BC /* Fabric.framework */; };
+		ACEF59FC1AF2DF2100EB19BC /* PostCard.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEF59FB1AF2DF2100EB19BC /* PostCard.m */; };
 		D7983B27266B79340CF31BD3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8A8BD35C416983425988F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -189,8 +189,6 @@
 		9E50338218D5B67F00A7EA50 /* FlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSegue.h; sourceTree = "<group>"; };
 		9E50338318D5B67F00A7EA50 /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
 		9E50338818D6DB5B00A7EA50 /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
-		9E7277DC18E62EA800AD4015 /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
-		9E7277DD18E62EA800AD4015 /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		9E753E9718E61BD900ED4128 /* PostCard+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostCard+Image.h"; sourceTree = "<group>"; };
 		9E753E9818E61BD900ED4128 /* PostCard+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostCard+Image.m"; sourceTree = "<group>"; };
 		9E86FAC1190D9867001A2335 /* iOSa_2.23.0.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSa_2.23.0.version; sourceTree = "<group>"; };
@@ -242,6 +240,9 @@
 		AC664E591AF158A4009A27FA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		ACEF59EB1AF15B8000EB19BC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		ACEF59ED1AF15BDA00EB19BC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		ACEF59F91AF2DED200EB19BC /* Model_4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_4.xcdatamodel; sourceTree = "<group>"; };
+		ACEF59FA1AF2DF2100EB19BC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
+		ACEF59FB1AF2DF2100EB19BC /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
 		CD45E09D579D2F59A68AF540 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8A8BD35C416983425988F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -464,12 +465,12 @@
 		9E2515E018C2A87D00F542F5 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				ACEF59FA1AF2DF2100EB19BC /* PostCard.h */,
+				ACEF59FB1AF2DF2100EB19BC /* PostCard.m */,
 				9EAA649E18DAD3D8006264FC /* Address.h */,
 				9EAA649F18DAD3D8006264FC /* Address.m */,
 				9E1FE03E18DE72D200C8A8EC /* Payment.h */,
 				9E1FE03F18DE72D200C8A8EC /* Payment.m */,
-				9E7277DC18E62EA800AD4015 /* PostCard.h */,
-				9E7277DD18E62EA800AD4015 /* PostCard.m */,
 				9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */,
 				9ED6F7D918DE8DDA00C13770 /* ParseBase.h */,
 				9ED6F7DA18DE8DDA00C13770 /* ParseBase.m */,
@@ -763,7 +764,7 @@
 				9E25160818C2AC0000F542F5 /* UIImage+Alpha.m in Sources */,
 				9E25160A18C2AC0000F542F5 /* UIImage+RoundedCorner.m in Sources */,
 				9E9B63E618C3C3680048142D /* Address+Parse.m in Sources */,
-				9E7277DE18E62EA800AD4015 /* PostCard.m in Sources */,
+				ACEF59FC1AF2DF2100EB19BC /* PostCard.m in Sources */,
 				9E50338418D5B67F00A7EA50 /* FlipSegue.m in Sources */,
 				9E25160918C2AC0000F542F5 /* UIImage+Resize.m in Sources */,
 				9E25160418C2AC0000F542F5 /* NSManagedObject+Entity.m in Sources */,
@@ -1055,11 +1056,12 @@
 		9E2515DA18C292D500F542F5 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				ACEF59F91AF2DED200EB19BC /* Model_4.xcdatamodel */,
 				AC664E541AF157D2009A27FA /* Model_3.xcdatamodel */,
 				9E3D9B0518D2A90600DA32C0 /* Model_2.xcdatamodel */,
 				9E2515DB18C292D500F542F5 /* Model.xcdatamodel */,
 			);
-			currentVersion = AC664E541AF157D2009A27FA /* Model_3.xcdatamodel */;
+			currentVersion = ACEF59F91AF2DED200EB19BC /* Model_4.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
