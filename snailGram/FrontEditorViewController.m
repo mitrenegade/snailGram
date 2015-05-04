@@ -403,7 +403,7 @@
                 [self.textViewMessage resignFirstResponder];
                 [self hideOrCancelHint];
                 dragging = YES;
-                CGPoint point = [gesture locationInView:self.canvas];
+                CGPoint point = [gesture locationInView:self.viewBounds];
                 initialTouch = point;
                 if (CGRectContainsPoint(self.textCanvas.frame, point)) {
                     viewDragging = self.textCanvas;
