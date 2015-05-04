@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pvG-Hj-KLF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pvG-Hj-KLF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -20,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="32" y="29"/>
         </scene>
-        <!--Shell View Controller - snailGram-->
+        <!--snailGram-->
         <scene sceneID="fEH-R8-nNT">
             <objects>
                 <viewController id="vCl-81-0FK" customClass="ShellViewController" sceneMemberID="viewController">
@@ -101,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="4"/>
         </scene>
-        <!--Front Editor View Controller - Enter message-->
+        <!--Enter message-->
         <scene sceneID="17V-cC-ecC">
             <objects>
                 <viewController id="2w3-QL-dDk" customClass="FrontEditorViewController" sceneMemberID="viewController">
@@ -289,7 +290,7 @@
             </objects>
             <point key="canvasLocation" x="875" y="29"/>
         </scene>
-        <!--Back Editor View Controller - Message To-->
+        <!--Message To-->
         <scene sceneID="8vI-hQ-SvI">
             <objects>
                 <viewController id="qBy-bk-JQz" customClass="BackEditorViewController" sceneMemberID="viewController">

@@ -200,6 +200,7 @@
         [PFUser logInWithUsernameInBackground:userID password:userID block:^(PFUser *user, NSError *error) {
             if (error) {
                 NSLog(@"Error: %@", error);
+                [self registerNewUser];
             }
             else {
                 NSLog(@"Current user: %@", _currentUser);
@@ -207,24 +208,31 @@
         }];
     }
     else {
-        // generate an anonmymous user and store the id in the pasteboard
-        [PFUser enableAutomaticUser];
-        PFUser *user = _currentUser;
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"User saved: %@", user.objectId);
-                NSData *data = [user.objectId dataUsingEncoding:NSUTF8StringEncoding];
-                [appPasteBoard setData:data forPasteboardType:PASTEBOARD_KEY_USERID];
-
-                [user setUsername:user.objectId];
-                [user setPassword:user.objectId];
-                [user saveEventually];
-            }
-            else {
-                NSLog(@"Error saving anonymous user: %@", error);
-            }
-        }];
+        [self registerNewUser];
     }
+}
+
+-(void)registerNewUser {
+    // generate an anonmymous user and store the id in the pasteboard
+    UIPasteboard *appPasteBoard = [UIPasteboard pasteboardWithName:PASTEBOARD_NAME create:YES];
+    appPasteBoard.persistent = YES;
+
+    [PFUser enableAutomaticUser];
+    PFUser *user = _currentUser;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"User saved: %@", user.objectId);
+            NSData *data = [user.objectId dataUsingEncoding:NSUTF8StringEncoding];
+            [appPasteBoard setData:data forPasteboardType:PASTEBOARD_KEY_USERID];
+            
+            [user setUsername:user.objectId];
+            [user setPassword:user.objectId];
+            [user saveEventually];
+        }
+        else {
+            NSLog(@"Error saving anonymous user: %@", error);
+        }
+    }];
 }
 
 -(PFUser *)currentUser {
