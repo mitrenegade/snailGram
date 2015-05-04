@@ -18,6 +18,5 @@
 #import "NSManagedObject+Entity.h"
 #import "NSManagedObject+Query.h"
 #import "Constants.h"
-#import "ConstantsLocal.h"
 #endif
 

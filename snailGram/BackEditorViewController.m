@@ -62,7 +62,7 @@
     [self.labelFrom setHidden:YES];
 
 #if !TESTING
-    [[LocalyticsSession shared] tagScreen:@"Back Editor"];
+    //[[LocalyticsSession shared] tagScreen:@"Back Editor"];
 #endif
 }
 
@@ -162,6 +162,9 @@
         _currentPostCard.pfObject[@"back_image"] = imageFile;
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
+#if TESTING
+        _currentPostCard.is_testing = @YES;
+#endif
         _currentPostCard.image_url_back = imageFile.url;
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             if (success) {
@@ -267,14 +270,14 @@
         [self renderCompositeImage];
     }];
 
-    [[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
+    //[[LocalyticsSession shared] tagEvent:@"Paypal login complete"];
 }
 
 -(void)didCancelPayPalLogin {
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         [UIAlertView alertViewWithTitle:@"PayPal cancelled" message:@"PayPal login was cancelled; your postcard has not been created."];
     }];
-    [[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
+    //[[LocalyticsSession shared] tagEvent:@"Paypal login cancelled"];
 }
 
 #pragma mark final
@@ -308,19 +311,25 @@
         // update postcard with the url
         _currentPostCard.back_loaded = @YES;
         _currentPostCard.image_url_full = imageFile.url;
+#if TESTING
+        _currentPostCard.is_testing = @YES;
+#endif
 
         [_currentPostCard saveOrUpdateToParseWithCompletion:^(BOOL success) {
             [alertViewProgress dismissWithClickedButtonIndex:0 animated:YES];
             if (success) {
                 NSString *email = [[PFUser currentUser] email];
+                if (!email) {
+                    email = [[PFUser currentUser] objectForKey:@"alternateEmail"];
+                }
                 NSString *title = @"Thanks for using snailGram!";
 #if USE_PAYPAL
                 NSString *message = @"Your postcard order has been received and will be delivered in 5-7 days.";
 #else
                 NSString *message = @"Your postcard order has saved. Version 2 of snailGram will allow you to pay to send a physical postcard.";
 #endif
-                if (!TESTING && email) {
-                    message = [NSString stringWithFormat:@"%@ A confirmation will be sent to %@.", message, email];
+                if (email) {
+                    message = [NSString stringWithFormat:@"%@ If any issues arise, we will contact %@.", message, email];
                     [UIAlertView alertViewWithTitle:title message:message];
                 }
                 else {

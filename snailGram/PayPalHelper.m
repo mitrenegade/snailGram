@@ -49,19 +49,15 @@ static PayPalHelper *sharedPayPalHelper;
 #endif
     helper.delegate = _delegate;
 
-    // obtain consent
-#if 0
-    // future payment
-    PayPalFuturePaymentViewController *fpViewController;
-    fpViewController = [[PayPalFuturePaymentViewController alloc] initWithConfiguration:helper.payPalConfiguration delegate:helper];
-
-    return fpViewController;
-#else
     // Create a PayPalPayment
     PayPalPayment *payment = [[PayPalPayment alloc] init];
 
     // Amount, currency, and description
-    payment.amount = [[NSDecimalNumber alloc] initWithString:@"2.50"];
+    NSNumber *price = [[NSUserDefaults standardUserDefaults] objectForKey:@"price"];
+    if (!price) {
+        price = @(5); // default price
+    }
+    payment.amount = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@", price]];
     payment.currencyCode = @"USD";
     payment.shortDescription = @"Postage for one postcard";
 
@@ -81,7 +77,6 @@ static PayPalHelper *sharedPayPalHelper;
                                                                    configuration:helper.payPalConfiguration
                                                                         delegate:helper];
     return paymentViewController;
-#endif
 }
 
 #pragma mark - PayPalPaymentDelegate methods
@@ -117,6 +112,9 @@ static PayPalHelper *sharedPayPalHelper;
     Payment *payment = (Payment *)[Payment createEntityInContext:_appDelegate.managedObjectContext];
     NSDictionary *response = completedPayment.confirmation[@"response"];
     payment.state = response[@"state"];
+#if TESTING
+    payment.state = @"sandbox";
+#endif
     payment.intent = response[@"intent"];
     payment.paypal_id = response[@"id"];
     payment.create_time = response[@"create_time"];
@@ -127,6 +125,7 @@ static PayPalHelper *sharedPayPalHelper;
     // Send confirmation to your server; your server should verify the proof of payment
     // and give the user their goods or services. If the server is not reachable, save
     // the confirmation and try again later.
+    NSLog(@"Saving payment to Parse: %@", completedPayment.confirmation[@"response"]);
     [payment saveOrUpdateToParseWithCompletion:^(BOOL success) {
         if (success) {
             NSLog(@"Payment updated!");
@@ -142,54 +141,4 @@ static PayPalHelper *sharedPayPalHelper;
     }];
 }
 
-#pragma mark - PayPalFuturePaymentDelegate methods
-- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
-    // User cancelled login. Dismiss the PayPalLoginViewController, breathe deeply.
-
-    [self.delegate didCancelPayPalLogin];
-}
-
-- (void)payPalFuturePaymentViewController:(PayPalFuturePaymentViewController *)futurePaymentViewController
-                didAuthorizeFuturePayment:(NSDictionary *)futurePaymentAuthorization {
-    // The user has successfully logged into PayPal, and has consented to future payments.
-
-    // Your code must now send the authorization response to your server.
-    [self sendAuthorizationToServer:futurePaymentAuthorization];
-
-    // Be sure to dismiss the PayPalLoginViewController.
-    [self.delegate didFinishPayPalLogin];
-}
-
-- (void)sendAuthorizationToServer:(NSDictionary *)authorization {
-    // Send the entire authorization reponse
-    // data looks like this
-    /*
-     {
-     client =     {
-     environment = mock;
-     "paypal_sdk_version" = "2.0.1";
-     platform = iOS;
-     "product_name" = "PayPal iOS SDK";
-     };
-     response =     {
-     code = "EJhi9jOPswug9TDOv93q...";
-     };
-     "response_type" = "authorization_code";
-     }
-     */
-    //NSData *consentJSONData = [NSJSONSerialization dataWithJSONObject:authorization
-    //                                                          options:0
-    //                                                            error:nil];
-
-    // (Your network code here!)
-    //
-    // Send the authorization response to your server, where it can exchange the authorization code
-    // for OAuth access and refresh tokens.
-    //
-    // Your server must then store these tokens, so that your server code can execute payments
-    // for this user in the future.
-    NSString *payKey = authorization[@"response"][@"code"];
-    NSLog(@"Authorized");
-
-}
 @end

@@ -74,7 +74,7 @@
     [self.buttonTextColor.titleLabel setFont:FONT_REGULAR(18)];
 
 #if !TESTING
-    [[LocalyticsSession shared] tagScreen:@"Front Editor"];
+    //[[LocalyticsSession shared] tagScreen:@"Front Editor"];
 #endif
 }
 
@@ -143,7 +143,7 @@
     isPortrait = !isPortrait;
     [self reorientImage:isPortrait];
 #if !TESTING
-    [[LocalyticsSession shared] tagEvent:@"Reorient image" attributes:@{@"New orientation":isPortrait?@"portrait":@"landscape"}];
+    //[[LocalyticsSession shared] tagEvent:@"Reorient image" attributes:@{@"New orientation":isPortrait?@"portrait":@"landscape"}];
 #endif
 }
 
@@ -213,7 +213,7 @@
             textColorString = @"None(error)";
             break;
     }
-    [[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
+    //[[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
 #endif
 }
 
@@ -247,7 +247,7 @@
             textColorString = @"None(error)";
             break;
     }
-    [[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
+    //[[LocalyticsSession shared] tagEvent:@"Toggle text color" attributes:@{@"New text color":textColorString}];
 #endif
 
     [self updateTextColors];
@@ -403,7 +403,7 @@
                 [self.textViewMessage resignFirstResponder];
                 [self hideOrCancelHint];
                 dragging = YES;
-                CGPoint point = [gesture locationInView:self.canvas];
+                CGPoint point = [gesture locationInView:self.viewBounds];
                 initialTouch = point;
                 if (CGRectContainsPoint(self.textCanvas.frame, point)) {
                     viewDragging = self.textCanvas;

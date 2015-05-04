@@ -10,8 +10,8 @@
 #import <Parse/Parse.h>
 #import "PostCard+Image.h"
 #import "ParseBase+Parse.h"
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "LocalyticsSession.h"
 
 @implementation AppDelegate
 
@@ -27,14 +27,12 @@
                   clientKey:@"IJd9WhAvt6QQVogpfSOBuGSFmqkZArWgblLwNA5L"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    [[LocalyticsSession shared] LocalyticsSession:@"e62c88341c14564f04c2b88-4ddbe59a-ce41-11e3-9c7b-009c5fda0a25"];
-    [[LocalyticsSession shared] resume];
-    [[LocalyticsSession shared] upload];
-
-    [Crashlytics startWithAPIKey:@"70160b7dec925a91c6fe09e38bf1f8659c1eda41"];
+    [Fabric with:@[CrashlyticsKit]];
 
     [self setupUserForCurrentDevice];
 
+    [self getSettingsFromParse];
+    
     return YES;
 }
 							
@@ -42,23 +40,23 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    [[LocalyticsSession shared] close];
-    [[LocalyticsSession shared] upload];
+    //[[LocalyticsSession shared] close];
+    //[[LocalyticsSession shared] upload];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [[LocalyticsSession shared] close];
-    [[LocalyticsSession shared] upload];
+    //[[LocalyticsSession shared] close];
+    //[[LocalyticsSession shared] upload];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [[LocalyticsSession shared] resume];
-    [[LocalyticsSession shared] upload];
+    //[[LocalyticsSession shared] resume];
+    //[[LocalyticsSession shared] upload];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -69,8 +67,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [[LocalyticsSession shared] close];
-    [[LocalyticsSession shared] upload];
+    //[[LocalyticsSession shared] close];
+    //[[LocalyticsSession shared] upload];
 }
 
 /*
@@ -168,6 +166,25 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+#pragma mark settings
+-(void)getSettingsFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"Settings"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count]) {
+            PFObject *object = [objects firstObject];
+            NSNumber *price = object[@"price"];
+            NSLog(@"Settings shows price: %@ of class %@", price, price.class);
+            [[NSUserDefaults standardUserDefaults] setObject:price forKey:@"price"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else {
+            NSLog(@"No settings found");
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"price"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }];
+}
+
 #pragma mark parse user
 -(void)setupUserForCurrentDevice {
     // set up user
@@ -183,6 +200,7 @@
         [PFUser logInWithUsernameInBackground:userID password:userID block:^(PFUser *user, NSError *error) {
             if (error) {
                 NSLog(@"Error: %@", error);
+                [self registerNewUser];
             }
             else {
                 NSLog(@"Current user: %@", _currentUser);
@@ -190,24 +208,31 @@
         }];
     }
     else {
-        // generate an anonmymous user and store the id in the pasteboard
-        [PFUser enableAutomaticUser];
-        PFUser *user = _currentUser;
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"User saved: %@", user.objectId);
-                NSData *data = [user.objectId dataUsingEncoding:NSUTF8StringEncoding];
-                [appPasteBoard setData:data forPasteboardType:PASTEBOARD_KEY_USERID];
-
-                [user setUsername:user.objectId];
-                [user setPassword:user.objectId];
-                [user saveEventually];
-            }
-            else {
-                NSLog(@"Error saving anonymous user: %@", error);
-            }
-        }];
+        [self registerNewUser];
     }
+}
+
+-(void)registerNewUser {
+    // generate an anonmymous user and store the id in the pasteboard
+    UIPasteboard *appPasteBoard = [UIPasteboard pasteboardWithName:PASTEBOARD_NAME create:YES];
+    appPasteBoard.persistent = YES;
+
+    [PFUser enableAutomaticUser];
+    PFUser *user = _currentUser;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"User saved: %@", user.objectId);
+            NSData *data = [user.objectId dataUsingEncoding:NSUTF8StringEncoding];
+            [appPasteBoard setData:data forPasteboardType:PASTEBOARD_KEY_USERID];
+            
+            [user setUsername:user.objectId];
+            [user setPassword:user.objectId];
+            [user saveEventually];
+        }
+        else {
+            NSLog(@"Error saving anonymous user: %@", error);
+        }
+    }];
 }
 
 -(PFUser *)currentUser {
@@ -236,9 +261,25 @@
         NSLog(@"Email: %@", textField.text);
         [[PFUser currentUser] setEmail:textField.text];
         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!succeeded && error.code == 125) {
-                NSLog(@"Error: %@", error);
-                [self promptForEmail:@"Invalid email" message:nil];
+            if (!succeeded) {
+                if (error.code == 125) {
+                    NSLog(@"Error: %@", error);
+                    [self promptForEmail:@"Invalid email" message:nil];
+                }
+                else if (error.code == 203) {
+                    // email is already taken - store it anyway
+                    [[PFUser currentUser] setObject:textField.text forKey:@"alternateEmail"];
+                    [[PFUser currentUser] setEmail:nil];
+                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!succeeded) {
+                            // fail silently for now
+                        }
+                        else {
+                            // success!
+                            NSLog(@"Email saved");
+                        }
+                    }];
+                }
             }
         }];
     }

@@ -10,7 +10,6 @@
 #import "UIAlertView+MKBlockAdditions.h"
 #import <AddressBook/AddressBook.h>
 #import "Address+Info.h"
-#import "LocalyticsSession.h"
 
 @interface AddressEditorViewController ()
 
@@ -89,7 +88,7 @@ static NSArray *states;
     [self.buttonExistingRecipient setEnabled:NO];
 
 #if !TESTING
-    [[LocalyticsSession shared] tagScreen:@"Address Editor"];
+//    //[[LocalyticsSession shared] tagScreen:@"Address Editor"];
 #endif
 }
 
@@ -243,7 +242,7 @@ static NSArray *states;
     }
 
 #if !TESTING
-    [[LocalyticsSession shared] tagEvent:@"New address created"];
+    //[[LocalyticsSession shared] tagEvent:@"New address created"];
 #endif
 
     [self.delegate didSaveAddress:self.address];
@@ -255,7 +254,7 @@ static NSArray *states;
         return;
     }
 #if !TESTING
-    [[LocalyticsSession shared] tagEvent:@"Address loaded"];
+    //[[LocalyticsSession shared] tagEvent:@"Address loaded"];
 #endif
 
     [self.delegate didSaveAddress:self.selectedAddress];
