@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C989A745B157B9EE0D672D3 /* Pods_snailGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CB4203A6126BAA78784AA7 /* Pods_snailGram.framework */; };
 		9E103E1218CBDB4F003E3021 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E0E18CBDB4F003E3021 /* polaroid.png */; };
 		9E103E1318CBDB4F003E3021 /* polaroid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E0F18CBDB4F003E3021 /* polaroid@2x.png */; };
 		9E103E1618CE0D07003E3021 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E103E1418CE0D07003E3021 /* camera.png */; };
@@ -107,7 +108,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01CB4203A6126BAA78784AA7 /* Pods_snailGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snailGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB43318C657C8C79CAE9672 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		541EB331BDFB0F19E8C5183D /* Pods-snailGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snailGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-snailGram/Pods-snailGram.release.xcconfig"; sourceTree = "<group>"; };
 		9E103E0E18CBDB4F003E3021 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
 		9E103E0F18CBDB4F003E3021 /* polaroid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "polaroid@2x.png"; sourceTree = "<group>"; };
 		9E103E1418CE0D07003E3021 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 		ACEF59F91AF2DED200EB19BC /* Model_4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_4.xcdatamodel; sourceTree = "<group>"; };
 		ACEF59FA1AF2DF2100EB19BC /* PostCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCard.h; sourceTree = "<group>"; };
 		ACEF59FB1AF2DF2100EB19BC /* PostCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCard.m; sourceTree = "<group>"; };
+		B2C42BD7BFF6A835C94902F2 /* Pods-snailGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snailGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-snailGram/Pods-snailGram.debug.xcconfig"; sourceTree = "<group>"; };
 		CD45E09D579D2F59A68AF540 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8A8BD35C416983425988F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -279,6 +283,7 @@
 				9E86FAC8190D9867001A2335 /* libLocalyticsAMP.a in Frameworks */,
 				9EAA647318DA7D0D006264FC /* FacebookSDK.framework in Frameworks */,
 				D7983B27266B79340CF31BD3 /* libPods.a in Frameworks */,
+				6C989A745B157B9EE0D672D3 /* Pods_snailGram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +305,8 @@
 			children = (
 				CD45E09D579D2F59A68AF540 /* Pods.debug.xcconfig */,
 				4EB43318C657C8C79CAE9672 /* Pods.release.xcconfig */,
+				B2C42BD7BFF6A835C94902F2 /* Pods-snailGram.debug.xcconfig */,
+				541EB331BDFB0F19E8C5183D /* Pods-snailGram.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -373,6 +380,7 @@
 				9E25159A18C2768900F542F5 /* UIKit.framework */,
 				9E2515B518C2768900F542F5 /* XCTest.framework */,
 				EF8A8BD35C416983425988F9 /* libPods.a */,
+				01CB4203A6126BAA78784AA7 /* Pods_snailGram.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -595,12 +603,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E2515C518C2768900F542F5 /* Build configuration list for PBXNativeTarget "snailGram" */;
 			buildPhases = (
-				8FBF015D97DAD2856FB447F9 /* Check Pods Manifest.lock */,
+				8FBF015D97DAD2856FB447F9 /* [CP] Check Pods Manifest.lock */,
 				9E25158F18C2768900F542F5 /* Sources */,
 				9E25159018C2768900F542F5 /* Frameworks */,
 				9E25159118C2768900F542F5 /* Resources */,
 				9E98410418FE4873008A6A94 /* ShellScript */,
-				E4FD61DAC8F8282A5E2651CE /* Copy Pods Resources */,
+				E4FD61DAC8F8282A5E2651CE /* [CP] Copy Pods Resources */,
+				4BC0E11A68B92942BCF0E93C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -705,19 +714,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8FBF015D97DAD2856FB447F9 /* Check Pods Manifest.lock */ = {
+		4BC0E11A68B92942BCF0E93C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-snailGram/Pods-snailGram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FBF015D97DAD2856FB447F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9E98410418FE4873008A6A94 /* ShellScript */ = {
@@ -733,19 +757,19 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 70160b7dec925a91c6fe09e38bf1f8659c1eda41 0fa711cea5cca0c6a4b57c1a8955f0518514bfdd7a9e6f28b3eca2c60d905a9c";
 		};
-		E4FD61DAC8F8282A5E2651CE /* Copy Pods Resources */ = {
+		E4FD61DAC8F8282A5E2651CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-snailGram/Pods-snailGram-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -910,7 +934,7 @@
 		};
 		9E2515C618C2768900F542F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD45E09D579D2F59A68AF540 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = B2C42BD7BFF6A835C94902F2 /* Pods-snailGram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -946,7 +970,7 @@
 		};
 		9E2515C718C2768900F542F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EB43318C657C8C79CAE9672 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 541EB331BDFB0F19E8C5183D /* Pods-snailGram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

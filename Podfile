@@ -1,2 +1,7 @@
-platform :ios, '6.0'
-pod 'PayPal-iOS-SDK'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'snailGram' do
+  pod 'PayPal-iOS-SDK'
+end
